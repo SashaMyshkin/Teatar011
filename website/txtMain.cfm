@@ -1,4 +1,4 @@
-<cfif not structKeyExists(session, "script") or arrayFind(session.scripts, session.script) eq 0>
+<cfif not structKeyExists(session, "script") or arrayFind(application.scripts, session.script) eq 0>
     <cfset session.script = application.script>
 </cfif>
 
