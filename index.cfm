@@ -34,6 +34,7 @@
 			<cfif session.app eq "website">
 				<cfinclude template="website/txtMain.cfm">
 				<cfinclude template="website/boxMenu.cfm">
+				<cfinclude template="website/dspMenu.cfm">
 			</cfif>
 
 			
