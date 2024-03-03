@@ -1,3 +1,20 @@
+<cfparam name="url.app" default="">
+<cfparam name="url.page" default="">
+<cfparam name="url.part" default="">
+<cfparam name="url.script" default="">
+
+<cfif arrayFind(application.scripts, url.script) neq 0>
+	<cfset session.script = url.script>
+</cfif>
+
+<cfif not structKeyExists(session, "app")>
+    <cfset session.app = application.app>
+</cfif>
+
+<cfif arrayFind(application.apps, url.app) neq 0>
+	<cfset session.app = url.app>
+</cfif>
+
 <cfoutput>
 	<!doctype html>
 	<html lang="">
@@ -14,7 +31,7 @@
   			<link href="global.css" rel="stylesheet">
 		</head>
 		<body>
-			<cfif url.app eq "website">
+			<cfif session.app eq "website">
 				<cfinclude template="website/txtMain.cfm">
 				<cfinclude template="website/boxMenu.cfm">
 			</cfif>
