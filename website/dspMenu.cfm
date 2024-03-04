@@ -1,4 +1,6 @@
 <cfoutput>
+    <div style="height:54px"></div> 
+    
     <cfswitch expression="#url.page#">
         <cfcase value="pocetna">
             <cfinclude template="view/home.cfm">
@@ -7,7 +9,7 @@
 
         </cfcase>
         <cfcase value="predstave">
-
+            <cfinclude template="view/predstave.cfm">
         </cfcase>
         <cfcase value="ansambl">
 
