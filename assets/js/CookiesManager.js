@@ -33,6 +33,7 @@ class CookiesManager {
             url += `&screenHeight=${window.innerHeight}&screenWidth=${window.innerWidth}`
             const result = await fetch(url);
             const json = await result.json();
+            location.reload();
         }   
     }
 }

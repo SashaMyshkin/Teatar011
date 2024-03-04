@@ -56,8 +56,6 @@
                 </cfloop>
             </div> 
         </div>
-    <cfelse>
-    
     </cfif>
 
 </cfoutput>
