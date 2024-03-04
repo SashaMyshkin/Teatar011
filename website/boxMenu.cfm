@@ -18,7 +18,7 @@
     }
 </style>
 <cfoutput>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color:rgba(4, 4, 4, 0.2)">
         <div class="container-fluid">
             <a class="navbar-brand" href="##">
                 <img src="assets/img/logo.png" alt="Avatar Logo" style="width:45px;" class="rounded-pill star"> 

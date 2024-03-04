@@ -18,6 +18,16 @@
     --gold-color-6: #B76E79;   /* Rose Gold */
 }
 
+/*html {
+    font-size: 16px; 
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}*/
+
 body {
     background-color: var(--background-main);
 }

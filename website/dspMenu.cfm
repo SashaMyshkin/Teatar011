@@ -1,0 +1,1 @@
+<cfinclude template="view/home.cfm">
