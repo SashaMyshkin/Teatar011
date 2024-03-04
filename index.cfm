@@ -29,6 +29,7 @@
   			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
   			<link href="global.css" rel="stylesheet">
+			<script src="assets/js/CookiesManager.js"></script>
 		</head>
 		<body>
 			<cfif session.app eq "website">
@@ -37,7 +38,9 @@
 				<cfinclude template="website/dspMenu.cfm">
 			</cfif>
 
-			
+			<script>
+				CookiesManager.setScreenWidthAndHeight();
+			</script>
 		</body>
 	</html>
 </cfoutput>
