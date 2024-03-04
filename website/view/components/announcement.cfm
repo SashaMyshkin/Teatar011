@@ -36,8 +36,6 @@
 
 <cfoutput>
 
-    <br><br><br>
-
     <cfif structKeyExists(cookie, "SCREENHEIGHT") and structKeyExists(cookie, "SCREENWIDTH")>
         <cfset images = _CONTROLLER.getImages().images>
         <div id="carouselExampleCaptions" class="carousel slide carousel-fade overflow-hidden" data-bs-ride="carousel" style="height:100vh">

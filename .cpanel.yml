@@ -3,3 +3,10 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/myshkind/public_html/
     - /bin/cp index.cfm $DEPLOYPATH
+    - /bin/cp txtIndex.cfm $DEPLOYPATH
+    - /bin/cp global.css $DEPLOYPATH
+    - /bin/cp admin $DEPLOYPATH
+    - /bin/cp assets $DEPLOYPATH
+    - /bin/cp auth $DEPLOYPATH
+    - /bin/cp utilis $DEPLOYPATH
+    - /bin/cp website $DEPLOYPATH
