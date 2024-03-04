@@ -29,19 +29,19 @@
             <div class="collapse navbar-collapse justify-content-between" id="boxMenu">
                 <ul class="navbar-nav text-center" style="">
                     <li class="nav-item">
-                        <a class="nav-link" href="##">#txtRepertoire#</a>
+                        <a class="nav-link" href="index.cfm?page=repertoar">#txtRepertoire#</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="##">#txtPlays#</a>
+                        <a class="nav-link" href="index.cfm?page=predstave">#txtPlays#</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="##">#txtEnsemble#</a>
+                        <a class="nav-link" href="index.cfm?page=ansambl">#txtEnsemble#</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="##">#txtAwards#</a>
+                        <a class="nav-link" href="index.cfm?page=nagrade">#txtAwards#</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="##">#txtContact#</a>
+                        <a class="nav-link" href="index.cfm?page=kontakt">#txtContact#</a>
                     </li>
                     
                 </ul>
