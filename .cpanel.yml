@@ -7,6 +7,5 @@ deployment:
     - /bin/cp global.css $DEPLOYPATH
     - /bin/cp admin $DEPLOYPATH
     - /bin/cp assets $DEPLOYPATH
-    - /bin/cp auth $DEPLOYPATH
     - /bin/cp utilis $DEPLOYPATH
     - /bin/cp website $DEPLOYPATH
