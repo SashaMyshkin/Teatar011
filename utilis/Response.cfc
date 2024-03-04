@@ -3,10 +3,10 @@
 
         <cfset var response = structNew()>
         <cfset var response["error"] = false>
-        <cfset var response["clientMessage"] = false>
-        <cfset var response["consoleMessage"] = false>
+        <cfset var response["clientMessage"] = "">
+        <cfset var response["consoleMessage"] = "">
         <cfset var response["cfcatch"] = structNew()>
 
-       <cfreturn structNew()>
+       <cfreturn response>
     </cffunction>
 </cfcomponent>
