@@ -2,6 +2,7 @@
 <cfparam name="url.page" default="">
 <cfparam name="url.part" default="">
 <cfparam name="url.script" default="">
+<cfparam name="url.pk" default="">
 
 <cfif arrayFind(application.scripts, url.script) neq 0>
 	<cfset session.script = url.script>

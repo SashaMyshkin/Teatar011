@@ -48,17 +48,17 @@
                 <ul class="navbar-nav text-center">
                     <cfif session.script neq "cyrillic">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.cfm?script=cyrillic"> #txtCyrillic# </a>
+                            <a class="nav-link" href="index.cfm?page=#url.page#&pk=#url.pk#&script=cyrillic"> #txtCyrillic# </a>
                         </li>
                     </cfif>
                     <cfif session.script neq "latin">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.cfm?script=latin"> #txtLatin# </a>
+                            <a class="nav-link" href="index.cfm?page=#url.page#&pk=#url.pk#&script=latin"> #txtLatin# </a>
                         </li>
                     </cfif>
                     <cfif session.script neq "english">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.cfm?script=english"> #txtEnglish# </a>
+                            <a class="nav-link" href="index.cfm?page=#url.page#&pk=#url.pk#&script=english"> #txtEnglish# </a>
                         </li>
                     </cfif>
                     
