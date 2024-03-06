@@ -24,7 +24,7 @@
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="##">
-                <img src="assets/img/logo.png" alt="Avatar Logo" style="width:45px;" class="rounded-pill star"> 
+                <img src="/assets/img/logo.png" alt="Avatar Logo" style="width:45px;" class="rounded-pill star"> 
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="##boxMenu">
                 <span class="navbar-toggler-icon"></span>
@@ -32,19 +32,19 @@
             <div class="collapse navbar-collapse justify-content-between" id="boxMenu">
                 <ul class="navbar-nav text-center" style="">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.cfm?page=repertoar">#txtRepertoire#</a>
+                        <a class="nav-link" href="/repertoar/">#txtRepertoire#</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.cfm?page=predstave">#txtPlays#</a>
+                        <a class="nav-link" href="/predstave/">#txtPlays#</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.cfm?page=ansambl">#txtEnsemble#</a>
+                        <a class="nav-link" href="/ansambl/">#txtEnsemble#</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.cfm?page=nagrade">#txtAwards#</a>
+                        <a class="nav-link" href="/nagrade/">#txtAwards#</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.cfm?page=kontakt">#txtContact#</a>
+                        <a class="nav-link" href="/kontakt/">#txtContact#</a>
                     </li>
                     
                 </ul>

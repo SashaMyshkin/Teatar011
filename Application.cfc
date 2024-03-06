@@ -12,6 +12,7 @@
     <cfset this.requestTimeout = createTimeSpan(0, 0, 0, 50)>
     <cfset this.charset.web = "UTF-8">
     <cfset this.charset.resource = "UTF-8">
+    <cfset this.enablenullsupport = true >
 
     <cffunction name="onRequest">
         <cfargument name = "targetPage" type="String" required=true/>
@@ -21,10 +22,11 @@
             <html lang="">
                 <head>
                     <cfmodule template="head.cfm" targetPage="#Arguments.targetPage#">
+                    
                 </head>
                 <body>
                     <cfmodule template="components/navbar/index.cfm">
-                    <!----cfmodule template="#Arguments.targetPage#"----->
+                    <cfmodule template="#arguments.targetPage#" targetPage="#Arguments.targetPage#">
                 </body>
             </html>   
         </cfsavecontent>
