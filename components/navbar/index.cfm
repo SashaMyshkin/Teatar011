@@ -1,4 +1,4 @@
-<cfinclude template="txtNavbar.cfm">
+<cfinclude template="txt.cfm">
 
 <style>
     .nav-link{

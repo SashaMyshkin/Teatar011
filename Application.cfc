@@ -23,7 +23,7 @@
                     <cfmodule template="head.cfm" targetPage="#Arguments.targetPage#">
                 </head>
                 <body>
-                    <cfmodule template="components/navbar/navbar.cfm">
+                    <cfmodule template="components/navbar/index.cfm">
                     <!----cfmodule template="#Arguments.targetPage#"----->
                 </body>
             </html>   
