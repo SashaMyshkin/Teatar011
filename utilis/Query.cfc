@@ -1,7 +1,7 @@
 
 
 <cfcomponent>
-    <cffunction name="createStructuredQuery" returntype="array" access="public" static="true">
+    <cffunction name="toArray" returntype="array" access="public" static="true">
         <cfargument name="queryObject" type="query" required="true">
     
         <cfset queryJSON = serializeJSON(queryObject)>

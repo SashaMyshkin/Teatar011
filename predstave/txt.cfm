@@ -1,10 +1,11 @@
-<cfswitch expression="#session.script#">
-    <cfcase value="latin">
-        <cfset txtAwards = "Nagrade">
+<cfswitch expression="#session.defaultScript#">
+    <cfcase value="sr-Latn">
+        <cfset txtPlays = "Predstave">
     </cfcase>
-    <cfcase value="cyrillic">
-        <cfset txtAwards = "Награде">
+    <cfcase value="sr-Cyrl">
+        <cfset txtPlays = "Представе">
     </cfcase>
-    <cfcase value="english">
+    <cfcase value="en">
+        <cfset txtPlays = "Plays">
     </cfcase>
 </cfswitch>
