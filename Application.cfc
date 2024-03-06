@@ -17,34 +17,41 @@
     <cffunction name="onRequest">
         <cfargument name = "targetPage" type="String" required=true/>
 
-        <cfsavecontent variable="content">
-            <!doctype html>
-            <html lang="">
-                <head>
-                    <cfmodule template="head.cfm" targetPage="#Arguments.targetPage#">
-                    
-                </head>
-                <body>
-                    <cfmodule template="components/navbar/index.cfm">
-                    <cfmodule template="#arguments.targetPage#" targetPage="#Arguments.targetPage#">
-                </body>
-            </html>   
-        </cfsavecontent>
+        <cfoutput>
+            <cfif structKeyExists(url, "defaultScript") and ArrayFind(application.scripts, url.defaultScript) gt 0>
+                <cfset session.defaultScript = url.defaultScript>
+            </cfif>
 
-        <cfoutput>#content#</cfoutput>
+            <cfsavecontent variable="content">
+                <!doctype html>
+                <html lang="#session.defaultScript#">
+                    <head>
+                        <cfmodule template="head.cfm" targetPage="#Arguments.targetPage#">
+                        
+                    </head>
+                    <body>
+                        <cfmodule template="components/navbar/index.cfm">
+                        <cfmodule template="#arguments.targetPage#" targetPage="#Arguments.targetPage#">
+                    </body>
+                </html>   
+            </cfsavecontent>
+
+            #content#
+        </cfoutput>        
     </cffunction>
 
     <cffunction name="onSessionStart">
 
         <cfset session.started = now()>
+        <cfset session.defaultScript = application.defaultScript>
         
     </cffunction>
 
     <cffunction name="onApplicationStart">
 
         <cfset application.datasource = "teatar011">
-        <cfset application.scripts = ["cyrillic", "latin", "english"]>
-        <cfset application.defaultScript = "cyrillic">
+        <cfset application.scripts = ["sr-Cyrl", "sr-Latn", "en"]>
+        <cfset application.defaultScript = "sr-Cyrl">
         <cfset application.modes = ["development", "production"]>
         <cfset application.defaultMode = "development">
         

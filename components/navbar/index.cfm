@@ -49,19 +49,19 @@
                     
                 </ul>
                 <ul class="navbar-nav text-center">
-                    <cfif session.script neq "cyrillic">
+                    <cfif session.defaultScript neq "sr-Cyrl">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.cfm?script=cyrillic"> #txtCyrillic# </a>
+                            <a class="nav-link" href="index.cfm?defaultScript=sr-Cyrl"> #txtCyrillic# </a>
                         </li>
                     </cfif>
-                    <cfif session.script neq "latin">
+                    <cfif session.defaultScript neq "sr-Latn">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.cfm?script=latin"> #txtLatin# </a>
+                            <a class="nav-link" href="index.cfm?defaultScript=sr-Latn"> #txtLatin# </a>
                         </li>
                     </cfif>
-                    <cfif session.script neq "english">
+                    <cfif session.defaultScript neq "en">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.cfm?script=english"> #txtEnglish# </a>
+                            <a class="nav-link" href="index.cfm?defaultScript=en"> #txtEnglish# </a>
                         </li>
                     </cfif>
                     

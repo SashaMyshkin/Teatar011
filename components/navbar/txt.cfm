@@ -1,9 +1,5 @@
-<cfif not structKeyExists(session, "script") or arrayFind(application.scripts, session.script) eq 0>
-    <cfset session.script = application.defaultScript>
-</cfif>
-
-<cfswitch expression="#session.script#">
-    <cfcase value="latin">
+<cfswitch expression="#session.defaultScript#">
+    <cfcase value="sr-Latn">
         <cfset txtAwards = "Nagrade">
         <cfset txtEnsemble = "Ansambl">
         <cfset txtRepertoire = "Repertoar">
@@ -13,7 +9,7 @@
         <cfset txtLatin = "Latinica">
         <cfset txtEnglish = "Engleski">
     </cfcase>
-    <cfcase value="cyrillic">
+    <cfcase value="sr-Cyrl">
         <cfset txtAwards = "Награде">
         <cfset txtEnsemble = "Ансамбл">
         <cfset txtRepertoire = "Репертоар">
@@ -23,7 +19,7 @@
         <cfset txtLatin = "Латиница">
         <cfset txtEnglish = "Енглески">
     </cfcase>
-    <cfcase value="english">
+    <cfcase value="en">
         <cfset txtAwards = "Awards">
         <cfset txtEnsemble = "Artists">
         <cfset txtRepertoire = "Repertoire">
