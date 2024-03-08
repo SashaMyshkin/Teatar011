@@ -14,6 +14,64 @@
     <cfset this.charset.resource = "UTF-8">
 
 
+    <cffunction name="onRequestStart">
+        <cfargument name="targetPage" type="string" required="true">
+
+        <cfif IsDefined("Form.logout")>
+            <cflogout>
+        </cfif>
+
+        <cflogin applicationtoken="#this.name#">
+            <cfif not isDefined("cflogin")>
+                <cfinclude template="loginForm.cfm">
+                <cfabort>
+            <cfelse>
+                <cfif cflogin.name is "" OR cflogin.password is "">
+                    <cfoutput>
+                        <h2>You must enter text in both the User Name and Password fields.
+                        </h2>
+                    </cfoutput>
+                    <cfinclude template="loginform.cfm">
+                <cfelse>
+                    <cfquery name="loginQuery" datasource="#application.defaultDatasource#">
+
+                    </cfquery>
+                    <cfif loginQuery.Roles NEQ "">
+                        <cfloginuser name="#cflogin.name#" Password = "#cflogin.password#" roles="#loginQuery.Roles#">
+                    <cfelse>
+                        <cfoutput>
+                            <H2>Your login information is not valid.<br>Please Try again</H2>
+                        </cfoutput>
+                        <cfinclude template="loginform.cfm">
+                        <cfabort>
+                    </cfif> 
+                </cfif>
+            </cfif>
+        </cflogin>
+
+        <cfif GetAuthUser() NEQ "">
+            <cfoutput>
+                <form action="securitytest.cfm" method="Post">
+                    <input type="submit" Name="Logout" value="Logout">
+                </form>
+            </cfoutput>
+        </cfif> 
+
+    </cffunction>
+
+    <cffunction name="onRequest">
+        <cfargument name="targetPage" type="string" required="true">
+
+        <cfsavecontent variable="content" allowcon>
+            <cfinclude template="#Arguments.targetPage#">
+        </cfsavecontent>
+
+        <cfoutput>
+            #replace(content, "report", "MyCompany Quarterly Report", "all")#
+        </cfoutput>
+    </cffunction>
+
+
 
     <cffunction name="onSessionStart">
 
@@ -23,11 +81,14 @@
 
     <cffunction name="onApplicationStart">
 
-        <cfset application.datasource = "teatarc1_teatar011_development">
-        <cfset application.scripts = ["cyrillic", "latin", "english"]>
-        <cfset application.defaultScript = "cyrillic">
         <cfset application.modes = ["development", "production"]>
         <cfset application.defaultMode = "development">
+        <cfset application.datasources = ["teatarc1_teatar011_development", "teatarc1_teatar011_production"]>
+        <cfset application.defaultDatasource = "teatarc1_teatar011_development">
+        <cfset application.scripts = ["cyrillic", "latin", "english"]>
+        <cfset application.defaultScript = "cyrillic">
+        <cfset application.domain = "admin.teatar011.com">
+       
         
     </cffunction>
 
