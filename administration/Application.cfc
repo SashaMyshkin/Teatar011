@@ -24,7 +24,7 @@
         <cflogin applicationtoken="#this.name#">
             <cfif not isDefined("cflogin")>
                 <cfinclude template="loginForm.cfm">
-                <cfabort>
+                <cfreturn false>
             <cfelse>
                 <cfif cflogin.name is "" OR cflogin.password is "">
                     <cfoutput>
@@ -32,10 +32,17 @@
                         </h2>
                     </cfoutput>
                     <cfinclude template="loginform.cfm">
+                    <cfreturn false>
                 <cfelse>
-                    <cfquery name="loginQuery" datasource="#application.defaultDatasource#">
 
+                    <cfquery name="loginQuery" datasource="#application.defaultDatasource#">
+                        select `id`, `roles` from `users`
+                        where 1 = 1
+                        and `username` = <cfqueryparam value="#cflogin.name#" cfsqltype="CF_SQL_VARCHAR" maxlength="30">
+                        and `password` = <cfqueryparam value="#hash(cflogin.password, 'SHA-256')#" cfsqltype="CF_SQL_VARCHAR" maxlength="64">
                     </cfquery>
+                
+
                     <cfif loginQuery.Roles NEQ "">
                         <cfloginuser name="#cflogin.name#" Password = "#cflogin.password#" roles="#loginQuery.Roles#">
                     <cfelse>
@@ -43,32 +50,40 @@
                             <H2>Your login information is not valid.<br>Please Try again</H2>
                         </cfoutput>
                         <cfinclude template="loginform.cfm">
-                        <cfabort>
+                        <cfreturn false>
                     </cfif> 
                 </cfif>
             </cfif>
         </cflogin>
 
-        <cfif GetAuthUser() NEQ "">
-            <cfoutput>
-                <form action="securitytest.cfm" method="Post">
-                    <input type="submit" Name="Logout" value="Logout">
-                </form>
-            </cfoutput>
-        </cfif> 
+        <cfreturn true>
 
     </cffunction>
 
     <cffunction name="onRequest">
-        <cfargument name="targetPage" type="string" required="true">
-
-        <cfsavecontent variable="content" allowcon>
-            <cfinclude template="#Arguments.targetPage#">
-        </cfsavecontent>
+        <cfargument name = "targetPage" type="String" required=true/>
 
         <cfoutput>
-            #replace(content, "report", "MyCompany Quarterly Report", "all")#
-        </cfoutput>
+            <cfif structKeyExists(url, "defaultScript") and ArrayFind(application.scripts, url.defaultScript) gt 0>
+                <cfset session.defaultScript = url.defaultScript>
+            </cfif>
+
+            <cfsavecontent variable="content">
+                <!doctype html>
+                <html lang="#session.defaultScript#">
+                    <head>
+                        <cfmodule template="head.cfm" targetPage="#Arguments.targetPage#">
+                        
+                    </head>
+                    <body>
+                        <cfmodule template="components/navbar/index.cfm">
+                        <cfmodule template="#arguments.targetPage#" targetPage="#Arguments.targetPage#">
+                    </body>
+                </html>   
+            </cfsavecontent>
+
+            #content#
+        </cfoutput>        
     </cffunction>
 
 
@@ -76,6 +91,7 @@
     <cffunction name="onSessionStart">
 
         <cfset session.started = now()>
+        <cfset session.defaultScript = application.defaultScript>
         
     </cffunction>
 
@@ -85,8 +101,8 @@
         <cfset application.defaultMode = "development">
         <cfset application.datasources = ["teatarc1_teatar011_development", "teatarc1_teatar011_production"]>
         <cfset application.defaultDatasource = "teatarc1_teatar011_development">
-        <cfset application.scripts = ["cyrillic", "latin", "english"]>
-        <cfset application.defaultScript = "cyrillic">
+        <cfset application.scripts = ["sr-Cyrl", "sr-Latn", "en"]>
+        <cfset application.defaultScript = "sr-Cyrl">
         <cfset application.domain = "admin.teatar011.com">
        
         
@@ -95,7 +111,8 @@
     <cffunction name="onMissingTemplate">
         <cfargument name="targetPage" type="string" required=true/>
 
-        <cfinclude template="onMissingTemplate.cfm">
+        <cfoutput>#targetPage#</cfoutput>
+        <cfinclude template="404.cfm">
 
         <cfreturn true />
     </cffunction>
@@ -109,7 +126,8 @@
             <h2>An unexpected error occurred.</h2>
             <p>Please provide the following information to technical support:</p>
             <p>Error Event: #Arguments.EventName#</p>
-            <p>Error details:<br>
+            <p>Error details:</p><br>
+            <cfdump var="#Exception#">
         
         </cfoutput>
     </cffunction>
