@@ -13,21 +13,7 @@
     <cfset this.charset.web = "UTF-8">
     <cfset this.charset.resource = "UTF-8">
 
-    <cffunction name="onRequest">
-        <cfargument name = "targetPage" type="String" required=true/>
 
-        <!-----cfsavecontent variable="content">
-            <cfinclude template="#Arguments.targetPage#">
-        </cfsavecontent------>
-
-        <cfoutput>
-            <cfset n = "33333">
-            <cfdump var="#n#">
-            <cfset n = "44444444">
-            <cfdump var="#n#">
-        </cfoutput>
-
-    </cffunction>
 
     <cffunction name="onSessionStart">
 
@@ -37,7 +23,7 @@
 
     <cffunction name="onApplicationStart">
 
-        <cfset application.datasource = "teatar011">
+        <cfset application.datasource = "teatarc1_teatar011_development">
         <cfset application.scripts = ["cyrillic", "latin", "english"]>
         <cfset application.defaultScript = "cyrillic">
         <cfset application.modes = ["development", "production"]>
