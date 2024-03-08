@@ -1,11 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/myshkind/public_html/admin.teatar011.com
-    - /bin/cp index.cfm $DEPLOYPATH
-    - /bin/cp txtIndex.cfm $DEPLOYPATH
-    - /bin/cp global.css $DEPLOYPATH
-    - /bin/cp admin $DEPLOYPATH
-    - /bin/cp assets $DEPLOYPATH
-    - /bin/cp utilis $DEPLOYPATH
-    - /bin/cp website $DEPLOYPATH
+    - export DEPLOYPATH=/home/myshkind/public_html
+    - /bin/cp admin.teatar011.com $DEPLOYPATH
