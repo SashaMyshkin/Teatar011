@@ -49,21 +49,10 @@
                     
                 </ul>
                 <ul class="navbar-nav text-center">
-                    <cfif session.defaultScript neq "sr-Cyrl">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.cfm?defaultScript=sr-Cyrl"> #txtCyrillic# </a>
-                        </li>
-                    </cfif>
-                    <cfif session.defaultScript neq "sr-Latn">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.cfm?defaultScript=sr-Latn"> #txtLatin# </a>
-                        </li>
-                    </cfif>
-                    <cfif session.defaultScript neq "en">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.cfm?defaultScript=en"> #txtEnglish# </a>
-                        </li>
-                    </cfif>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#application.root#logout.cfm"> txtLogout </a>
+                    </li>
                     
                 </ul>
             </div>

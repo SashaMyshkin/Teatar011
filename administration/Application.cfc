@@ -64,7 +64,10 @@
         <cfargument name = "targetPage" type="String" required=true/>
 
         <cfoutput>
-            <cfif structKeyExists(url, "defaultScript") and ArrayFind(application.scripts, url.defaultScript) gt 0>
+
+            <cfparam name="url.defaultScript" default="">
+            
+            <cfif ArrayFind(application.scripts, url.defaultScript) gt 0>
                 <cfset session.defaultScript = url.defaultScript>
             </cfif>
 
@@ -78,6 +81,7 @@
                     <body>
                         <cfmodule template="components/navbar/index.cfm">
                         <cfmodule template="#arguments.targetPage#" targetPage="#Arguments.targetPage#">
+                            <cfdump var="#CGI#">
                     </body>
                 </html>   
             </cfsavecontent>
@@ -97,13 +101,18 @@
 
     <cffunction name="onApplicationStart">
 
-        <cfset application.modes = ["development", "production"]>
-        <cfset application.defaultMode = "development">
-        <cfset application.datasources = ["teatarc1_teatar011_development", "teatarc1_teatar011_production"]>
-        <cfset application.defaultDatasource = "teatarc1_teatar011_development">
+        <cfif cgi.server_name eq 'localhost'>
+            <cfset application.defaultMode = "development">
+            <cfset application.defaultDatasource = "teatarc1_teatar011_development">
+            <cfset application.root = "http://#cgi.http_host#/administration/">
+        <cfelse>
+            <cfset application.defaultMode = "production">
+            <cfset application.defaultDatasource = "teatarc1_teatar011_production">
+            <cfset application.root = "https://#cgi.http_host#/administration/">
+        </cfif>
+        
         <cfset application.scripts = ["sr-Cyrl", "sr-Latn", "en"]>
         <cfset application.defaultScript = "sr-Cyrl">
-        <cfset application.domain = "admin.teatar011.com">
        
         
     </cffunction>
