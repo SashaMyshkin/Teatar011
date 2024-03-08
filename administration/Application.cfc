@@ -15,9 +15,6 @@
 
     <cffunction name="onRequestStart">
         <cfargument name="targetPage" type="string" required="true">
-        <cfif IsDefined("Form.logout")>
-            <cflogout>
-        </cfif>
         <cflogin applicationtoken="#this.name#">
             <cfif not isDefined("cflogin")>
                 <cfinclude template="loginForm.cfm">
