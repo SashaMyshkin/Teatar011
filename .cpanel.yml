@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/myshkind/public_html
-    - /bin/cp admin $DEPLOYPATH
+    - /bin/cp administration $DEPLOYPATH
