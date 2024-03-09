@@ -77,11 +77,13 @@
         <cfif cgi.server_name eq 'localhost'>
             <cfset application.defaultMode = "development">
             <cfset application.defaultDatasource = "teatarc1_teatar011_development">
-            <cfset application.root = "http://#cgi.http_host#/administration/">
+            <cfset application.adminroot = "http://#cgi.http_host#/administration/">
+            <cfset application.root = "http://#cgi.http_host#/">
         <cfelse>
             <cfset application.defaultMode = "production">
             <cfset application.defaultDatasource = "teatarc1_teatar011_production">
-            <cfset application.root = "https://#cgi.http_host#/administration/">
+            <cfset application.adminroot = "https://#cgi.http_host#/administration/">
+            <cfset application.root = "https://#cgi.http_host#/">
         </cfif>
         <cfset application.scripts = ["sr-Cyrl", "sr-Latn", "en"]>
         <cfset application.defaultScript = "sr-Cyrl">

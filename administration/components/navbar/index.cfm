@@ -24,7 +24,7 @@
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="##">
-                <img src="/assets/img/logo.png" alt="Avatar Logo" style="width:45px;" class="rounded-pill star"> 
+                <img src="#application.root#assets/img/logo.png" alt="Avatar Logo" style="width:45px;" class="rounded-pill star"> 
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="##boxMenu">
                 <span class="navbar-toggler-icon"></span>
@@ -32,28 +32,29 @@
             <div class="collapse navbar-collapse justify-content-between" id="boxMenu">
                 <ul class="navbar-nav text-center" style="">
                     <li class="nav-item">
-                        <a class="nav-link" href="/repertoar/">#txtRepertoire#</a>
+                        <a class="nav-link" href="#application.adminroot#announcements/">#txtAnnoucements#</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/predstave/">#txtPlays#</a>
+                        <a class="nav-link" href="#application.adminroot#performances/">#txtPerformances#</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/ansambl/">#txtEnsemble#</a>
+                        <a class="nav-link" href="#application.adminroot#members/">#txtMembers#</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/nagrade/">#txtAwards#</a>
+                        <a class="nav-link" href="#application.adminroot#audition/">#txtAudition#</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/kontakt/">#txtContact#</a>
+                        <a class="nav-link" href="#application.adminroot#awards/">#txtAwards#</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#application.adminroot#news/">#txtNews#</a>
                     </li>
                     
                 </ul>
                 <ul class="navbar-nav text-center">
-
                     <li class="nav-item">
-                        <a class="nav-link" href="#application.root#logout.cfm"> txtLogout </a>
+                        <a class="nav-link" href="#application.adminroot#logout.cfm"> #txtLogout# </a>
                     </li>
-                    
                 </ul>
             </div>
         </div>

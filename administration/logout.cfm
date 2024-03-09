@@ -1,2 +1,2 @@
 <cflogout>
-<cflocation url="#application.root#" addtoken="false">
+<cflocation url="#application.adminroot#" addtoken="false">
