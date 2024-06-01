@@ -1,21 +1,33 @@
 :root {
-    /*Background*/
+    /* Background */
     --background-main: #343a40;
-    --charcoal: #333333;          /* Charcoal */
-    --onyx: #353839;              /* Onyx */
-    --ebony: #555D50;             /* Ebony */
-    --jet: #343434;               /* Jet */
-    --midnight: #191970;          /* Midnight */
-    --dark-slate-gray: #2F4F4F;   /* Dark slate gray */
-
-    /*Gold*/
+    --charcoal: #333333;            /* Charcoal */
+    --onyx: #353839;                /* Onyx */
+    --ebony: #555D50;               /* Ebony */
+    --jet: #343434;                 /* Jet */
+    --midnight: #191970;            /* Midnight */
+    --dark-slate-gray: #2F4F4F;     /* Dark slate gray */
+    
+    /* White Nuances */
+    --white: #ffffff;               /* White */
+    --snow: #fffafa;                /* Snow */
+    --whitesmoke: #f5f5f5;          /* White Smoke */
+    --gainsboro: #dcdcdc;           /* Gainsboro */
+    --light-gray: #d3d3d3;          /* Light Gray */
+    
+    /* Gold */
     --gold-main: #ffc107;
-    --gold-color-1: goldenrod; /* Goldenrod Gold */
-    --gold-color-2: #FFD700;   /* Sunshine Gold */
-    --gold-color-3: #FFDF00;   /* Honey Gold */
-    --gold-color-4: #E6B96E;   /* Champagne Gold */
-    --gold-color-5: #B8860B;   /* Antique Gold */
-    --gold-color-6: #B76E79;   /* Rose Gold */
+    --gold-color-1: goldenrod;      /* Goldenrod Gold */
+    --gold-color-2: #FFD700;        /* Sunshine Gold */
+    --gold-color-3: #FFDF00;        /* Honey Gold */
+    --gold-color-4: #E6B96E;        /* Champagne Gold */
+    --gold-color-5: #B8860B;        /* Antique Gold */
+    --gold-color-6: #B76E79;        /* Rose Gold */
+}
+
+
+*{
+    color:var(--whitesmoke)
 }
 
 /*html {

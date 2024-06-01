@@ -51,21 +51,19 @@
 
     <cffunction name="onRequest">
         <cfargument name = "targetPage" type="String" required=true/>
-        <cfoutput>
-            <cfsavecontent variable="content">
-                <!doctype html>
-                <html lang="#session.defaultScript#">
-                    <head>
-                        <cfmodule template="head.cfm" targetPage="#Arguments.targetPage#">
-                    </head>
-                    <body>
-                        <cfmodule template="components/navbar/index.cfm">
-                        <cfmodule template="#arguments.targetPage#" targetPage="#Arguments.targetPage#">
-                    </body>
-                </html>   
-            </cfsavecontent>
-            #content#
-        </cfoutput>        
+        <cfsavecontent variable="content">
+            <!doctype html>
+            <html lang="#session.defaultScript#">
+                <head>
+                    <cfmodule template="head.cfm" targetPage="#Arguments.targetPage#">
+                </head>
+                <body>
+                    <cfmodule template="components/navbar/index.cfm">
+                    <cfmodule template="#arguments.targetPage#" targetPage="#Arguments.targetPage#">
+                </body>
+            </html>   
+        </cfsavecontent>
+        <cfoutput>#content#</cfoutput>        
     </cffunction>
 
     <cffunction name="onSessionStart">
