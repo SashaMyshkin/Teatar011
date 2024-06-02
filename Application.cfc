@@ -29,7 +29,7 @@
                         <cfmodule template="head.cfm" targetPage="#Arguments.targetPage#">
                         
                     </head>
-                    <body>
+                    <body class="bg-dark">
                         <cfmodule template="components/navbar/index.cfm">
                         <cfmodule template="#arguments.targetPage#" targetPage="#Arguments.targetPage#">
                     </body>
