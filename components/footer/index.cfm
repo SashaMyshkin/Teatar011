@@ -37,6 +37,9 @@
                         <li>#txtAddress#: #txtVojvode#</li>
                     </ul>
                 </div>
+                <div class="col-md-1">
+                    <span>&nbsp;<span>
+                </div>
                 <!-- Social Media Links -->
                 <div class="col-md-3">
                     <h5>#txtFollow#</h5>
