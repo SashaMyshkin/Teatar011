@@ -5,6 +5,10 @@
         color: var(--gold-main)!important;
     }
 
+    .navbar {
+            background-color: #111;
+    }
+
     .star {
         background: linear-gradient(-45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
         animation: shine 1s infinite alternate;
@@ -21,32 +25,23 @@
 </style>
 
 <cfoutput>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="##">
+            <a class="navbar-brand" href="/">
                 <img src="/assets/img/logo.png" alt="Avatar Logo" style="width:45px;" class="rounded-pill star"> 
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="##boxMenu">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="##navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-between" id="boxMenu">
-                <ul class="navbar-nav text-center" style="">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/repertoar/">#txtRepertoire#</a>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                <ul class="navbar-nav ml-auto text-center">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">#txtHome#</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/predstave/">#txtPlays#</a>
+                        <a class="nav-link" href="/predstave/index.cfm">#txtPlays#</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/ansambl/">#txtEnsemble#</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/nagrade/">#txtAwards#</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/kontakt/">#txtContact#</a>
-                    </li>
-                    
                 </ul>
                 <ul class="navbar-nav text-center">
                     <cfif session.defaultScript neq "sr-Cyrl">
@@ -63,8 +58,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="index.cfm?defaultScript=en"> #txtEnglish# </a>
                         </li>
-                    </cfif>
-                    
+                    </cfif>  
                 </ul>
             </div>
         </div>

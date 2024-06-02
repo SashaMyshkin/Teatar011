@@ -8,6 +8,7 @@
         <cfset txtCyrillic = "Ćirilica">
         <cfset txtLatin = "Latinica">
         <cfset txtEnglish = "Engleski">
+        <cfset txtHome = "Početna">
     </cfcase>
     <cfcase value="sr-Cyrl">
         <cfset txtAwards = "Награде">
@@ -18,6 +19,7 @@
         <cfset txtCyrillic = "Ћирилица">
         <cfset txtLatin = "Латиница">
         <cfset txtEnglish = "Енглески">
+        <cfset txtHome = "Почетна">
     </cfcase>
     <cfcase value="en">
         <cfset txtAwards = "Awards">
@@ -28,5 +30,6 @@
         <cfset txtCyrillic = "Cyrillic">
         <cfset txtLatin = "Latin">
         <cfset txtEnglish = "English">
+        <cfset txtHome = "Home">
     </cfcase>
 </cfswitch>
