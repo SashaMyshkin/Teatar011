@@ -1,7 +1,7 @@
 
 <cfparam name="url.pk" default="">
 
-<cfset CONTROLLER = createObject('component', 'controller')>
+<cfset DATA = createObject('component', 'data')>
 
 <cfinclude template="txt.cfm">
 
@@ -23,14 +23,16 @@
             }
         </style>
 
-        <cfset plays = CONTROLLER.getPlays().data>
+        <cfset plays = DATA.getPlays()>
 
         <div class="container">
-            <h2 class="mt-5 mb-4 text-light">#txtPlays#</h2>
+            <!-----h2 class="mt-5 mb-4 text-light text-center">#txtPlays#</!-----h2------>
+
+            <br>
     
             <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-5 justify-content-center">
                 <cfloop array="#plays#" item="play" index="index">
-                    <div class="col" style="max-width:350px" onclick="location.href = 'index.cfm?pk=#play.id#'">
+                    <div class="col" style="max-width:350px" onclick="location.pathname += '#play.path#' ">
                         <div class="card bg-dark text-white">
                             <img src="#play.poster#" class="card-img" alt="#play.alt#">
                         </div>
