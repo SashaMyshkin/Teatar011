@@ -26,15 +26,17 @@
 
 <cfoutput>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
+ 
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
                 <img src="/assets/img/logo.png" alt="Avatar Logo" style="width:45px;" class="rounded-pill star"> 
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="##navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="##navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <div class="collapse navbar-collapse justify-content-between" id="navbarTogglerDemo01">
+                
                 <ul class="navbar-nav ml-auto text-center">
                     <li class="nav-item active">
                         <a class="nav-link" href="/">#txtHome#</a>
