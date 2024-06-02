@@ -32,7 +32,7 @@
     
             <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-5 justify-content-center">
                 <cfloop array="#plays#" item="play" index="index">
-                    <div class="col" style="max-width:350px" onclick="location.pathname += '#play.path#' ">
+                    <div class="col" style="max-width:350px" onclick="window.location.assign('/predstave/#play.path#') ">
                         <div class="card bg-dark text-white">
                             <img src="#play.poster#" class="card-img" alt="#play.alt#">
                         </div>
