@@ -36,6 +36,6 @@
         <cfset txtDirtyDancing = "Dirty Dancing">
         <cfset txtDirtyDancingAlt = "Poster of the play Dirty Dancing">
         <cfset txtWestSideStory = "West Side Story">
-        <cfset txtWestSideStory = "Poster of the play West Side Story">
+        <cfset txtWestSideStoryAlt = "Poster of the play West Side Story">
     </cfcase>
 </cfswitch>
