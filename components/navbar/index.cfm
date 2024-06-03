@@ -44,6 +44,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/predstave/index.cfm">#txtPlays#</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ansambl/index.cfm">#txtEnsemble#</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav text-center">
                     <cfif session.defaultScript neq "sr-Cyrl">

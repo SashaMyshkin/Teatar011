@@ -45,12 +45,13 @@
 
         <cfset session.started = now()>
         <cfset session.defaultScript = application.defaultScript>
+        <cfset session.datasource = "teatarc1_teatar011_production">
         
     </cffunction>
 
     <cffunction name="onApplicationStart">
 
-        <cfset application.datasource = "teatar011">
+        <cfset application.datasource = "teatarc1_teatar011_production">
         <cfset application.scripts = ["sr-Cyrl", "sr-Latn", "en"]>
         <cfset application.defaultScript = "sr-Cyrl">
         <cfset application.modes = ["development", "production"]>
