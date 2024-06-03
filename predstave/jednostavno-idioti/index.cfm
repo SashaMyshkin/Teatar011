@@ -42,7 +42,7 @@
         
     
         <!-- Section 3 -->
-        <div class="row play-section">
+        <!-----div class="row play-section">
             <div class="col-md-6">
                 <img src="/assets/img/jednostavno-idioti/zelene-zavese.jpg" alt="Play Scene 3">
             </div>
@@ -58,7 +58,7 @@
                     </ul>
                 </p>
             </div>
-        </div>
+        </!-----div---------->
     </section>
 </cfoutput>
 

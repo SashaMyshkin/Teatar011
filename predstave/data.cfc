@@ -24,7 +24,7 @@
             poster:'/assets/img/na-povrsini/poster.png',
             type: 'V'
 
-        },
+        }/*,
         {
             name:'#txtDirtyDancing#',
             path:'prljavi-ples',
@@ -40,7 +40,7 @@
             poster:'/assets/img/prica-sa-zapadne-strane/poster.png',
             type: 'V'
 
-        }
+        }*/
 
     ]>
 
