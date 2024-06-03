@@ -17,6 +17,8 @@
     <cffunction name="onRequest">
         <cfargument name = "targetPage" type="String" required=true/>
 
+        <cfset application.datasource = "teatarc1_teatar011_production">
+
         <cfoutput>
             <cfif structKeyExists(url, "defaultScript") and ArrayFind(application.scripts, url.defaultScript) gt 0>
                 <cfset session.defaultScript = url.defaultScript>
@@ -51,7 +53,7 @@
 
     <cffunction name="onApplicationStart">
 
-        <cfset application.datasource = "teatarc1_teatar011_production">
+        
         <cfset application.scripts = ["sr-Cyrl", "sr-Latn", "en"]>
         <cfset application.defaultScript = "sr-Cyrl">
         <cfset application.modes = ["development", "production"]>
