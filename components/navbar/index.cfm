@@ -61,7 +61,7 @@
                     </cfif>
                     <cfif session.defaultScript neq "en">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.cfm?defaultScript=en"> #txtEnglish# </a>
+                            <a class="nav-link" href="index.cfm?defaultScript=en"> English </a>
                         </li>
                     </cfif>  
                 </ul>
