@@ -3,7 +3,7 @@
         <cfset DATA = createObject('component', '../MetaTags')>
         <cfset metaTags = DATA.getMetaTags("#cgi.SCRIPT_NAME#?#cgi.QUERY_STRING#")>
         <title>#metaTags.title#</title>
-        <meta name="description" content="#metaTags.title#">
+        <meta name="description" content="#metaTags.description#">
     <cfelse>
 
         <cfparam name="url.q" default="">
