@@ -44,21 +44,15 @@
     </cffunction>
 
     <cffunction name="onSessionStart">
-
-        <cfset session.started = now()>
-        <cfset session.defaultScript = application.defaultScript>
-        <cfset session.datasource = "teatarc1_teatar011_production">
-        
+        <cfset session.defaultScript = application.defaultScript>  
     </cffunction>
 
     <cffunction name="onApplicationStart">
-
-        
         <cfset application.scripts = ["sr-Cyrl", "sr-Latn", "en"]>
         <cfset application.defaultScript = "sr-Cyrl">
         <cfset application.modes = ["development", "production"]>
         <cfset application.defaultMode = "development">
-        
+        <cfset application.datasource = "teatarc1_teatar011_production">
     </cffunction>
 
     <cffunction name="onMissingTemplate">
