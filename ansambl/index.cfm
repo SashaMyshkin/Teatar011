@@ -1,60 +1,64 @@
-
-<cfparam name="url.pk" default="">
-
-<cfset DATA = createObject('component', 'data')>
-<cfset CONVERTER = createObject('component', '../utilis/ScriptConverter')>
-
-<cfinclude template="txt.cfm">
-
 <cfoutput>
+    <cfif attributes.metaTags eq "true">
+        <cfset DATA = createObject('component', '../MetaTags')>
+        <cfset metaTags = DATA.getMetaTags("#cgi.SCRIPT_NAME#?#cgi.QUERY_STRING#")>
+        <title>#metaTags.title#</title>
+        <meta name="description" content="#metaTags.title#">
+    <cfelse>
 
-    <cfif url.pk eq "">
+        <cfparam name="url.q" default="">
+        <cfset DATA = createObject('component', 'data')>
 
         <style>
-            .card {
-                transition: transform 0.3s ease; /* Smooth transition for scaling */
-                cursor:pointer;
-            }
-            .card:hover {
-                transform: scale(1.1); /* Scale the image by 10% on hover */
-                box-shadow: 0 0 20px rgba(255, 255, 255, 0.7); /* White shadow for shining effect */
-            }
-            .card:active {
-                box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
-            }
+            <cfinclude template="styles.css">
         </style>
 
-        <cfset artists = DATA.getArtists()>
-
-        <div class="container">
-            <!-----h2 class="mt-5 mb-4 text-light text-center">#txtPlays#</!-----h2------>
-
-            <br>
-    
-            <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-5 justify-content-center">
-                <cfloop array="#artists#" item="artist" index="index">
-                    <div class="col" style="max-width:350px" onclick="window.location.assign('/ansambl/#artist.pathname#') ">
-                        <div class="card text-center bg-dark" style="color: var(--gold-main)">
-                            <img src="#artist.img#" class="card-img" alt="Photo number #index#">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <cfif session.defaultScript eq "sr-Cyrl">
-                                        #UcFirst(CONVERTER.toCyrillic(artist.fullname), true, false)#
-                                    <cfelse>
-                                        #artist.fullname#
-                                    </cfif>
-                                </h5>
-                                <cfif session.defaultScript eq "sr-Cyrl">
-                                    <p class="card-text">#ucase(left(CONVERTER.toCyrillic(artist.status), 1)) & mid(CONVERTER.toCyrillic(artist.status), 2)#</p>  
-                                <cfelseif session.defaultScript eq "sr-Latn">
+        <cfif url.q eq "">
+            
+            <cfset artists = DATA.getArtists()>
+        
+            <div class="container">
+                <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-5 justify-content-center">
+                    <cfloop array="#artists#" item="artist" index="index">
+                        <div class="col" style="max-width:350px" onclick="window.location.href = 'index.cfm?defaultScript=#session.defaultScript#&q=#artist.identifier#'">
+                            <div class="card text-center bg-dark" style="color: var(--gold-main)">
+                                <img src="#artist.img#" class="card-img" alt="#artist.alt#">
+                                <div class="card-body">
+                                    <h5 class="card-title">#artist.fullname#</h5>
                                     <p class="card-text">#artist.status#</p>
-                                </cfif>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </cfloop>
+                </div>
+            </div>
+        <cfelse>
+
+            <cfset artist = DATA.getArtist('#url.q#')>
+
+            <header class="jumbotron text-white text-center">
+                <div class="container">
+                    <h1 class="display-4">#artist.fullname#</h1>
+                    <p class="lead"><i>#artist.motto#</i></p>
+                </div>
+            </header>
+
+            <br>
+            
+            <div class="holder">
+                <img src="#artist.img#" alt="#artist.alt#" style="width:350px;">
+                <cfloop array="#artist["paragraphs"]#" item="item" index="index">
+                    <p style="text-align:justify">#item.paragraph#</p>
                 </cfloop>
             </div>
-        </div>
+
+        </cfif>
+        
     </cfif>
-    
 </cfoutput>
+
+
+
+
+
+

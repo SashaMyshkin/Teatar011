@@ -29,11 +29,11 @@
                 <html lang="#session.defaultScript#">
                     <head>
                         <cfmodule template="head.cfm" targetPage="#Arguments.targetPage#">
-                        
+                        <cfmodule template="#arguments.targetPage#" metaTags="true">
                     </head>
                     <body class="bg-dark">
                         <cfmodule template="components/navbar/index.cfm">
-                        <cfmodule template="#arguments.targetPage#" targetPage="#Arguments.targetPage#">
+                        <cfmodule template="#arguments.targetPage#" metaTags="false">
                         <cfmodule template="components/footer/index.cfm">
                     </body>
                 </html>   

@@ -39,34 +39,48 @@
                 
                 <ul class="navbar-nav ml-auto text-center">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/">#txtHome#</a>
+                        <a class="nav-link" href="/index.cfm?defaultScript=#session.defaultScript#">#txtHome#</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/predstave/index.cfm">#txtPlays#</a>
+                        <a class="nav-link" href="/predstave/index.cfm?defaultScript=#session.defaultScript#">#txtPlays#</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/ansambl/index.cfm">#txtEnsemble#</a>
+                        <a class="nav-link" href="/ansambl/index.cfm?defaultScript=#session.defaultScript#">#txtEnsemble#</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav text-center">
                     <cfif session.defaultScript neq "sr-Cyrl">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.cfm?defaultScript=sr-Cyrl"> #txtCyrillic# </a>
+                            <a class="nav-link" onclick="changeScript('sr-Cyrl')"> #txtCyrillic# </a>
                         </li>
                     </cfif>
                     <cfif session.defaultScript neq "sr-Latn">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.cfm?defaultScript=sr-Latn"> #txtLatin# </a>
+                            <a class="nav-link" onclick="changeScript('sr-Latn')"> #txtLatin# </a>
                         </li>
                     </cfif>
                     <cfif session.defaultScript neq "en">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.cfm?defaultScript=en"> English </a>
+                            <a class="nav-link" onclick="changeScript('en')"> English </a>
                         </li>
                     </cfif>  
                 </ul>
             </div>
         </div>
     </nav>
+
+    <script>
+        function changeScript(value){
+            const searchParams = new URLSearchParams(location.search);
+
+            if(searchParams.has('defaultScript')){
+                searchParams.set('defaultScript', value);
+                location.search = searchParams.toString();
+            } else {
+                location.search += `&defaultScript=${value}`
+            }
+        }
+    </script>
+
     <div style="height:70px"></div>
 </cfoutput>

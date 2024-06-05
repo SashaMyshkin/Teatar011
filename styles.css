@@ -30,15 +30,39 @@
     color:var(--whitesmoke)
 }
 
-/*html {
-    font-size: 16px; 
-}
+/* For WebKit browsers (e.g., Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 10px; /* Adjust the width as needed */
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #000; /* Set the background color to black */
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #333; /* Set the thumb color to a darker shade of black */
+    
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Set a slightly lighter shade on hover */
+  }
+  
 
-@media screen and (max-width: 768px) {
-    html {
-        font-size: 14px;
-    }
-}*/
+/* For Firefox */
+/* Track */
+html {
+    scrollbar-color: #000 #333; /* Set the track and thumb colors */
+}
+  
+  
+body {
+    scrollbar-base-color: #000; /* Set the base color */
+    scrollbar-face-color: #333; /* Set the thumb color */
+}
 
 body {
     background-color: #000;
