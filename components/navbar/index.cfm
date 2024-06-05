@@ -51,17 +51,17 @@
                 <ul class="navbar-nav text-center">
                     <cfif session.defaultScript neq "sr-Cyrl">
                         <li class="nav-item">
-                            <a class="nav-link" onclick="changeScript('sr-Cyrl')"> #txtCyrillic# </a>
+                            <a class="nav-link" onclick="changeScript('sr-Cyrl')" href="##"> #txtCyrillic# </a>
                         </li>
                     </cfif>
                     <cfif session.defaultScript neq "sr-Latn">
                         <li class="nav-item">
-                            <a class="nav-link" onclick="changeScript('sr-Latn')"> #txtLatin# </a>
+                            <a class="nav-link" onclick="changeScript('sr-Latn')" href="##"> #txtLatin# </a>
                         </li>
                     </cfif>
                     <cfif session.defaultScript neq "en">
                         <li class="nav-item">
-                            <a class="nav-link" onclick="changeScript('en')"> English </a>
+                            <a class="nav-link" onclick="changeScript('en')" href="##"> English </a>
                         </li>
                     </cfif>  
                 </ul>
