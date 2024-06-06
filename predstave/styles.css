@@ -1,22 +1,66 @@
+.card {
+    transition: transform 0.3s ease;
+    /* Smooth transition for scaling */
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    /* Scale the image by 10% on hover */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+    /* White shadow for shining effect */
+}
+
+.card:active {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+}
+
 .jumbotron .display-4 {
     font-weight: bold;
 }
 
-.play-section {
-    margin-bottom: 40px;
+p.lead i {
+    color: var(--gold-main);
 }
-.play-section img {
-    max-width: 100%;
-    height: auto;
+
+.holder {
+    /* Ensure the container expands to contain its floated contents */
+    overflow: auto;
+    max-width: 1000px; /* Adjust the max-width as needed */
+    margin: 10px auto; /* Center the container horizontally */
+    padding-left: 20px;
+    padding-right: 20px;
 }
-.navbar {
-    background-color: #111;
+
+.holder .img-left {
+    /* Float the image to the left by default */
+    float: left;
+    /* Add some margin to create space between the image and the text */
+    margin-right: 15px; /* Adjust as needed */
 }
-.content-container {
-    max-width: 1002px;
-    margin: 0 auto;
-    padding: 20px;
+
+.holder .img-right {
+    /* Float the image to the left by default */
+    float: right;
+    /* Add some margin to create space between the image and the text */
+    margin-left: 15px; /* Adjust as needed */
 }
-.about{
-    text-align: justify;
+
+.holder p {
+    text-align: justify; /* Justify the text within paragraphs */
+}
+
+@media screen and (max-width: 600px) {
+    /* Change layout for small screens */
+    .holder .img-right {
+        float: none; /* Remove float */
+        display: block; /* Display image above text */
+        margin: 0 auto 15px; /* Center image horizontally and add margin below */
+    }
+
+    .holder .img-left {
+        float: none; /* Remove float */
+        display: block; /* Display image above text */
+        margin: 0 auto 15px; /* Center image horizontally and add margin below */
+    }
 }

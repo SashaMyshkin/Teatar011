@@ -1,50 +1,73 @@
 <cfcomponent>
     <cfinclude template="txt.cfm">
-    <cfset plays = [
-        {
-            name:'#txtTheEveningRose#',
-            path:'vecernja-ruza',
-            alt:'#txtTheEveningRoseAlt#',
-            poster:'/assets/img/vecernja-ruza/poster.png',
-            type: 'V'
-
-        },
-        {
-            name:'#txtSimplyIdiots#',
-            path:'jednostavno-idioti',
-            alt:'#txtSimplyIdiotsAlt#',
-            poster:'/assets/img/jednostavno-idioti/poster.png',
-            type: 'V'
-
-        },
-        {
-            name:'#txtOnTheSurface#',
-            path:'na-povrsini',
-            alt:'#txtOnTheSurfaceAlt#',
-            poster:'/assets/img/na-povrsini/poster.png',
-            type: 'V'
-
-        }/*,
-        {
-            name:'#txtDirtyDancing#',
-            path:'prljavi-ples',
-            alt:'#txtDirtyDancingAlt#',
-            poster:'/assets/img/prljavi-ples/poster.png',
-            type: 'V'
-
-        },
-        {
-            name:'#txtWestSideStory#',
-            path:'prica-sa-zapadne-strane',
-            alt:'#txtWestSideStoryAlt#',
-            poster:'/assets/img/prica-sa-zapadne-strane/poster.png',
-            type: 'V'
-
-        }*/
-
-    ]>
+    <cfset QUERY = createObject('component', '../utilis/Query')>
 
     <cffunction name="getPlays" access="public" returntype="array">
-        <cfreturn variables.plays>
+        <cfquery name="q_performances" datasource="#application.datasource#">
+            select 
+                case
+                    when 'sr-Cyrl' = '#session.defaultScript#' then nameCyr
+                    when 'sr-Latn' = '#session.defaultScript#' then name
+                    else nameEn
+                end as performanceName,
+                pathname,
+                img,
+                case
+                    when 'sr-Cyrl' = '#session.defaultScript#' then sloganCyr
+                    when 'sr-Latn' = '#session.defaultScript#' then slogan
+                    else sloganEn
+                end as slogan,
+                alt
+            from performances
+            where active = 1;
+        </cfquery>
+
+        <cfreturn QUERY.toArray(q_performances)>
+    </cffunction>
+
+    <cffunction name="getPlay" access="public" returntype="struct">
+        <cfargument name="identifier" type="string" required="true">
+
+        <cfset var data = structNew()>
+        <cfset var data["performanceName"] = "">
+        <cfset var data["slogan"] = "">
+        <cfset data["paragraphs"] = arrayNew()>
+
+        <cfquery name="q_performance" datasource="#application.datasource#">
+            select 
+                id,
+                case
+                    when 'sr-Cyrl' = '#session.defaultScript#' then nameCyr
+                    when 'sr-Latn' = '#session.defaultScript#' then name
+                    else nameEn
+                end as performanceName,
+                case
+                    when 'sr-Cyrl' = '#session.defaultScript#' then sloganCyr
+                    when 'sr-Latn' = '#session.defaultScript#' then slogan
+                    else sloganEn
+                end as slogan
+            from performances
+            where pathname = '#identifier#'
+            and active = 1;
+        </cfquery>
+
+        <cfset var data["performanceName"] = q_performance.performanceName>
+        <cfset var data["slogan"] = q_performance.slogan>
+
+        <cfquery name="q_about" datasource="#application.datasource#">
+            select 
+                paragraph,
+                img,
+                alt
+            from aboutPerformances p
+            inner join scripts s on s.id = p.scriptId 
+            where 1 = 1
+            and p.performanceId = '#q_performance.id#'
+            and s.script = '#session.defaultScript#'
+        </cfquery>
+
+        <cfset data["paragraphs"] = QUERY.toArray(q_about)>
+
+        <cfreturn data>
     </cffunction>
 </cfcomponent>
