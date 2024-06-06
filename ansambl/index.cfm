@@ -7,7 +7,7 @@
     <cfelse>
 
         <cfparam name="url.q" default="">
-        <cfset DATA = createObject('component', 'data')>
+        <cfset DATA = createObject('component', 'DataArtists')>
 
         <style>
             <cfinclude template="styles.css">
