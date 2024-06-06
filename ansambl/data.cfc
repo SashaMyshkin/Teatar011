@@ -26,7 +26,7 @@
             where 1=1
             and active = 1
             and m.membershipStatus != 5
-            order by awardsNumber, dateOfJoining
+            order by dateOfJoining
         </cfquery>
 
         <cfreturn QUERY.toArray(q_artists)>
