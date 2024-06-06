@@ -24,19 +24,28 @@
                 <cfset session.defaultScript = url.defaultScript>
             </cfif>
 
+            <cfif not structKeyExists(url, "dv")>
+                <cfset url.dv = "false">
+            </cfif>
+
             <cfsavecontent variable="content">
-                <!doctype html>
-                <html lang="#session.defaultScript#">
-                    <head>
-                        <cfmodule template="head.cfm" targetPage="#Arguments.targetPage#">
-                        <cfmodule template="#arguments.targetPage#" metaTags="true">
-                    </head>
-                    <body class="bg-dark">
-                        <cfmodule template="components/navbar/index.cfm">
-                        <cfmodule template="#arguments.targetPage#" metaTags="false">
-                        <cfmodule template="components/footer/index.cfm">
-                    </body>
-                </html>   
+                <cfif url.dv eq "true">
+                    <!doctype html>
+                    <html lang="#session.defaultScript#">
+                        <head>
+                            <cfmodule template="head.cfm" targetPage="#Arguments.targetPage#">
+                            <cfmodule template="#arguments.targetPage#" metaTags="true">
+                        </head>
+                        <body class="bg-dark">
+                            <cfmodule template="components/navbar/index.cfm">
+                            <cfmodule template="#arguments.targetPage#" metaTags="false">
+                            <cfmodule template="components/footer/index.cfm">
+                        </body>
+                    </html>   
+                <cfelse>
+                    <cfmodule template="comingSoon.cfm">
+                </cfif>
+                
             </cfsavecontent>
 
             #content#
