@@ -6,7 +6,7 @@
         <meta name="description" content="#metaTags.description#">
     <cfelse>
         <cfparam name="url.q" default="">
-        <cfset DATA = createObject('component', 'data')>
+        <cfset DATA = createObject('component', 'Data')>
 
         <style>
             <cfinclude template="styles.css">
@@ -48,15 +48,10 @@
                             src="#item.img#" alt="#item.alt#" style="width:400px;">
                     </cfif>
                     <p style="text-align:justify">#item.paragraph#</p>
-                </div>
-                
-                    
-            </cfloop>
-            
-                
-                
-                    
-              
+                </div> 
+            </cfloop>   
+
+            <cfmodule template="../components/awards/index.cfm" member="" performance="#q#">
         </cfif>
     </cfif>
 </cfoutput>

@@ -1,0 +1,8 @@
+.table-holder {
+    /* Ensure the container expands to contain its floated contents */
+    overflow: auto;
+    max-width: 1000px; /* Adjust the max-width as needed */
+    margin: 10px auto; /* Center the container horizontally */
+    padding-left: 20px;
+    padding-right: 20px;
+}

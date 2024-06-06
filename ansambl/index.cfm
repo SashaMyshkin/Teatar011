@@ -52,6 +52,8 @@
                 </cfloop>
             </div>
 
+            <cfmodule template="../components/awards/index.cfm" member="#q#" performance="">
+
         </cfif>
         
     </cfif>
