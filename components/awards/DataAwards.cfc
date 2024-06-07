@@ -25,14 +25,10 @@
                     else CONCAT(m.name, ' ', m.surname)
                 end memberFullName,
                 case
-                    when a.awardTypeId in (11, 12, 13, 14)
-                        then
-                            case
-                                when 'sr-Cyrl' = '#session.defaultScript#' then a.noteCyr
-                                when 'sr-Latn' = '#session.defaultScript#' then a.note
-                                else a.noteEn
-                            end
-                    else ''   
+                    when 'sr-Cyrl' = '#session.defaultScript#' then r.roleCyr
+                    when 'sr-Latn' = '#session.defaultScript#' then r.role
+                    when 'en' = '#session.defaultScript#' then r.role
+                    else ''
                 end as note,
                 case
                     when 'sr-Cyrl' = '#session.defaultScript#' then p.nameCyr
@@ -51,6 +47,7 @@
                 awardType aw ON aw.id = a.awardTypeId
             INNER JOIN 
                 performances p ON p.id = a.performanceId
+            LEFT JOIN roles r ON r.id = a.roleId
             WHERE 1 = 1
             <cfif member NEQ "">
                 and m.identifier="#performance#"
