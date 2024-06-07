@@ -6,7 +6,7 @@
         <meta name="description" content="#metaTags.description#">
     <cfelse>
         <cfparam name="url.q" default="">
-        <cfset DATA = createObject('component', 'Plays')>
+        <cfset DATA = createObject('component', 'DataPlays')>
 
         <style>
             <cfinclude template="styles.css">

@@ -13,20 +13,23 @@
 h1 {
     text-align: center;
     margin-bottom: 20px;
+    padding-top:10px;
     color: #f1f1f1;
 }
 
-.form-group {
+.form-group-app {
     margin-bottom: 15px;
 }
 
-label {
+div.holder label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-input, textarea, select {
+div.holder input, 
+div.holder textarea, 
+div.holder select {
     width: 100%;
     padding: 10px;
     border: 1px solid #444;
@@ -35,11 +38,12 @@ input, textarea, select {
     color: #fff;
 }
 
-input::placeholder, textarea::placeholder {
+div.holder input::placeholder, 
+div.holder textarea::placeholder {
     color: #bbb;
 }
 
-button {
+div.holder button {
     width: 100%;
     padding: 10px;
     background-color: #555;
@@ -51,20 +55,26 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+div.holder button:hover {
     background-color: #777;
 }
 
 @media (max-width: 600px) {
-    .container {
+    .container-app {
         padding: 10px;
     }
 
-    input, textarea {
+    div.holder input, 
+    div.holder textarea {
         font-size: 14px;
     }
 
-    button {
+    div.holder form {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    div.holder button {
         font-size: 14px;
     }
 }
