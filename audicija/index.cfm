@@ -26,7 +26,7 @@
         <br>
         <div class="holder">
             <div class="container-app">
-                <form id="audition-form" name="audition-form" action="/audicija/index.cfm" method="POST">
+                <form id="audition-form" name="audition-form" action="/audicija/index.cfm?dv=true" method="POST">
                     <input type="hidden" value="" id="action" name="action">
                     <input type="hidden" value="#DATA.getAuditionId()#" id="auditionId" name="auditionId">
                     <h1>#txtAuditionApplication#</h1>
@@ -105,10 +105,12 @@
 
             <cfif not response["error"]>
                 <script>
+                    alertify.set('notifier','position', 'top-center');
                     alertify.success(`#response["clientMessage"]#`, 10);
                 </script>
             <cfelse>
                 <script>
+                    alertify.set('notifier','position', 'top-center');
                     alertify.error(`#response["clientMessage"]#`, 10);
                     console.log(`#response["consoleMessage"]#`);     
                 </script>
