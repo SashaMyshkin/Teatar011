@@ -45,13 +45,13 @@
                 <div class="holder">
                     <cfif item.img neq "">
                         <img class="<cfif index % 2 neq 0>img-left<cfelse>img-right</cfif>" 
-                            src="#item.img#" alt="#item.alt#" style="width:400px;">
+                            src="#item.img#" alt="#item.alt#">
                     </cfif>
                     <p style="text-align:justify">#item.paragraph#</p>
                 </div> 
             </cfloop>   
 
-            <hr style="width:1000px; margin:20px auto;">
+            <hr style="max-width:1000px; margin:20px auto;">
 
             <cfmodule template="../components/roles/index.cfm" identifier="" pathname="#q#">
 
