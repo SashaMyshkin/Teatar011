@@ -52,6 +52,10 @@
                 </cfloop>
             </div>
 
+            <hr style="width:1000px; margin:20px auto;">
+
+            <cfmodule template="../components/roles/index.cfm" identifier="#q#" pathname="">
+
             <cfmodule template="../components/awards/index.cfm" member="#q#" performance="">
 
         </cfif>

@@ -50,7 +50,7 @@
             LEFT JOIN roles r ON r.id = a.roleId
             WHERE 1 = 1
             <cfif member NEQ "">
-                and m.identifier="#performance#"
+                and m.identifier="#member#"
             </cfif>
 
             <cfif performance NEQ "">

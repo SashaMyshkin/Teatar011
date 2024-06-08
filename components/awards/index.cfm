@@ -10,6 +10,7 @@
 
     <cfif Len(awards) neq 0>
         <div class="table-holder">
+            <h3 style="text-align: center; font-size:1.2rem;">#txtAwards#</h3>
             <table class="table table-dark table-sm">
                 <tr>
                     <td>#txtFestival#</td>

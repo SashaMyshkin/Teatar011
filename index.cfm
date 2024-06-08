@@ -4,7 +4,7 @@
         <cfset DATA = createObject('component', 'DATA')>
     
         <cfset announcements = DATA.getAnnouncements()>
-    
+        https://getbootstrap.com/docs/5.3/examples/carousel/
         <!---------div id="carouselExampleCaptions" class="carousel slide">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="##carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
