@@ -29,10 +29,18 @@
 						<div class="role-details">
 							<div class="role-name">#role.roleName#</div>
 							<cfif attributes.identifier eq "">
-								<div class="artist-name">#role.memberFullName#</div>
+								<div class="artist-name">
+									<a href="/ansambl/index.cfm?defaultScript=#session.defaultScript#&q=#role.identifier#" style="color: var(--gold-main)">
+										#role.memberFullName#
+									</a>
+								</div>
 							</cfif>
 							<cfif attributes.pathname eq "">
-								<div class="play-title">#role.performanceName#</div>
+								<div class="play-title">
+									<a href="/predstave/index.cfm?defaultScript=#session.defaultScript#&q=#role.pathname#" style="color: var(--gold-main)">
+										#role.performanceName#
+									</a>
+								</div>
 							</cfif>
 						</div>
 					</div>
