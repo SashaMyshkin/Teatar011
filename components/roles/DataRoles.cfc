@@ -38,6 +38,8 @@
             <cfif pathname NEQ "">
                 and p.pathname="#pathname#"
             </cfif>
+
+            order by r.id
         </cfquery>
 
         <cfreturn QUERY.toArray(q_roles)>
