@@ -45,7 +45,7 @@
                 <div class="holder">
                     <cfif item.img neq "">
                         <img class="<cfif index % 2 neq 0>img-left<cfelse>img-right</cfif>" 
-                            src="#item.img#" alt="#item.alt#">
+                            src="#item.img#" alt="#item.alt#" style="width:350px">
                     </cfif>
                     <p style="text-align:justify">#item.paragraph#</p>
                 </div> 
