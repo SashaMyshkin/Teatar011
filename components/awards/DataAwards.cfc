@@ -57,6 +57,8 @@
                 and p.pathname="#performance#"
             </cfif>
 
+            order by IFNULL(f.importance, 50), aw.importance
+
         </cfquery>
 
         <cfreturn QUERY.toArray(q_awards)>
