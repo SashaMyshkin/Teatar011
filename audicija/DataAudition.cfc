@@ -120,8 +120,39 @@
         </cfif>
 
         <cfset this.sendAnEmail(data.email)>
+        <cfset this.sendAnEmailToNale(data)>
 
         <cfreturn res>
+
+    </cffunction>
+
+    <cffunction name="sendAnEmailToNale" access="public">
+        <cfargument name="data" type="struct" required="true">
+
+        <cfmail to="uprava@teatar011.com,n.pakljanac@gmail.com" 
+        from="info@teatar011.com" 
+        subject="Novi Kandidat - #data.name# #data.surname#" type="text/html">
+
+        <!DOCTYPE html>
+        <html lang="sr-Latn">
+
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Kandidati</title>
+            </head>
+            <body>
+                <p><b>Name</b>: #data.name#</p>
+                <p><b>Surname</b>: #data.surname#</p>
+                <p><b>Birthday</b>: #dateFormat(data.dateOfBirth, "long")#</p>
+                <p><b>Biography</b>: #data.biography#</p>
+                <p><b>Phone</b>: #data.phone#</p>
+                <p><b>Email</b>: #data.email#</p>
+                <p><b>Plays watched</b>: <cfif data.whatYouWatched neq "">#data.whatYouWatched#<cfelse>No plays watched</cfif></p>
+            </body>
+        </html>
+           
+        </cfmail>
 
     </cffunction>
 
@@ -174,6 +205,8 @@
         
         
         </cfmail>
+
+        
 
     </cffunction>
 
