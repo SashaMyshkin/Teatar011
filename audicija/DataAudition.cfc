@@ -66,7 +66,8 @@
                         `haveYouWatched`, 
                         `whatYouWatched`, 
                         `sexId`, 
-                        `biography`
+                        `biography`,
+                        `phone`
                     ) 
                     VALUES (
                         '#trim(data.auditionId)#',
@@ -78,7 +79,8 @@
                         '#trim(data.haveYouWatched)#',
                         '#trim(data.whatYouWatched)#',
                         '#trim(data.sexId)#',
-                        '#trim(data.biography)#' 
+                        '#trim(data.biography)#',
+                        '#trim(data.phone)#' 
                     );
                 </cfquery>
     
@@ -152,9 +154,14 @@
                     <div style="margin: 20px 0; text-align: center;">
                         <p style="color: ##cccccc;">Поштовани,</p>
                         <p style="color: ##cccccc;">Ваша пријава је успешно забележена.</p>
-                        <p style="color: ##cccccc;">Наш тим је тренутно у процесу селекције кандидата и ускоро ћемо Вам се јавити са
-                            више детаља и даљим корацима.</p>
-                        <p style="color: ##cccccc;">Срдачан поздрав, <br><i>Театар 011</i></p>
+                        <p style="color: ##cccccc;"> Аудиција ће се одржати 27. и 28. јуна 2024. у просторијама театра на адреси 
+                            <i>Војводе Мицка Крстића 1Ј/3</i>. Када се затвори пријава кандидата,благовремено ћемо Вас обавестити мејлом о тачној сатници доласка. 
+                        </p>
+                        <p style="color: ##cccccc;"> Уколико имате било каквих додатних питања можете нам писати на Инстаграм страници 
+                            <a href="https://www.instagram.com/_teatar_011/">@_teatar_011</a>, Фејсбук страници <a href="https://www.facebook.com/Teatar011/"> Teatar011 </a>, 
+                            или нам се обратити мејлом на <a href="mailto:info@teatar011.com">info@teatar011.com</a>.
+                        </p> 
+                        <p style="color: ##cccccc;">Радујући се скорашњем сусрету, срдачно Вас поздравља, <br><i>Театар 011</i></p>
                     </div>
                     <div style="text-align: center; padding: 10px; border-top: 1px solid ##333333; font-size: 12px;">
                         <p style="color: ##cccccc;">&copy; 2024 Театар 011. All rights reserved.</p>

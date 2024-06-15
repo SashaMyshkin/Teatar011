@@ -12,6 +12,7 @@
         <cfparam name="form.haveYouWatched" default="0">
         <cfparam name="form.whatYouWatched" default="">
         <cfparam name="form.dateOfBirth" default="">
+        <cfparam name="form.phone" default="">
 
         <style>
             <cfinclude template = "styles.css">
@@ -23,10 +24,13 @@
         <cfset ways = DATA.howHeardAboutUs()>
         <cfset sex = DATA.getSex()>
 
+        <br><br>
+        <img src="/assets/img/logo.png" width="100" style="border-radius:50%; display:block; margin:0 auto;">
         <br>
         <div class="holder">
             <div class="container-app">
-                <form id="audition-form" name="audition-form" action="/audicija/index.cfm?dv=true" method="POST">
+                
+                <form id="audition-form" name="audition-form" action="index.cfm?audicija=true" method="POST">
                     <input type="hidden" value="" id="action" name="action">
                     <input type="hidden" value="#DATA.getAuditionId()#" id="auditionId" name="auditionId">
                     <h1>#txtAuditionApplication#</h1>
@@ -43,13 +47,13 @@
                         <input type="email" id="email" name="email"  max="50" value="#form.email#">
                     </div>
                     <div class="form-group-app">
+                        <label for="phone">#txtPhone#</label>
+                        <input type="tel" id="phone" name="phone" value="#form.phone#">
+                    </div>
+                    <div class="form-group-app">
                         <label for="dateOfBirth">#txtBirth#</label>
                         <input type="date" id="dateOfBirth" name="dateOfBirth" value="#form.dateOfBirth#">
                     </div>
-                    <!------div class="form-group-app">
-                        <label for="phone">#txtPhone#</label>
-                        <input type="tel" id="phone" name="phone" >
-                    </!------div--------->
                     <div class="form-group-app">
                         <label for="biography">#txtPreviousExperience#</label>
                         <textarea id="biography" name="biography" rows="9"  placeholder="">#form.biography#</textarea>

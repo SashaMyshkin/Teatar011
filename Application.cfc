@@ -28,8 +28,28 @@
                 <cfset url.dv = "false">
             </cfif>
 
+            <cfif not structKeyExists(url, "audicija")>
+                <cfset url.audicija = "false">
+            </cfif>
+
             <cfsavecontent variable="content">
-                <cfif url.dv eq "true">
+                
+                <cfif url.audicija eq "true">
+                    <!doctype html>
+                    <html lang="#session.defaultScript#">
+                        <head>
+                            <cfmodule template="head.cfm" targetPage="#Arguments.targetPage#">
+                
+                        </head>
+                        <body class="bg-dark">
+                            <cfmodule template="audicija/index.cfm" metaTags="false">
+                            <cfmodule template="components/footer/index.cfm">
+                        </body>
+                    </html>  
+                    
+                <cfelseif url.dv eq "false">
+                    <cfmodule template="comingSoon.cfm">
+                <cfelse>
                     <!doctype html>
                     <html lang="#session.defaultScript#">
                         <head>
@@ -42,8 +62,6 @@
                             <cfmodule template="components/footer/index.cfm">
                         </body>
                     </html>   
-                <cfelse>
-                    <cfmodule template="comingSoon.cfm">
                 </cfif>
                 
             </cfsavecontent>

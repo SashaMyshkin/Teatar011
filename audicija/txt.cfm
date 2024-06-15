@@ -37,6 +37,8 @@
             txtApplicationSubmitted = "Već je zabeležena jedna prijava za audiciju sa ove imejl adrese."; 
 
             txtSuccess = "Vaša prijava je uspešno zabeležena. Na adresu koju ste uneli poslat je mejl sa dodatnim uputstvima";
+
+            txtPhoneRequired = "Telefon je obavezan podatak";
         break;
         case 'sr-Cyrl':
             txtAuditionApplication = "Пријава за аудицију";
@@ -72,6 +74,7 @@
             txtDateOfBirthRequired = "Датум рођења је обавезан податак";
             txtApplicationSubmitted = "Већ је забележена једна пријава за аудицију са ове имејл адресе."; 
             txtSuccess = "Ваша пријава је успешно забележена. На адресу коју сте унели послат је мејл са додатним упутствима";
+            txtPhoneRequired = "Телефон је обавезан податак";
 
 
             break;
@@ -108,6 +111,7 @@
             txtError = "An unexpected error has occurred. Please contact our technical support at email: it@teatar011.com";
             txtDateOfBirthRequired = "Date of birth is a required field.";
             txtApplicationSubmitted = "An audition application has already been recorded from this email address.";
+            txtPhoneRequired = "Please enter your phone number";
 
             break;
         default:

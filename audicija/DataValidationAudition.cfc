@@ -46,6 +46,12 @@
                 <cfreturn res>
             </cfif>
 
+            <cfif data.phone eq "">
+                <cfset var res["error"] = true>
+                <cfset var res["clientMessage"] = "#txtPhoneRequired#">
+                <cfreturn res>
+            </cfif>
+
             <cfif data.dateOfBirth eq "">
                 <cfset var res["error"] = true>
                 <cfset var res["clientMessage"] = "#txtDateOfBirthRequired#">
