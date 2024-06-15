@@ -1,0 +1,73 @@
+hgroup{
+    text-align:center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+hgroup > h1{
+    text-align:center;
+    font-size: 4em;
+}
+
+hgroup > p {
+    font-style: italic;
+    font-size: 1.5em;
+}
+
+.hero{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top:0;
+    z-index: 3;
+    
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(50, 50, 50, 0.7)), 
+    url('/assets/img/let-iznad-kukavicjeg-gnezda/bap.jpg') no-repeat center center/cover;
+    z-index: 2;
+}
+
+/*.hero {
+    
+    
+    
+    position: relative;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero::after {
+    content: '';
+    position: relative;
+    top: 70;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    overflow: hidden;
+}
+
+.hero h1 {
+    position: relative;
+    z-index: 2;
+}*/
