@@ -119,19 +119,19 @@
             <cfreturn mng>
         </cfif>
 
-        <cfset this.sendAnEmail(data.email)>
-        <cfset this.sendAnEmailToNale(data)>
+        <cfset mejl1 = this.sendAnEmail(data.email)>
+        <cfset mejl2 = this.sendAnEmailToNale(data)>
 
         <cfreturn res>
 
     </cffunction>
 
-    <cffunction name="sendAnEmailToNale" access="public">
+    <cffunction name="sendAnEmailToNale" access="public" returntype="numeric">
         <cfargument name="data" type="struct" required="true">
 
-        <cfmail to="uprava@teatar011.com,n.pakljanac@gmail.com" 
-        from="info@teatar011.com" 
-        subject="Novi Kandidat - #data.name# #data.surname#" type="text/html">
+        <cfmail to="n.pakljanac@gmail.com" 
+            from="info@teatar011.com" 
+            subject="Novi Kandidat - #data.name# #data.surname#" type="text/html">
 
         <!DOCTYPE html>
         <html lang="sr-Latn">
@@ -139,7 +139,7 @@
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Kandidati</title>
+                <title>Kandidat - #data.name# #data.surname#</title>
             </head>
             <body>
                 <p><b>Name</b>: #data.name#</p>
@@ -154,13 +154,40 @@
            
         </cfmail>
 
+        <cfmail to="uprava@teatar011.com" 
+            from="info@teatar011.com" 
+            subject="Novi Kandidat - #data.name# #data.surname#" type="text/html">
+
+        <!DOCTYPE html>
+        <html lang="sr-Latn">
+
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Kandidat - #data.name# #data.surname#</title>
+            </head>
+            <body>
+                <p><b>Name</b>: #data.name#</p>
+                <p><b>Surname</b>: #data.surname#</p>
+                <p><b>Birthday</b>: #dateFormat(data.dateOfBirth, "long")#</p>
+                <p><b>Biography</b>: #data.biography#</p>
+                <p><b>Phone</b>: #data.phone#</p>
+                <p><b>Email</b>: #data.email#</p>
+                <p><b>Plays watched</b>: <cfif data.whatYouWatched neq "">#data.whatYouWatched#<cfelse>No plays watched</cfif></p>
+            </body>
+        </html>
+           
+        </cfmail>
+
+        <cfreturn 1>
+
     </cffunction>
 
-    <cffunction name="sendAnEmail" access="public">
+    <cffunction name="sendAnEmail" access="public" returntype="numeric">
         <cfargument name="email" type="string" required="true">
         
 
-        <cfmail to="#email#"
+        <cfmail to="#trim(email)#"
         from="info@teatar011.com"
         subject="Аудиција - Театар 011"
         type="text/html">
@@ -206,7 +233,7 @@
         
         </cfmail>
 
-        
+        <cfreturn 1>
 
     </cffunction>
 

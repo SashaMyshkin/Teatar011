@@ -32,9 +32,17 @@
                 <cfset url.audicija = "false">
             </cfif>
 
+            <cfif not structKeyExists(url, "confirmation")>
+                <cfset url.confirmation = "false">
+            </cfif>
+
             <cfsavecontent variable="content">
+
+
                 
                 <cfif url.audicija eq "true">
+
+
                     <!doctype html>
                     <html lang="#session.defaultScript#">
                         <head>
@@ -47,7 +55,11 @@
                         </body>
                     </html>  
                     
+                <cfelseif url.confirmation eq "true">
+                    <cfinclude template="confirmation.cfm">
                 <cfelseif url.dv eq "false">
+
+                
                     <cfmodule template="comingSoon.cfm">
                 <cfelse>
                     <!doctype html>
