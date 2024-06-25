@@ -140,7 +140,26 @@ a:hover {
             <p>Видимо се &lt;3</p>
 
             <cfif sel_confirmation.confirmed neq "1">
-                <cfmail to="uprava@teatar011.com,n.pakljanac@gmail.com" 
+                <cfmail to="uprava@teatar011.com" 
+                    from="info@teatar011.com" 
+                    subject="Potvrda dolaska - #sel_confirmation.name# #sel_confirmation.surname#" type="text/html">
+
+                    <!DOCTYPE html>
+                    <html lang="sr-Latn">
+
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Potvrda</title>
+                        </head>
+                        <body>
+                            Kandidat <cfoutput>#sel_confirmation.name# #sel_confirmation.surname#</cfoutput> potrdio dolazak.
+                        </body>
+                    </html>
+           
+                </cfmail>
+
+                <cfmail to="n.pakljanac@gmail.com" 
                     from="info@teatar011.com" 
                     subject="Potvrda dolaska - #sel_confirmation.name# #sel_confirmation.surname#" type="text/html">
 
