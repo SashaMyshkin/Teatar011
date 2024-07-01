@@ -28,36 +28,13 @@
                 <cfset url.dv = "false">
             </cfif>
 
-            <cfif not structKeyExists(url, "audicija")>
-                <cfset url.audicija = "false">
-            </cfif>
-
             <cfif not structKeyExists(url, "confirmation")>
                 <cfset url.confirmation = "false">
             </cfif>
 
             <cfsavecontent variable="content">
-
-
                 
-                <cfif url.audicija eq "true">
-
-
-                    <!doctype html>
-                    <html lang="#session.lang#">
-                        <head>
-                            <cfmodule template="head.cfm" targetPage="#Arguments.targetPage#">
-                
-                        </head>
-                        <body class="bg-dark">
-                            <cfmodule template="audicija/index.cfm" metaTags="false">
-                            <cfmodule template="components/footer/index.cfm">
-                        </body>
-                    </html>  
-                    
-                <cfelseif url.confirmation eq "true">
-                    <cfinclude template="confirmation.cfm">
-                <cfelseif url.dv eq "false">
+                <cfif url.dv eq "false">
 
                 
                     <cfmodule template="comingSoon.cfm">
