@@ -23,7 +23,7 @@
 					<div class="role-item">
 						<cfif role.img neq "">
 							<div class="artist-image">
-								<img src="#role.img#" alt="#role.alt#">
+								<img src="#application.root##role.img#" alt="#role.alt#">
 							</div>
 						</cfif>
 						<div class="role-details">

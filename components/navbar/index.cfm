@@ -39,13 +39,13 @@
                 
                 <ul class="navbar-nav ml-auto text-center">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/index.cfm?lang=#session.lang#">#txtHome#</a>
+                        <a class="nav-link" href="#application["root"]#index.cfm?lang=#session.lang#">#txtHome#</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/predstave/index.cfm?lang=#session.lang#">#txtPlays#</a>
+                        <a class="nav-link" href="#application["root"]#predstave/index.cfm?lang=#session.lang#">#txtPlays#</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/ansambl/index.cfm?lang=#session.lang#">#txtEnsemble#</a>
+                        <a class="nav-link" href="#application["root"]#ansambl/index.cfm?lang=#session.lang#">#txtEnsemble#</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav text-center">

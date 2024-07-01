@@ -22,7 +22,7 @@
                     <cfloop array="#artists#" item="artist" index="index">
                         <div class="col" style="max-width:350px" onclick="window.location.href = 'index.cfm?lang=#session.lang#&q=#artist.identifier#'">
                             <div class="card text-center bg-dark" style="color: var(--gold-main)">
-                                <img src="#artist.img#" class="card-img" alt="#artist.alt#">
+                                <img src="#application.root##artist.img#" class="card-img" alt="#artist.alt#">
                                 <div class="card-body">
                                     <h5 class="card-title">#artist.fullname#</h5>
                                     <p class="card-text">#artist.status#</p>
@@ -46,7 +46,7 @@
             <br>
             
             <div class="holder">
-                <img src="#artist.img#" alt="#artist.alt#" style="width:350px;">
+                <img src="#application.root##artist.img#" alt="#artist.alt#" style="width:350px;">
                 <cfloop array="#artist["paragraphs"]#" item="item" index="index">
                     <p style="text-align:justify">#item.paragraph#</p>
                 </cfloop>

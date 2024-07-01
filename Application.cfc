@@ -27,14 +27,10 @@
             <cfif not structKeyExists(url, "dv")>
                 <cfset url.dv = "false">
             </cfif>
-            
+
             <cfsavecontent variable="content">
                 
-                <cfif url.dv eq "false">
-
-                
-                    <cfmodule template="comingSoon.cfm">
-                <cfelse>
+                <cfif url.dv eq "true" or application.defaultMode eq "development">
                     <!doctype html>
                     <html lang="#session.lang#">
                         <head>
@@ -48,7 +44,10 @@
                                 <cfdump var="#cgi.request_url.listContainsNoCase('https')#">
                             <cfmodule template="components/footer/index.cfm">
                         </body>
-                    </html>   
+                    </html>  
+                <cfelse>
+                    <cfmodule template="comingSoon.cfm">
+                     
                 </cfif>
                 
             </cfsavecontent>

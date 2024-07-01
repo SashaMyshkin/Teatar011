@@ -21,7 +21,7 @@
                     <cfloop array="#plays#" item="play" index="index">
                         <div class="col" style="max-width:350px" onclick="window.location.href = 'index.cfm?lang=#session.lang#&q=#play.pathname#'">
                             <div class="card text-center bg-dark" style="color: var(--gold-main)">
-                                <img src="#play.img#/poster.png" class="card-img" alt="#play.alt#">
+                                <img src="#application.root##play.img#/poster.png" class="card-img" alt="#play.alt#">
                                 <div class="card-body">
                                     <p class="card-text"><i style="color: var(--gold-main)">#play.slogan#</i></p>
                                 </div>
@@ -45,7 +45,7 @@
                 <div class="holder">
                     <cfif item.img neq "">
                         <img class="<cfif index % 2 neq 0>img-left<cfelse>img-right</cfif>" 
-                            src="#item.img#" alt="#item.alt#" style="width:350px">
+                            src="#application.root##item.img#" alt="#item.alt#" style="width:350px">
                     </cfif>
                     <p style="text-align:justify">#item.paragraph#</p>
                 </div> 
