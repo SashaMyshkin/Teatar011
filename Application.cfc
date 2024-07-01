@@ -20,7 +20,7 @@
         <cfinclude template="application.variables.cfm">
 
         <cfoutput>
-            <cfif structKeyExists(url, "lang") and ArrayFind(application.scripts, url.lang) gt 0>
+            <cfif structKeyExists(url, "lang") and ArrayFind(application.langs, url.lang) gt 0>
                 <cfset session.lang = url.lang>
             </cfif>
 
