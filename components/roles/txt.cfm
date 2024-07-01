@@ -1,6 +1,6 @@
 
 <cfscript>
-    switch (session.defaultScript) {
+    switch (session.lang) {
         case 'sr-Latn':
             txtCast = "Podela uloga";
             txtRoles = "Uloge u predstavama";

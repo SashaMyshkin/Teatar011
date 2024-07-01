@@ -29,30 +29,30 @@
         <cfquery name="q_announcements" datasource="#application.datasource#">
             select 
                 case
-                    when 'sr-Cyrl' = '#session.defaultScript#' then p.nameCyr
-                    when 'sr-Latn' = '#session.defaultScript#' then p.name
+                    when 'sr-Cyrl' = '#session.lang#' then p.nameCyr
+                    when 'sr-Latn' = '#session.lang#' then p.name
                     else p.nameEn
                 end as performanceName,
                 case
-                    when 'sr-Cyrl' = '#session.defaultScript#' then p.sloganCyr
-                    when 'sr-Latn' = '#session.defaultScript#' then p.slogan
+                    when 'sr-Cyrl' = '#session.lang#' then p.sloganCyr
+                    when 'sr-Latn' = '#session.lang#' then p.slogan
                     else p.sloganEn
                 end as slogan,
                 DATE_FORMAT(a.dateAndTime, '%d.%m.%Y.') eventDate,
                 DATE_FORMAT(a.dateAndTime, '%H.%i') eventTime,
                 case
-                    when 'sr-Cyrl' = '#session.defaultScript#' then a.noteCyr
-                    when 'sr-Latn' = '#session.defaultScript#' then a.note
+                    when 'sr-Cyrl' = '#session.lang#' then a.noteCyr
+                    when 'sr-Latn' = '#session.lang#' then a.note
                     else a.noteEn
                 end as note,
                 case
-                    when 'sr-Cyrl' = '#session.defaultScript#' then pl.hallCyr
-                    when 'sr-Latn' = '#session.defaultScript#' then pl.hall
+                    when 'sr-Cyrl' = '#session.lang#' then pl.hallCyr
+                    when 'sr-Latn' = '#session.lang#' then pl.hall
                     else pl.hallEn
                 end as hall,
                 case
-                    when 'sr-Cyrl' = '#session.defaultScript#' then pl.cityCyr
-                    when 'sr-Latn' = '#session.defaultScript#' then pl.city
+                    when 'sr-Cyrl' = '#session.lang#' then pl.cityCyr
+                    when 'sr-Latn' = '#session.lang#' then pl.city
                     else pl.cityEn
                 end as hall,
                 p.img,

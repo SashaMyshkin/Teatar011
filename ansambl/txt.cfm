@@ -1,6 +1,6 @@
 
 <cfscript>
-    switch (session.defaultScript) {
+    switch (session.lang) {
         case 'sr-Latn':
             txtName = "Jednostavno idioti";
             txtSlogan = "Svi smo mi u suštini deo iste priče – priče o ljudskosti i potrebi za razumevanjem i saosećanjem";

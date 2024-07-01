@@ -8,12 +8,12 @@
         <cfquery name="q_artists" datasource="#application.datasource#">
             select 
                 case
-                    when '#session.defaultScript#' = 'sr-Cyrl' then CONCAT(nameCyr, ' ', surnameCyr)
+                    when '#session.lang#' = 'sr-Cyrl' then CONCAT(nameCyr, ' ', surnameCyr)
                     else CONCAT(name, ' ', surname)
                 end fullname,
                 case
-                    when '#session.defaultScript#' = 'sr-Cyrl' then ms.statusCyr
-                    when '#session.defaultScript#' = 'sr-Latn' then ms.status
+                    when '#session.lang#' = 'sr-Cyrl' then ms.statusCyr
+                    when '#session.lang#' = 'sr-Latn' then ms.status
                     else ''
                 end status,
                 img,
@@ -46,7 +46,7 @@
             select 
                 id,
                 case
-                    when '#session.defaultScript#' = 'sr-Cyrl' then CONCAT(nameCyr, ' ', surnameCyr)
+                    when '#session.lang#' = 'sr-Cyrl' then CONCAT(nameCyr, ' ', surnameCyr)
                     else CONCAT(name, ' ', surname)
                 end fullname,
                 img,
@@ -69,7 +69,7 @@
             inner join scripts s on s.id = m.scriptId 
             where 1 = 1
             and m.memberId = '#q_artist.id#'
-            and s.script = '#session.defaultScript#'
+            and s.script = '#session.lang#'
         </cfquery>
 
         <cfset data["motto"] = q_motto.motto>
@@ -81,7 +81,7 @@
             inner join scripts s on s.id = b.scriptId 
             where 1 = 1
             and b.memberId = '#q_artist.id#'
-            and s.script = '#session.defaultScript#'
+            and s.script = '#session.lang#'
         </cfquery>
 
         <cfset data["paragraphs"] = QUERY.toArray(q_biography)>

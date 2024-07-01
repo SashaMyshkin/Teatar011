@@ -1,6 +1,6 @@
 
 <cfscript>
-    switch (session.defaultScript) {
+    switch (session.lang) {
         case 'sr-Latn':
             txtAuditionApplication = "Prijava za audiciju";
             txtName = "Ime";

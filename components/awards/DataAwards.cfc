@@ -10,29 +10,29 @@
         <cfquery name="q_awards" datasource="#application.datasource#">
             SELECT 
                 case
-                    when 'sr-Cyrl' = '#session.defaultScript#' then f.nameCyr
-                    when 'sr-Latn' = '#session.defaultScript#' then f.name
+                    when 'sr-Cyrl' = '#session.lang#' then f.nameCyr
+                    when 'sr-Latn' = '#session.lang#' then f.name
                     else f.nameEn
                 end as festivalName,
                 YEAR(f.eventDate) AS year,
                 case
-                    when 'sr-Cyrl' = '#session.defaultScript#' then aw.nameCyr
-                    when 'sr-Latn' = '#session.defaultScript#' then aw.name
+                    when 'sr-Cyrl' = '#session.lang#' then aw.nameCyr
+                    when 'sr-Latn' = '#session.lang#' then aw.name
                     else aw.nameEn
                 end as award,
                 case
-                    when '#session.defaultScript#' = 'sr-Cyrl' then CONCAT(m.nameCyr, ' ', m.surnameCyr)
+                    when '#session.lang#' = 'sr-Cyrl' then CONCAT(m.nameCyr, ' ', m.surnameCyr)
                     else CONCAT(m.name, ' ', m.surname)
                 end memberFullName,
                 case
-                    when 'sr-Cyrl' = '#session.defaultScript#' then r.roleCyr
-                    when 'sr-Latn' = '#session.defaultScript#' then r.role
-                    when 'en' = '#session.defaultScript#' then r.role
+                    when 'sr-Cyrl' = '#session.lang#' then r.roleCyr
+                    when 'sr-Latn' = '#session.lang#' then r.role
+                    when 'en' = '#session.lang#' then r.role
                     else ''
                 end as note,
                 case
-                    when 'sr-Cyrl' = '#session.defaultScript#' then p.nameCyr
-                    when 'sr-Latn' = '#session.defaultScript#' then p.name
+                    when 'sr-Cyrl' = '#session.lang#' then p.nameCyr
+                    when 'sr-Latn' = '#session.lang#' then p.name
                     else p.nameEn
                 end as performanceName,
                 a.awardTypeId

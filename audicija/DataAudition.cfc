@@ -21,8 +21,8 @@
             select 
                 id,
                 case
-                    when 'sr-Cyrl' = '#session.defaultScript#' then wayCyr
-                    when 'sr-Latn' = '#session.defaultScript#' then way
+                    when 'sr-Cyrl' = '#session.lang#' then wayCyr
+                    when 'sr-Latn' = '#session.lang#' then way
                     else wayEn
                 end as way
             from howHeardAboutUs
@@ -37,8 +37,8 @@
             select 
                 id,
                 case
-                    when 'sr-Cyrl' = '#session.defaultScript#' then sexCyr
-                    when 'sr-Latn' = '#session.defaultScript#' then sex
+                    when 'sr-Cyrl' = '#session.lang#' then sexCyr
+                    when 'sr-Latn' = '#session.lang#' then sex
                     else sexEn
                 end as sex
             from sex

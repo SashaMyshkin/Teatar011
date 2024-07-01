@@ -20,7 +20,7 @@
             <div class="container">
                 <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-5 justify-content-center">
                     <cfloop array="#artists#" item="artist" index="index">
-                        <div class="col" style="max-width:350px" onclick="window.location.href = 'index.cfm?defaultScript=#session.defaultScript#&q=#artist.identifier#'">
+                        <div class="col" style="max-width:350px" onclick="window.location.href = 'index.cfm?lang=#session.lang#&q=#artist.identifier#'">
                             <div class="card text-center bg-dark" style="color: var(--gold-main)">
                                 <img src="#artist.img#" class="card-img" alt="#artist.alt#">
                                 <div class="card-body">

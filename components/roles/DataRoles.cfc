@@ -7,16 +7,16 @@
         <cfquery name="q_roles" datasource="#application.datasource#">
             select 
                 case
-                    when 'sr-Cyrl' = '#session.defaultScript#' then p.nameCyr
-                    when 'sr-Latn' = '#session.defaultScript#' then p.name
+                    when 'sr-Cyrl' = '#session.lang#' then p.nameCyr
+                    when 'sr-Latn' = '#session.lang#' then p.name
                     else p.nameEn
                 end as performanceName,
                 case
-                    when 'sr-Cyrl' = '#session.defaultScript#' then r.roleCyr
+                    when 'sr-Cyrl' = '#session.lang#' then r.roleCyr
                     else r.role
                 end as roleName,
                 case
-                    when '#session.defaultScript#' = 'sr-Cyrl' then CONCAT(m.nameCyr, ' ', m.surnameCyr)
+                    when '#session.lang#' = 'sr-Cyrl' then CONCAT(m.nameCyr, ' ', m.surnameCyr)
                     else CONCAT(m.name, ' ', m.surname)
                 end memberFullName,
                 m.identifier,

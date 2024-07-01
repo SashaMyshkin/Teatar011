@@ -1,6 +1,6 @@
 
 <cfscript>
-    switch (session.defaultScript) {
+    switch (session.lang) {
         case 'sr-Latn':
             txtFestival = "Festival";
             txtAward = "Nagrada";

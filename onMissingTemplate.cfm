@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <cfif session.defaultScript eq "en">
+    <cfif session.lang eq "en">
       <title>404 - Not Found</title>
-    <cfelseif session.defaultScript eq "sr-Cyrl">
+    <cfelseif session.lang eq "sr-Cyrl">
       <title>404 - Страница не постоји</title>
     <cfelse>
       <title>404 - Stranica ne postoji</title>
@@ -83,10 +83,10 @@
     <div class="container">
         <div class="error-message">
             <h1>404</h1>
-            <cfif session.defaultScript eq "en">
+            <cfif session.lang eq "en">
               <p>Oops! The page you're looking for can't be found.</p>
               <a href="/" class="home-link">Return Home</a>
-            <cfelseif session.defaultScript eq "sr-Cyrl">
+            <cfelseif session.lang eq "sr-Cyrl">
               <p>Упс... Страница коју тражите не постоји.</p>
               <a href="/" class="home-link">Врати се на почетну</a>
             <cfelse>

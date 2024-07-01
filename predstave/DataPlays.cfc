@@ -6,15 +6,15 @@
         <cfquery name="q_performances" datasource="#application.datasource#">
             select 
                 case
-                    when 'sr-Cyrl' = '#session.defaultScript#' then nameCyr
-                    when 'sr-Latn' = '#session.defaultScript#' then name
+                    when 'sr-Cyrl' = '#session.lang#' then nameCyr
+                    when 'sr-Latn' = '#session.lang#' then name
                     else nameEn
                 end as performanceName,
                 pathname,
                 img,
                 case
-                    when 'sr-Cyrl' = '#session.defaultScript#' then sloganCyr
-                    when 'sr-Latn' = '#session.defaultScript#' then slogan
+                    when 'sr-Cyrl' = '#session.lang#' then sloganCyr
+                    when 'sr-Latn' = '#session.lang#' then slogan
                     else sloganEn
                 end as slogan,
                 alt
@@ -37,13 +37,13 @@
             select 
                 id,
                 case
-                    when 'sr-Cyrl' = '#session.defaultScript#' then nameCyr
-                    when 'sr-Latn' = '#session.defaultScript#' then name
+                    when 'sr-Cyrl' = '#session.lang#' then nameCyr
+                    when 'sr-Latn' = '#session.lang#' then name
                     else nameEn
                 end as performanceName,
                 case
-                    when 'sr-Cyrl' = '#session.defaultScript#' then sloganCyr
-                    when 'sr-Latn' = '#session.defaultScript#' then slogan
+                    when 'sr-Cyrl' = '#session.lang#' then sloganCyr
+                    when 'sr-Latn' = '#session.lang#' then slogan
                     else sloganEn
                 end as slogan
             from performances
@@ -63,7 +63,7 @@
             inner join scripts s on s.id = p.scriptId 
             where 1 = 1
             and p.performanceId = '#q_performance.id#'
-            and s.script = '#session.defaultScript#'
+            and s.script = '#session.lang#'
         </cfquery>
 
         <cfset data["paragraphs"] = QUERY.toArray(q_about)>

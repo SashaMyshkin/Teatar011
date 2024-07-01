@@ -17,11 +17,11 @@
     <cffunction name="onRequest">
         <cfargument name = "targetPage" type="String" required=true/>
 
-        <cfset application.datasource = "teatarc1_teatar011_production">
+        <cfinclude template="application.variables.cfm">
 
         <cfoutput>
-            <cfif structKeyExists(url, "defaultScript") and ArrayFind(application.scripts, url.defaultScript) gt 0>
-                <cfset session.defaultScript = url.defaultScript>
+            <cfif structKeyExists(url, "lang") and ArrayFind(application.scripts, url.lang) gt 0>
+                <cfset session.lang = url.lang>
             </cfif>
 
             <cfif not structKeyExists(url, "dv")>
@@ -44,7 +44,7 @@
 
 
                     <!doctype html>
-                    <html lang="#session.defaultScript#">
+                    <html lang="#session.lang#">
                         <head>
                             <cfmodule template="head.cfm" targetPage="#Arguments.targetPage#">
                 
@@ -63,14 +63,16 @@
                     <cfmodule template="comingSoon.cfm">
                 <cfelse>
                     <!doctype html>
-                    <html lang="#session.defaultScript#">
+                    <html lang="#session.lang#">
                         <head>
                             <cfmodule template="head.cfm" targetPage="#Arguments.targetPage#">
                             <cfmodule template="#arguments.targetPage#" metaTags="true">
                         </head>
                         <body class="bg-dark">
+                            
                             <cfmodule template="components/navbar/index.cfm">
                             <cfmodule template="#arguments.targetPage#" metaTags="false">
+                                <cfdump var="#cgi.request_url.listContainsNoCase('https')#">
                             <cfmodule template="components/footer/index.cfm">
                         </body>
                     </html>   
@@ -83,15 +85,16 @@
     </cffunction>
 
     <cffunction name="onSessionStart">
-        <cfset session.defaultScript = application.defaultScript>  
+        <cfset session.lang = application.lang>  
     </cffunction>
 
     <cffunction name="onApplicationStart">
         <cfset application.scripts = ["sr-Cyrl", "sr-Latn", "en"]>
-        <cfset application.defaultScript = "sr-Cyrl">
+        <cfset application.lang = "sr-Cyrl">
         <cfset application.modes = ["development", "production"]>
         <cfset application.defaultMode = "development">
         <cfset application.datasource = "teatarc1_teatar011_production">
+        <cfset application.root = "teatarc1_teatar011_production">
     </cffunction>
 
     <cffunction name="onMissingTemplate">

@@ -30,7 +30,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
-                <img src="/assets/img/logo.png" alt="Avatar Logo" style="width:45px;" class="rounded-pill star"> 
+                <img src="#application["root"]#assets/img/logo.png" alt="Avatar Logo" style="width:45px;" class="rounded-pill star"> 
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="##navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -39,27 +39,27 @@
                 
                 <ul class="navbar-nav ml-auto text-center">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/index.cfm?defaultScript=#session.defaultScript#">#txtHome#</a>
+                        <a class="nav-link" href="/index.cfm?lang=#session.lang#">#txtHome#</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/predstave/index.cfm?defaultScript=#session.defaultScript#">#txtPlays#</a>
+                        <a class="nav-link" href="/predstave/index.cfm?lang=#session.lang#">#txtPlays#</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/ansambl/index.cfm?defaultScript=#session.defaultScript#">#txtEnsemble#</a>
+                        <a class="nav-link" href="/ansambl/index.cfm?lang=#session.lang#">#txtEnsemble#</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav text-center">
-                    <cfif session.defaultScript neq "sr-Cyrl">
+                    <cfif session.lang neq "sr-Cyrl">
                         <li class="nav-item">
                             <a class="nav-link" onclick="changeScript('sr-Cyrl')" href="##"> #txtCyrillic# </a>
                         </li>
                     </cfif>
-                    <cfif session.defaultScript neq "sr-Latn">
+                    <cfif session.lang neq "sr-Latn">
                         <li class="nav-item">
                             <a class="nav-link" onclick="changeScript('sr-Latn')" href="##"> #txtLatin# </a>
                         </li>
                     </cfif>
-                    <cfif session.defaultScript neq "en">
+                    <cfif session.lang neq "en">
                         <li class="nav-item">
                             <a class="nav-link" onclick="changeScript('en')" href="##"> English </a>
                         </li>
@@ -73,11 +73,11 @@
         function changeScript(value){
             const searchParams = new URLSearchParams(location.search);
 
-            if(searchParams.has('defaultScript')){
-                searchParams.set('defaultScript', value);
+            if(searchParams.has('lang')){
+                searchParams.set('lang', value);
                 location.search = searchParams.toString();
             } else {
-                location.search += `&defaultScript=${value}`
+                location.search += `&lang=${value}`
             }
         }
     </script>
