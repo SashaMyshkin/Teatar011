@@ -27,11 +27,7 @@
             <cfif not structKeyExists(url, "dv")>
                 <cfset url.dv = "false">
             </cfif>
-
-            <cfif not structKeyExists(url, "confirmation")>
-                <cfset url.confirmation = "false">
-            </cfif>
-
+            
             <cfsavecontent variable="content">
                 
                 <cfif url.dv eq "false">
