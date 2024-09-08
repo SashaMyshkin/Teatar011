@@ -22,7 +22,9 @@
                 m.identifier,
                 p.pathname,
                 rm.img,
-                rm.alt
+                rm.alt,
+                p.pathname,
+                m.identifier
             from rolesMembers rm
             inner join roles r on rm.roleId = r.id
             inner join performances p on p.id = r.performanceId
