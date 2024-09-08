@@ -12,25 +12,22 @@
         <div class="table-holder">
             <h3 style="text-align: center; font-size:1.2rem;">#txtAwards#</h3>
             <table class="table table-dark table-sm">
-                <tr>
-                    <td>#txtFestival#</td>
-                    <td>#txtAward#</td>
-                    <cfif attributes.member eq "">
-                        <td>#txtRecipient#</td>
-                    </cfif>
-                    <cfif attributes.performance eq "">
-                        <td>#txtPerformance#</td>
-                    </cfif>
-                </tr>
+                <cfset tempFestival = "">
                 <cfloop array="#awards#" item="award" index="index">
+                    <cfif tempFestival neq award.festivalName>
+                        <cfset tempFestival = award.festivalName>
+                        <tr>
+                            <td colspan="3" style="font-size:1.2rem"><b>#award.festivalName#</b></td>
+                        </tr>
+                    </cfif>
                     <tr>
-                        <td>#award.festivalName#</td>
-                        <td>#award.award# <cfif award.note neq ""> (#award.note#) </cfif></td>
+                        
+                        <td style="font-size:0.9rem">#award.award# <cfif award.note neq ""> (#award.note#) </cfif></td>
                         <cfif attributes.member eq "">
-                            <td>#award.memberFullName#</td>
+                            <td style="font-size:0.9rem">#award.memberFullName#</td>
                         </cfif>
                         <cfif attributes.performance eq "">
-                            <td>#award.performanceName#</td>
+                            <td style="font-size:0.9rem">#award.performanceName#</td>
                         </cfif>
                     </tr>
                 </cfloop>
