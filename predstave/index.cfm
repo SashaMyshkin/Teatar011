@@ -19,7 +19,7 @@
             <div class="container">
                 <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-5 justify-content-center">
                     <cfloop array="#plays#" item="play" index="index">
-                        <div class="col" style="max-width:350px" onclick="window.location.href = 'index.cfm?lang=#session.lang#&q=#play.pathname#'">
+                        <div class="col" style="max-width:350px" onclick="window.location.href = '?q=#play.pathname#'">
                             <div class="card text-center bg-dark" style="color: var(--gold-main)">
                                 <img src="#application.root##play.img#/poster.png" class="card-img" alt="#play.alt#">
                                 <div class="card-body">

@@ -22,9 +22,9 @@
 				<cfloop array="#roles#" item="role">
 					<a style="text-decoration:none"
 							<cfif attributes.identifier neq "">
-								href="/predstave/index.cfm?lang=#session.lang#&q=#role.pathname#"
+								href="/predstave/?q=#role.pathname#"
 							<cfelse>
-								href="/ansambl/index.cfm?lang=#session.lang#&q=#role.identifier#"
+								href="/ansambl/?q=#role.identifier#"
 							</cfif>
 						>
 						<div class="role-item">
