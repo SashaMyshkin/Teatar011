@@ -23,10 +23,12 @@
                 m.membershipStatus
             from members m 
             inner join membershipStatus ms on ms.id = m.membershipStatus
+            left join awards a on m.id = a.memberId
             where 1=1
-            and active = 1
+            and m.active = 1
             and m.membershipStatus != 5
-            order by dateOfJoining
+            group by img, alt, identifier, dateOfJoining, membershipStatus
+            order by count(a.id) desc, dateOfJoining
         </cfquery>
 
         <cfreturn QUERY.toArray(q_artists)>
