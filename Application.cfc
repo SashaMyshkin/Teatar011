@@ -28,9 +28,36 @@
                 <cfset url.dv = "false">
             </cfif>
 
+            <cfif not structKeyExists(url, "audicija")>
+                <cfset url.audicija = "false">
+            </cfif>
+            
+            <cfif not structKeyExists(session, "defaultMode")>
+                <cfset session.defaultMode ="production">
+            </cfif>
+
+            <cfif url.dv eq "true">
+                <cfset session.defaultMode ="development">
+            </cfif>
+
             <cfsavecontent variable="content">
+                <cfif url.audicija eq "true">
+                    <!doctype html>
+                    <html lang="#session.lang#">
+                        <head>
+                            <cfmodule template="head.cfm" targetPage="#Arguments.targetPage#">
+                            <cfmodule template="#arguments.targetPage#" metaTags="true">
+                        </head>
+                        <body class="bg-dark">
+                            
+                            <!------cfmodule template="components/navbar/index.cfm"----------->
+                            <cfmodule template="#arguments.targetPage#" metaTags="false">
+                            <cfmodule template="components/footer/index.cfm">
+                        </body>
+                    </html>  
                 
-                <cfif url.dv eq "true" or application.defaultMode eq "development">
+                
+                <cfelseif url.dv eq "true" or session.defaultMode eq "development">
                     <!doctype html>
                     <html lang="#session.lang#">
                         <head>
@@ -41,7 +68,6 @@
                             
                             <cfmodule template="components/navbar/index.cfm">
                             <cfmodule template="#arguments.targetPage#" metaTags="false">
-                                <cfdump var="#cgi.request_url.listContainsNoCase('https')#">
                             <cfmodule template="components/footer/index.cfm">
                         </body>
                     </html>  
@@ -85,10 +111,12 @@
 
         <cfoutput>
 
-            <cfif application.defaultMode eq "development">
+            <cfif session.defaultMode eq "development">
                 <cfdump var="#Arguments.EventName#">
-                <cfdump var="#Arguments.Exception#">   
+                <cfdump var="#Arguments.Exception#">
             </cfif>
+
+            
 
             <h2>An unexpected error occurred.</h2>
             <p>Please provide the following information to technical support:</p>

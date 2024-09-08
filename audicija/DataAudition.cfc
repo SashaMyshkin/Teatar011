@@ -206,13 +206,13 @@
                     <div style="text-align: center; padding: 10px; border-bottom: 1px solid ##333333;">
                         <h1 style="color: ##ffffff;text-align: center;"><img src="https://teatar011.com/assets/img/logo.png"
                                 style="width: 70px; border-radius:50%">
-                            <br>Аудиција за #this.GetSerbianCyrillicMonthName(month(now()))# #DateFormat(now(), "yyyy")#.
+                            <br>Аудиција за септембар 2024.
                         </h1>
                     </div>
                     <div style="margin: 20px 0; text-align: center;">
                         <p style="color: ##cccccc;">Поштовани,</p>
                         <p style="color: ##cccccc;">Ваша пријава је успешно забележена.</p>
-                        <p style="color: ##cccccc;"> Аудиција ће се одржати 27. и 28. јуна 2024. у просторијама театра на адреси 
+                        <p style="color: ##cccccc;"> Аудиција ће се одржати 17. септембра 2024. у просторијама театра на адреси 
                             <i>Војводе Мицка Крстића 1Ј/3</i>. Када се затвори пријава кандидата,благовремено ћемо Вас обавестити мејлом о тачној сатници доласка. 
                         </p>
                         <p style="color: ##cccccc;"> Уколико имате било каквих додатних питања можете нам писати на Инстаграм страници 
