@@ -41,40 +41,19 @@
             </cfif>
 
             <cfsavecontent variable="content">
-                <cfif url.audicija eq "true">
-                    <!doctype html>
-                    <html lang="#session.lang#">
-                        <head>
-                            <cfmodule template="head.cfm" targetPage="#Arguments.targetPage#">
-                            <cfmodule template="#arguments.targetPage#" metaTags="true">
-                        </head>
-                        <body class="bg-dark">
-                            
-                            <!------cfmodule template="components/navbar/index.cfm"----------->
-                            <cfmodule template="#arguments.targetPage#" metaTags="false">
-                            <cfmodule template="components/footer/index.cfm">
-                        </body>
-                    </html>  
-                
-                
-                <cfelseif url.dv eq "true" or session.defaultMode eq "development">
-                    <!doctype html>
-                    <html lang="#session.lang#">
-                        <head>
-                            <cfmodule template="head.cfm" targetPage="#Arguments.targetPage#">
-                            <cfmodule template="#arguments.targetPage#" metaTags="true">
-                        </head>
-                        <body class="bg-dark">
-                            
-                            <cfmodule template="components/navbar/index.cfm">
-                            <cfmodule template="#arguments.targetPage#" metaTags="false">
-                            <cfmodule template="components/footer/index.cfm">
-                        </body>
-                    </html>  
-                <cfelse>
-                    <cfmodule template="comingSoon.cfm">
-                     
-                </cfif>
+                <!doctype html>
+                <html lang="#session.lang#">
+                    <head>
+                        <cfmodule template="head.cfm" targetPage="#Arguments.targetPage#">
+                        <cfmodule template="#arguments.targetPage#" metaTags="true">
+                    </head>
+                    <body class="bg-dark">
+                        
+                        <cfmodule template="components/navbar/index.cfm">
+                        <cfmodule template="#arguments.targetPage#" metaTags="false">
+                        <cfmodule template="components/footer/index.cfm">
+                    </body>
+                </html>  
                 
             </cfsavecontent>
 

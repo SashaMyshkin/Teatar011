@@ -47,6 +47,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#application["root"]#ansambl/index.cfm?lang=#session.lang#">#txtEnsemble#</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#application["root"]#audicija/index.cfm?lang=#session.lang#">#txtAudition#</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav text-center">
                     <cfif session.lang neq "sr-Cyrl">
