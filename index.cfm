@@ -1,11 +1,23 @@
 <cfoutput>
+    <cfinclude template="txt_index.cfm">
+
     <cfif attributes.metaTags eq "true">
+        <title>#txt_teatar_011#</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="alternate" hreflang="en" href="">
+        <link rel="alternate" hreflang="fr" href="">
+        <link rel="alternate" hreflang="es" href="">
+        <link rel="alternate" hreflang="de" href="">
     <cfelse>
 
         <style>
             <cfinclude template="index.css">
         </style>
-        <cfinclude template="txt_index.cfm">
+
+        
+
+        <h1>#txt_teatar_011#</h1>
 
         <p >
             <img alt="" src="#application.root#/assets/img/pocetna/teatar011.jpg" 

@@ -19,7 +19,8 @@
                 end as slogan,
                 alt
             from performances
-            where active = 1;
+            where active = 1
+            order by premiereDate desc;
         </cfquery>
 
         <cfreturn QUERY.toArray(q_performances)>
