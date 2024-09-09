@@ -34,10 +34,10 @@
                     <input type="hidden" value="" id="action" name="action">
                     <input type="hidden" value="#DATA.getAuditionId()#" id="auditionId" name="auditionId">
                     <h1>#txtAuditionApplication#</h1>
-                    <p style="text-align:center">Дошао је тренутак нове аудиције у Театру 011! </p>
-                    <p style="text-align:center"> 17. септембра у 19.00 часова.</p> 
-                    <p style="text-align:justify">Имате могућност да нам се представите својим програмом (песма, монолог, имитација) или да изаберете могућност да вас ми проведемо кроз наше импровизације, у том случају довољно је да се само појавите у заказаном термину.</p>
-                    <p style="text-align:justify">Ми једва чекамо да ТЕАТАР 011 обогатимо новим људима који ће са нама заиграти на позоришним даскама. Све што је потребно да урадите је да попуните пријаву и ми ћемо Вам се јавити мејлом са свим потребним детаљима.</p>
+                    <p style="text-align:center">Došao je trenutak nove audicije u Teatru 011! </p>
+                    <p style="text-align:center"> 17. septembra u 19.00 časova.</p> 
+                    <p style="text-align:justify">Imate mogućnost da nam se predstavite svojim programom (pesma, monolog, imitacija) ili da izaberete mogućnost da vas mi provedemo kroz naše improvizacije, u tom slučaju dovoljno je da se samo pojavite u zakazanom terminu.</p>
+                    <p style="text-align:justify">Mi jedva čekamo da naš teatar obogatimo novim ljudima koji će sa nama zaigrati na pozorišnim daskama. Sve što je potrebno da uradite je da popunite prijavu i mi ćemo Vam se javiti mejlom sa svim potrebnim detaljima.</p>
                     <div class="form-group-app">
                         <label for="full-name">#txtName#</label>
                         <input type="text" id="name" name="name"  max="30" value="#form.name#">
