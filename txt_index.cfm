@@ -5,7 +5,8 @@
             txt_p1 = "Teatar 011 je pozorište koje posvećeno radi i stvara punih #year(now())-2008# godina. Od male dramske sekcije u okviru jedne srednje škole, vremenom se razvio u studio glume koji danas broji preko 40 umetnika među kojima, rame uz rame, stoje i profesionalni glumci i talentovani amateri.";
             txt_p2 = "Na repertoaru se nalaze tematski raznovrsne i neretko društveno angažovane predstave koje imaju za cilj da pobude misao, podignu svest o različitim gorućim pitanjima, ali isto tako i da nasmeju i zabave. ";
             txt_p3 = "Teatar 011 rado učestvuje na festivalima širom Srbije i regiona odakle je poneo brojne nagrade od kojih smo naročito ponosni na Zlatnu masku za najbolju predstavu u celini na Festivalu festivala u Trebinju 2024. godine.";
-            txt_teatar_011 = "Teatar 011";
+            txt_teatar_011 = "Studio glume teatar 011";
+            txt_description = "Teatar 011 je pozorište koje posvećeno radi i stvara punih #year(now())-2008# godina. Broji preko 40 umetnika među kojima, rame uz rame, stoje i profesionalni glumci i talentovani amateri.";
             break;
         case 'sr-Cyrl':
             txt_p1 = "Театар 011 је позориште које посвећено ради и ствара пуних #year(now())-2008# година. Од мале драмске секције у оквиру једне средње школе, временом се развио у студио глуме који данас броји преко 40 уметника међу којима, раме уз раме, стоје и професионални глумци и талентовани аматери.";
