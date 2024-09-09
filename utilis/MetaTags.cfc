@@ -26,9 +26,15 @@
         <cfargument name="identifier" type="string" required="true">
         <cfargument name="https" type="string" required="true">
 
-        <cfquery name="q_metaTags" datasource="#application.datasource#">
-            insert into metaTags (pathname,https) values('#identifier#','#https#')
-        </cfquery>
+        <cftry>
+            <cfquery name="q_metaTags" datasource="#application.datasource#">
+                insert into metaTags (pathname,https) values('#identifier#','#https#')
+            </cfquery>
+            <cfcatch>
+            </cfcatch>
+        </cftry>
+
+        
 
     </cffunction>
 </cfcomponent>
