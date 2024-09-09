@@ -11,6 +11,12 @@
 <meta name="author" content="Aleksandar Jovanović">
 <meta name="google-site-verification" content="lrd-uRZol0NdMbnOlJ4djmoKIUh7qW8oKtRg79JdzkI" />
 
+
+
+
+
+
+
 <cfoutput>
     <!-- Title -->
     <cfif structKeyExists(metaTags, "title")>
@@ -66,8 +72,8 @@
 
 
 
-<link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
-<link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+
+<link rel="icon" href="/assets/img/logo.png" type="image/png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
 
