@@ -13,6 +13,7 @@
 
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
+<meta name="google-site-verification" content="lrd-uRZol0NdMbnOlJ4djmoKIUh7qW8oKtRg79JdzkI" />
 
 <style>
     <cfinclude template="styles.css">
