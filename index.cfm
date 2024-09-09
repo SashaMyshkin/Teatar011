@@ -10,6 +10,7 @@
         <meta property="og:url" content="https://www.teatar011.com/">
         <meta property="og:title" content="#txt_teatar_011#">
         <meta property="og:description" content="#txt_description#">
+        <meta property="og:image" content="#application.root#/assets/img/pocetna/teatar011.jpg">
     <cfelse>
 
         <style>

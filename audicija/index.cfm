@@ -1,7 +1,19 @@
 
-<cfif attributes.metaTags eq "true">
-<cfelse>
-    <cfoutput>
+<cfoutput>
+
+    <cfinclude template = "txt.cfm">
+
+    <cfif attributes.metaTags eq "true">
+        <title>Audicija - Teatar 011</title>
+        <meta name="description" content="Došao je trenutak nove audicije u Teatru 011! Mi jedva čekamo da naš teatar obogatimo novim ljudima koji će sa nama zaigrati na pozorišnim daskama.">
+        <meta name="keywords" content="teatar,teatar 011,audicija, pozorište">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://www.teatar011.com/audicija/">
+        <meta property="og:title" content="Audicija - Teatar 011">
+        <meta property="og:description" content="Došao je trenutak nove audicije u Teatru 011! Mi jedva čekamo da naš teatar obogatimo novim ljudima koji će sa nama zaigrati na pozorišnim daskama.">
+        <meta property="og:image" content="#application.root#/assets/img/logo.png">
+    <cfelse>
+    
         <cfparam name="form.action" default="">
         <cfparam name="form.name" default="">
         <cfparam name="form.surname" default="">
@@ -18,7 +30,7 @@
             <cfinclude template = "styles.css">
         </style>
 
-        <cfinclude template = "txt.cfm">
+        
 
         <cfset DATA = createObject('component', 'DataAudition')>
         <cfset ways = DATA.howHeardAboutUs()>
@@ -103,12 +115,9 @@
             </div>
         </div>
 
-        
-
-
 
         <cfif form.action eq "ins">
-           
+        
             <cfset response = DATA.manageApplication(form)>
 
             <cfif not response["error"]>
@@ -125,5 +134,6 @@
             </cfif>
 
         </cfif>
-    </cfoutput>    
-</cfif>
+        
+    </cfif>
+</cfoutput>    
