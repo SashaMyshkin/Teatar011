@@ -1,3 +1,12 @@
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JRD3V68RE9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JRD3V68RE9');
+</script>
+
 <cfset DATA = createObject('component', 'utilis/MetaTags')>
 <cfset metaTags = DATA.getMetaTags("#cgi.SCRIPT_NAME#?#cgi.QUERY_STRING#")>
 
