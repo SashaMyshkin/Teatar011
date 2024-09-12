@@ -6,8 +6,7 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="shortcut icon" href="#application.root#assets/img/favicon.ico" type="image/x-icon">
-            <link rel="icon" href="#application.root#assets/img/favicon.ico" type="image/x-icon">
+            <link rel="icon" href="#application.root#/logo.png" type="image/png">
             <title>#txtWelcome#</title>
             <style>
                 body {
@@ -102,7 +101,7 @@
         </head>
         <body>
             <div class="login-container">
-                <img src="#application.root#assets/img/logo.png" style="width:55px;"> 
+                <img src="#application.root#/logo.png" style="width:55px;"> 
                 <h2>#txtAdministration#</h2>
                 
                 <form class="login-form" action="#CGI.script_name#?#CGI.query_string#" method="POST">

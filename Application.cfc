@@ -69,7 +69,7 @@
         <cfset application.scripts = ["sr-Cyrl", "sr-Latn", "en"]>
         <cfset application.lang = "sr-Cyrl">
         <cfset application.modes = ["development", "production"]>
-        <cfset application.defaultMode = "development">
+        <cfset application.defaultMode = "production">
         <cfset application.datasource = "teatarc1_teatar011_production">
         <cfset application.root = "teatarc1_teatar011_production">
     </cffunction>

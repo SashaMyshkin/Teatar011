@@ -15,6 +15,26 @@
 
     <cffunction name="onRequestStart">
         <cfargument name="targetPage" type="string" required="true">
+
+        <cfinclude template="application.variables.cfm">
+
+        
+        <cfif structKeyExists(url, "lang") and ArrayFind(application.langs, url.lang) gt 0>
+            <cfset session.lang = url.lang>
+        </cfif>
+
+        <cfif not structKeyExists(url, "dv")>
+            <cfset url.dv = "false">
+        </cfif>
+        
+        <cfif not structKeyExists(session, "defaultMode")>
+            <cfset session.defaultMode ="production">
+        </cfif>
+
+        <cfif url.dv eq "true">
+            <cfset session.defaultMode ="development">
+        </cfif>
+
         <cflogin applicationtoken="#this.name#">
             <cfif not isDefined("cflogin")>
                 <cfinclude template="loginForm.cfm">
@@ -28,7 +48,7 @@
                     <cfinclude template="loginform.cfm">
                     <cfreturn false>
                 <cfelse>
-                    <cfquery name="loginQuery" datasource="#application.defaultDatasource#">
+                    <cfquery name="loginQuery" datasource="#application.datasource#">
                         select `id`, `roles` from `users`
                         where 1 = 1
                         and `username` = <cfqueryparam value="#cflogin.name#" cfsqltype="CF_SQL_VARCHAR" maxlength="30">
@@ -67,24 +87,16 @@
     </cffunction>
 
     <cffunction name="onSessionStart">
-        <cfset session.started = now()>
-        <cfset session.defaultScript = application.defaultScript>
+        <cfset session.lang = application.lang>  
     </cffunction>
 
     <cffunction name="onApplicationStart">
-        <cfif cgi.server_name eq 'localhost'>
-            <cfset application.defaultMode = "development">
-            <cfset application.defaultDatasource = "teatarc1_teatar011_development">
-            <cfset application.adminroot = "http://#cgi.http_host#/administration/">
-            <cfset application.root = "http://#cgi.http_host#/">
-        <cfelse>
-            <cfset application.defaultMode = "production">
-            <cfset application.defaultDatasource = "teatarc1_teatar011_production">
-            <cfset application.adminroot = "https://#cgi.http_host#/administration/">
-            <cfset application.root = "https://#cgi.http_host#/">
-        </cfif>
         <cfset application.scripts = ["sr-Cyrl", "sr-Latn", "en"]>
-        <cfset application.defaultScript = "sr-Cyrl">
+        <cfset application.lang = "sr-Cyrl">
+        <cfset application.modes = ["development", "production"]>
+        <cfset application.defaultMode = "production">
+        <cfset application.datasource = "teatarc1_teatar011_production">
+        <cfset application.root = "teatarc1_teatar011_production">
     </cffunction>
 
     <cffunction name="onMissingTemplate">

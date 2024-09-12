@@ -1,4 +1,4 @@
-<cfswitch expression="#session.defaultScript#">
+<cfswitch expression="#session.lang#">
     <cfcase value="sr-Latn">
         <cfset txtAnnoucements = "Najave">
         <cfset txtPerformances = "Ansambl">

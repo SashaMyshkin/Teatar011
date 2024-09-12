@@ -3,15 +3,20 @@
 <meta name="robots" content="noindex">
 
 <cfoutput>
-    <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="#application.root#assets/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="#application.root#/logo.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="#application.root#/global.css" rel="stylesheet">
-
-    <link href="https://unpkg.com/tabulator-tables@6.2.0/dist/css/tabulator.min.css" rel="stylesheet">
-    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@6.2.0/dist/js/tabulator.min.js"></script>
+    <script src="https://kit.fontawesome.com/7ea5a508bb.js" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
 </cfoutput>
+
+
+<style>
+    <cfinclude template="styles.css">
+</style>
+
 
 
 
