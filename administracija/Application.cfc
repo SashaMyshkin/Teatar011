@@ -92,7 +92,7 @@
 
     <cffunction name="onApplicationStart">
         <cfset application.scripts = ["sr-Cyrl", "sr-Latn", "en"]>
-        <cfset application.lang = "sr-Cyrl">
+        <cfset application.lang = "sr-Latn">
         <cfset application.modes = ["development", "production"]>
         <cfset application.defaultMode = "production">
         <cfset application.datasource = "teatarc1_teatar011_production">

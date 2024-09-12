@@ -35,23 +35,18 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="boxMenu">
                 <ul class="navbar-nav text-center" style="">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#application["root"]#announcements/">#txtAnnoucements#</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#application["root"]#performances/">#txtPerformances#</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#application["root"]#members/">#txtMembers#</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#application["root"]#audition/">#txtAudition#</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#application["root"]#awards/">#txtAwards#</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#application["root"]#news/">#txtNews#</a>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="##" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Audicija
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#application.root#/audicija/">Lista kandidata</a></li>
+                          <li><a class="dropdown-item" href="#application.root#/audicija/uzi-krug/">Kandidati za uži krug</a></li>
+                          <li><a class="dropdown-item" href="#application.root#/audicija/satnica/">Određivanje satnice</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#application.root#/audicija/mejlovi/">Slanje mejlova</a></li>
+                        </ul>
                     </li>
                     
                 </ul>
