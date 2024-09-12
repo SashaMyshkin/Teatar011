@@ -68,7 +68,8 @@
                         `sexId`, 
                         `biography`,
                         `phone`,
-                        `confirmed`
+                        `confirmed`,
+                        `uniqueKey`
                     ) 
                     VALUES (
                         '#trim(data.auditionId)#',
@@ -82,7 +83,8 @@
                         '#trim(data.sexId)#',
                         '#trim(data.biography)#',
                         '#trim(data.phone)#',
-                        0
+                        0,
+                        SHA2('#trim(data.email)#', 256)
                     );
                 </cfquery>
     
