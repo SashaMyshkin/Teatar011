@@ -1,7 +1,7 @@
 <cfif cgi.request_url.listContainsNoCase('https') eq '0'>
-    <cfset application["root"] = "http://localhost:8888/Teatar011/administration/">
+    <cfset application["root"] = "http://localhost:8888/Teatar011/administracija/">
 <cfelse>
-    <cfset application["root"] = "https://teatar011.com/administration/">
+    <cfset application["root"] = "https://teatar011.com/administracija/">
 </cfif>
 
 <cfset application.langs = ["sr-Cyrl", "sr-Latn", "en"]>
