@@ -38,7 +38,7 @@
 
     <cfif form.theWay neq "">
         <cfset DATA.confirm(url.uq, form.theWay)>
-        <!-----cfset DATA.notifyMe(checkerQuery.name, checkerQuery.surname, form.theWay)------>
+        <cfset DATA.notifyMe(checkerQuery.name, checkerQuery.surname, form.theWay)>
 
         <p class="mt-2 mb-4  text-center" style="font-size:2rem;"> 
             <b style="color:green">Uspešno ste potvrdili svoj dolazak. </b> 

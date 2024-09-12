@@ -33,8 +33,8 @@
         <cfquery name="q_rpt_count" datasource="#application.datasource#">
             select 
                 case
-                    when confirmed = 1 then 'potvrdili_dolazak'
-                    else 'preostalo'
+                    when confirmed = 1 then 'podvrdili dolazak'
+                    else 'preostali'
                 end _status_,
                 count(confirmed) broj
             from candidates
@@ -44,8 +44,8 @@
         <cfquery name="q_rpt_the_way" datasource="#application.datasource#">
             select 
                 case
-                    when theWay = 'ja' then 'svoj_program'
-                    else 'nase_improvizacije'
+                    when theWay = 'ja' then 'svoj program imaju'
+                    else 'naše improvizacije'
                 end _status_,
                 count(theWay) broj
             from candidates
@@ -64,16 +64,68 @@
                         <title>Potvrda</title>
                     </head>
                     <body>
-                        Kandidat #name# #surname# potrdio dolazak.
+                        Kandidat #name# #surname# potrdio dolazak
                         <cfif arguments.theWay eq "ja">
                             i želi da se predstavi svojim programom.
                         <cfelse>
                             i želi da bude sproveden kroz naš program improvizacija.
                         </cfif>
+
                         <hr>
-                        <cfdump var="#q_rpt_count#">
+
+                        <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; color: ##333; border: 1px solid ##dddddd;">
+                            <caption style="font-size: 1.2em; font-weight: bold; padding: 10px; color: ##555;">
+                              Odnos potvrđenih / nepotvrđenih dolazaka
+                            </caption>
+                            <tr style="background-color: ##f4f4f4;">
+                                <td style="border: 1px solid ##dddddd; padding: 8px; font-weight: bold;">
+                                    Status
+                                </td>
+                                <td style="border: 1px solid ##dddddd; padding: 8px; font-weight: bold;">
+                                    Broj kandidata
+                                </td>
+                            </tr>
+
+                            <cfloop query="q_rpt_count">
+                                <tr>
+                                    <td style="border: 1px solid ##dddddd; padding: 8px;">
+                                        #_status_#
+                                    </td>
+                                    <td style="border: 1px solid ##dddddd; padding: 8px;">
+                                        #broj#
+                                    </td>
+                                </tr>
+                            </cfloop>
+                            
+                        </table>
+                          
                         <hr>
-                        <cfdump var="#q_rpt_the_way#">
+
+                        <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; color: ##333; border: 1px solid ##dddddd;">
+                            <caption style="font-size: 1.2em; font-weight: bold; padding: 10px; color: ##555;">
+                                Svoj program / naši zadaci
+                            </caption>
+                            <tr style="background-color: ##f4f4f4;">
+                                <td style="border: 1px solid ##dddddd; padding: 8px; font-weight: bold;">
+                                    Status
+                                </td>
+                                <td style="border: 1px solid ##dddddd; padding: 8px; font-weight: bold;">
+                                    Broj kandidata
+                                </td>
+                            </tr>
+
+                            <cfloop query="q_rpt_the_way">
+                                <tr>
+                                    <td style="border: 1px solid ##dddddd; padding: 8px;">
+                                        #_status_#
+                                    </td>
+                                    <td style="border: 1px solid ##dddddd; padding: 8px;">
+                                        #broj#
+                                    </td>
+                                </tr>
+                            </cfloop>
+                            
+                        </table>
                     </body>
                 </html>
             </cfoutput>
