@@ -103,8 +103,9 @@
             <div class="login-container">
                 <img src="#application.root#/logo.png" style="width:55px;"> 
                 <h2>#txtAdministration#</h2>
+
                 
-                <form class="login-form" action="#CGI.script_name#?#CGI.query_string#" method="POST">
+                <form class="login-form" action="#application.root#" method="POST">
                     <div class="form-group">
                         <label for="username">#txtUsername#:</label>
                         <input type="text" id="j_username" name="j_username" placeholder="#txtEnterUsername#" required maxlength="30">

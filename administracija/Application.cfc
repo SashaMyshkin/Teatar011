@@ -71,6 +71,11 @@
 
     <cffunction name="onRequest">
         <cfargument name = "targetPage" type="String" required=true/>
+
+        <cfif not structKeyExists(session, "scriptName")>
+            <cfset session.scriptName = replace(cgi.SCRIPT_NAME, 'index.cfm', '')>
+        </cfif>
+
         <cfsavecontent variable="content">
             <!doctype html>
             <html lang="#session.defaultScript#">
@@ -87,7 +92,7 @@
     </cffunction>
 
     <cffunction name="onSessionStart">
-        <cfset session.lang = application.lang>  
+        <cfset session.lang = application.lang>
     </cffunction>
 
     <cffunction name="onApplicationStart">
