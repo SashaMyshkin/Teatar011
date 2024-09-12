@@ -67,7 +67,8 @@
                         `whatYouWatched`, 
                         `sexId`, 
                         `biography`,
-                        `phone`
+                        `phone`,
+                        `confirmed`
                     ) 
                     VALUES (
                         '#trim(data.auditionId)#',
@@ -80,7 +81,8 @@
                         '#trim(data.whatYouWatched)#',
                         '#trim(data.sexId)#',
                         '#trim(data.biography)#',
-                        '#trim(data.phone)#' 
+                        '#trim(data.phone)#',
+                        0
                     );
                 </cfquery>
     

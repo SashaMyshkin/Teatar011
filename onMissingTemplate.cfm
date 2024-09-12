@@ -1,37 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <cfif session.lang eq "en">
-      <title>404 - Not Found</title>
-    <cfelseif session.lang eq "sr-Cyrl">
-      <title>404 - Страница не постоји</title>
-    <cfelse>
-      <title>404 - Stranica ne postoji</title>
-    </cfif>
+
     
     <style>
-      /* Base styles */
-      body {
-          margin: 0;
-          padding: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 100vh;
-          background-color: #000;
-          color: #fff;
-          font-family: 'Arial', sans-serif;
-      }
 
-      .container {
-          text-align: center;
-          padding: 20px;
-          border: 2px solid #444;
-          border-radius: 10px;
-          background-color: #111;
-      }
+
+     
 
       /* Typography */
       h1 {
@@ -78,9 +50,8 @@
       }
 
     </style>
-</head>
-<body>
-    <div class="container">
+
+    <div class="container404">
         <div class="error-message">
             <h1>404</h1>
             <cfif session.lang eq "en">
@@ -95,5 +66,4 @@
             </cfif>
         </div>
     </div>
-</body>
-</html>
+

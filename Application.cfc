@@ -28,8 +28,8 @@
                 <cfset url.dv = "false">
             </cfif>
 
-            <cfif not structKeyExists(url, "audicija")>
-                <cfset url.audicija = "false">
+            <cfif not structKeyExists(url, "uq")>
+                <cfset url.uq = "">
             </cfif>
             
             <cfif not structKeyExists(session, "defaultMode")>
@@ -47,8 +47,9 @@
                         <cfmodule template="head.cfm" targetPage="#Arguments.targetPage#">
                     </head>
                     <body class="bg-dark">
-                        
-                        <cfmodule template="components/navbar/index.cfm">
+                        <cfif url.uq eq "">
+                            <cfmodule template="components/navbar/index.cfm">
+                        </cfif>        
                         <cfmodule template="#arguments.targetPage#">
                         <cfmodule template="components/footer/index.cfm">
                     </body>
@@ -76,8 +77,21 @@
     <cffunction name="onMissingTemplate">
         <cfargument name="targetPage" type="string" required=true/>
 
-        <cfheader statuscode="404" statustext="Page Not Found">
-        <cfinclude template="onMissingTemplate.cfm">
+        <cfoutput>
+            <!doctype html>
+            <html lang="#session.lang#">
+                <head>
+                    <title>404 - Not found</title>
+                    <cfmodule template="head.cfm" targetPage="#Arguments.targetPage#">
+                </head>
+                <body class="bg-dark">
+                    
+                    <cfmodule template="components/navbar/index.cfm">
+                    <cfmodule template="404.cfm">
+                    <cfmodule template="components/footer/index.cfm">
+                </body>
+            </html>  
+        </cfoutput>
 
         <cfreturn true />
     </cffunction>

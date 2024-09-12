@@ -30,7 +30,7 @@
     <div class="holder">
         <div class="container-app">
             
-            <form id="audition-form" name="audition-form" action="index.cfm?audicija=true" method="POST">
+            <form id="audition-form" name="audition-form" action="index.cfm" method="POST">
                 <input type="hidden" value="" id="action" name="action">
                 <input type="hidden" value="#DATA.getAuditionId()#" id="auditionId" name="auditionId">
                 <h1>#txtAuditionApplication#</h1>
