@@ -72,9 +72,7 @@
     <cffunction name="onRequest">
         <cfargument name = "targetPage" type="String" required=true/>
 
-        <cfif not structKeyExists(session, "scriptName")>
-            <cfset session.scriptName = replace(cgi.SCRIPT_NAME, 'index.cfm', '')>
-        </cfif>
+        <cfset request.scriptName = replace(cgi.SCRIPT_NAME, 'index.cfm', '')>
 
         <cfsavecontent variable="content">
             <!doctype html>

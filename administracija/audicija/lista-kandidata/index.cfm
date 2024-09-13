@@ -26,7 +26,7 @@
 			<tbody>
 				<cfset count = 1>
 				<cfloop query="#candidates#">
-					<tr style="cursor:pointer" onclick="location.href='#session.scriptName#?q=#id#'">
+					<tr style="cursor:pointer" onclick="location.href='#request.scriptName#?q=#id#'">
 						<td>#count#</td>
 						<td>#name#</td>
 						<td>#surname#</td>
