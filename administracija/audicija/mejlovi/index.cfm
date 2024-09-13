@@ -10,14 +10,16 @@
     
         <button class="btn btn-success btn-lg" onclick="location.href='#request.scriptName#?action=rezultati'"> Obavesti kandidate o rezultatima audicije. </button>
     </p>
-</cfoutput>
 
-<cfif url.action eq "uzi-krug">
-    <cfset shortlisted_unnotified = DATA.getShortlistedUnnotified()>
-    <cfset MNG_EMAIL.notifyShortlisted(shortlisted_unnotified)>
-    <p class="mt-3 text-center">
-        Uspešno su poslati mejlovi o potvrdi dolaska kandidatima koji u ušli u uži krug, kao i utešni mejlovi kandidatima koji nisu odabrani za audiciju.
-    </p>
-</cfif>
+
+    <cfif url.action eq "uzi-krug">
+        <cfset shortlisted_unnotified = DATA.getShortlistedUnnotified()>
+        <cfset MNG_EMAIL.notifyShortlisted(shortlisted_unnotified)>
+        <p class="mt-3 text-center">
+            Ukupno obaveštenih kandidata: #shortlisted_unnotified.recordcount#;
+        </p>
+    </cfif>
+
+</cfoutput>
 
 
