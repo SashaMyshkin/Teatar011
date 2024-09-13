@@ -13,11 +13,11 @@
 </cfoutput>
 
 <cfif url.action eq "uzi-krug">
-    <cfset shortlisted_unnotified_1 = DATA.getShortlistedUnnotified()>
-    <cfdump var="#shortlisted_unnotified_1#">
-    <cfset MNG_EMAIL.notifyShortlisted(shortlisted_unnotified_1)>
-    <cfset shortlisted_unnotified_2 = DATA.getShortlistedUnnotified()>
-    <cfdump var="#shortlisted_unnotified_2#">
+    <cfset shortlisted_unnotified = DATA.getShortlistedUnnotified()>
+    <cfset MNG_EMAIL.notifyShortlisted(shortlisted_unnotified)>
+    <p class="mt-3 text-center">
+        Uspešno su poslati mejlovi o potvrdi dolaska kandidatima koji u ušli u uži krug, kao i utešni mejlovi kandidatima koji nisu odabrani za audiciju.
+    </p>
 </cfif>
 
 
