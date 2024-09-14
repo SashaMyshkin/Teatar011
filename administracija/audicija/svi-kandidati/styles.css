@@ -1,0 +1,41 @@
+.form-control-dark {
+
+    border: 1px solid #495057;
+
+}
+
+.form-control-dark:focus {
+
+    border-color: #6c757d;
+
+}
+
+.form-select-dark {
+
+    border: 1px solid #495057;
+
+}
+
+.form-select-dark:focus {
+
+    border-color: #6c757d;
+
+}
+
+.form-select-dark option {
+
+    color: black;
+
+}
+
+.card {
+    background-color: #1e1e1e;
+    margin-bottom: 20px;
+}
+.card-title {
+    color: #ffc107;
+}
+.card-header {
+    background-color: #2a2a2a;
+    color: #fff;
+}

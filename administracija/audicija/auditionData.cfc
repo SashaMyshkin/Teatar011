@@ -9,9 +9,25 @@
             DATE_FORMAT(c.dateOfBirth, '%d.%m.%Y') dateOfBirth, 
             h.way heardAboutUs, 
             c.whatYouWatched playsWatched,
-            c.email
+            c.email,
+            confirmed,
+            s.sex
             from candidates c
             inner join howHeardAboutUs h on h.id = c.howHeardAboutUsId
+            inner join sex s on s.id = c.sexId
+            where 1=1
+            <cfif structKeyExists(form, 'name') and form.name neq ''>
+                and c.name like '%#form.name#%'
+            </cfif>
+            <cfif structKeyExists(form, 'surname') and form.surname neq ''>
+                and c.surname like '%#form.surname#%'
+            </cfif>
+            <cfif structKeyExists(form, 'sex') and form.sex neq ''>
+                and s.id = '#form.sex#'
+            </cfif>
+            <cfif structKeyExists(form, 'confirmed') and form.confirmed neq ''>
+                and c.confirmed = '#form.confirmed#'
+            </cfif>
             order by c.id desc
         </cfquery>
 
@@ -54,5 +70,34 @@
         </cfquery>
 
         <cfreturn q_shortlisted_unnotified>
+    </cffunction>
+
+    <cffunction name="getCandidateById" access="public" returntype="query">
+
+        <cfquery name="q_CandidateById" datasource="#application.datasource#">
+            SELECT c.`id`, 
+            `auditionId`, 
+            `name`, 
+            `surname`, 
+            DATE_FORMAT(c.dateOfBirth, '%d. %m. %Y.') dateOfBirth,
+            `email`, 
+            hhs.way howHeardAboutUs, 
+            `haveYouWatched`, 
+            `whatYouWatched`, 
+            `sexId`, 
+            `biography`, 
+            `phone`, 
+            `shortlisted`, 
+            `confirmationEmail`, 
+            `accepted`, 
+            `uniqueKey`, 
+            `confirmed`, 
+            c.`theWay`
+             FROM `candidates` c
+             inner join howHeardAboutUs hhs on hhs.id = c.howHeardAboutUsId
+             WHERE c.id = '#url.q#'
+        </cfquery>
+
+        <cfreturn q_CandidateById>
     </cffunction>
 </cfcomponent>

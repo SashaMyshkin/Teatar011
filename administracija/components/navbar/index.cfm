@@ -41,11 +41,16 @@
                             Audicija
                         </a>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#application.root#audicija/lista-kandidata/">Lista kandidata</a></li>
-                          <li><a class="dropdown-item" href="#application.root#audicija/uzi-krug/">Kandidati za uži krug</a></li>
-                          <li><a class="dropdown-item" href="#application.root#audicija/satnica/">Određivanje satnice</a></li>
+                          <li><a class="dropdown-item" href="#application.root#audicija/svi-kandidati/">Pregled svih kandidata</a></li>
+                          <li><a class="dropdown-item disabled" href="" >Pregled kandidata za uži krug</a></li>
+                          <li><a class="dropdown-item disabled" href="" >Pregled potvrđenih / nepotvrđenih dolazaka</a></li>
+                          <li><a class="dropdown-item disabled" href="" >Pregled primljenih kandidata</a></li>
                           <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#application.root#audicija/mejlovi/">Slanje mejlova</a></li>
+                          <li><a class="dropdown-item disabled" href="" >Kreiraj uži krug </a></li>
+                          <li><a class="dropdown-item disabled" href="" >Kreiraj satnicu </a></li>
+                          <li><a class="dropdown-item disabled" href="" >Biranje budućih članova </a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item disabled" href="#application.root#audicija/mejlovi/" >Slanje mejlova</a></li>
                         </ul>
                     </li>
                     

@@ -38,7 +38,8 @@
                 end _status_,
                 count(confirmed) broj
             from candidates
-            group by confirmed
+            where shortlisted = 1
+            group by confirmed;
         </cfquery>
 
         <cfquery name="q_rpt_the_way" datasource="#application.datasource#">
