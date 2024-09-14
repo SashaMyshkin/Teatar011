@@ -11,7 +11,8 @@
             c.whatYouWatched playsWatched,
             c.email,
             confirmed,
-            s.sex
+            s.sex,
+            c.shortlisted
             from candidates c
             inner join howHeardAboutUs h on h.id = c.howHeardAboutUsId
             inner join sex s on s.id = c.sexId
@@ -37,14 +38,18 @@
     <cffunction name="getAllShortlisted" access="public" returntype="query">
 
         <cfquery name="q_shortlisted" datasource="#application.datasource#">
-            select 
-            c.id, 
+            select c.id, 
             c.name, 
             c.surname, 
             DATE_FORMAT(c.dateOfBirth, '%d.%m.%Y') dateOfBirth, 
-            c.email, 
-            c.uniqueKey
+            h.way heardAboutUs, 
+            c.whatYouWatched playsWatched,
+            c.email,
+            confirmed,
+            s.sex
             from candidates c
+            inner join howHeardAboutUs h on h.id = c.howHeardAboutUsId
+            inner join sex s on s.id = c.sexId
             where shortlisted = 1
             order by c.id desc
         </cfquery>
@@ -99,5 +104,11 @@
         </cfquery>
 
         <cfreturn q_CandidateById>
+    </cffunction>
+
+    <cffunction name="shortlistTheCandidate" access="public" returntype="void">
+        <cfquery name="q_shortlist_update" datasource="#application.datasource#">
+            update candidates set shortlisted = <cfif structKeyExists(form, 'shortlisted')>1<cfelse>0</cfif> where id = '#url.q#'
+        </cfquery>
     </cffunction>
 </cfcomponent>

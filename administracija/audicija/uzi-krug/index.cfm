@@ -6,7 +6,6 @@
 <cfparam name="form.surname" default="">
 <cfparam name="form.sex" default="">
 <cfparam name="form.confirmed" default="">
-<cfparam name="form.action" default="false">
 
 <cfset DATA = createObject('component','../auditionData')>
 
@@ -19,8 +18,8 @@
 	
 	<div class="container">
 		<cfif url.q eq "">
-			<cfset candidates = DATA.getAllCandidates()>
-			<p class="mt-3 mb-2"><b>Lista kandidata</b></p>
+			<cfset candidates = DATA.getAllShortlisted()>
+			<p class="mt-3 mb-2"><b>Odluka o užem krugu</b></p>
 			<hr>
 			<form method="POST" name="searchForm" id="searchForm">
 			  	<div class="row g-3 justify-content-center">
@@ -85,14 +84,9 @@
 				</tbody>
 			</table>
 		<cfelse>
-			<cfif form.action eq "true">
-				<cfset DATA.shortlistTheCandidate()>
-			</cfif>
 			<cfset candidate = DATA.getCandidateById(url.q)>
-			<p class="mt-3 mb-2"> <button type="button" class="btn btn-sm btn-secondary" onclick="location.href='#application.root#audicija/svi-kandidati/'"> Nazad </button> &nbsp; <b>Informacije o kandidatu</b></p>
+			<p class="mt-3 mb-2"><b>Informacije o kandidatu</b></p>
 			<hr>
-			<form method="POST" name="submitForm" id="submitForm">
-				<input type="hidden" name="action" value="true">
 				<div class="row">
 					
 					<div class="col-md-4">
@@ -153,21 +147,6 @@
 									</cfif>
 
 								</p>
-								<hr>
-								<p>
-									<div class="form-check">
-										<input id="shortlisted" name="shortlisted" class="form-check-input" type="checkbox" 
-										onchange="this.form.submit()" 
-										<cfif candidate.shortlisted eq 1>checked</cfif> 
-										<cfif candidate.confirmationEmail eq 1> disabled</cfif>
-										>
-										<label class="form-check-label" for="shortlisted">
-											Uži krug
-										</label>
-										
-									</div>
-									
-								</p>
 								
 							</div>
 						</div>
@@ -191,8 +170,6 @@
 					
 					
 				</div>
-			</form>
-				
 		</cfif>
 	</div>
 		
