@@ -51,7 +51,7 @@
                           <li><a class="dropdown-item disabled" href="" >Kreiraj satnicu </a></li>
                           <li><a class="dropdown-item disabled" href="" >Biranje budućih članova </a></li>
                           <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item disabled" href="#application.root#audicija/mejlovi/" >Slanje mejlova</a></li>
+                          <li><a class="dropdown-item" href="#application.root#audicija/mejlovi/" >Slanje mejlova</a></li>
                         </ul>
                     </li>
                     

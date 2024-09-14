@@ -20,6 +20,14 @@
         </p>
     </cfif>
 
+    <cfif url.action eq "satnica">
+        <cfset confirmed = DATA.getConfirmedCandidates()>
+        <cfset MNG_EMAIL.notifyCandidatesAboutTime(confirmed)>
+        <p class="mt-3 text-center">
+            Ukupno obaveštenih kandidata: #confirmed.recordcount#;
+        </p>
+    </cfif>
+
 </cfoutput>
 
 

@@ -70,5 +70,61 @@
             </cfquery>
         </cfloop>
     </cffunction>
+
+    <cffunction name="notifyCandidatesAboutTime" access="public" returntype="void">
+        <cfargument name="candidates" type="query" required="true">
+
+        <cfloop query="#arguments.candidates#">
+            <cfsavecontent variable="emailContent">
+                <cfoutput>
+                    <!DOCTYPE html>
+                    <html lang="sr-Cyrl">
+
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Satnica audicije - Teatar 011</title>
+                        </head>
+
+                        <body style="font-family: Arial, sans-serif; background-color: ##000000; color: ##ffffff; margin: 0; padding: 0;">
+                            <div style="width: 90%; padding: 20px;">
+                                <div style="text-align: center; padding: 10px; border-bottom: 1px solid ##333333;">
+                                    <h1 style="color: ##ffffff;text-align: center;"><img src="https://teatar011.com/assets/img/logo.png"
+                                            style="width: 70px; border-radius:50%">
+                                        <br> Obaveštenje
+                                    </h1>
+                                </div>
+                                <div style="margin: 20px 0; text-align: center;">
+                                    <p style="color: ##cccccc;">Poštovani,</p>
+                              
+                                    <p style="color: ##cccccc;">
+                                        Vaša audicija će se održati 17. septembra 2024. godine u <b>#auditionTime#</b> časova.
+                                    </p>
+                                    
+                                    <p style="color: ##cccccc;">
+                                        Radujući se skorašnjem susretu, srdačno Vas pozdravlja <br><i>Teatar 011</i>
+                                    </p>
+                                </div>
+                                <div style="text-align: center; padding: 10px; border-top: 1px solid ##333333; font-size: 12px;">
+                                    <p style="color: ##cccccc;">&copy; 2024 Teatar 011. All rights reserved.</p>
+                                </div>
+                            </div>
+                        </body>
+                    </html>
+                </cfoutput>
+                
+            </cfsavecontent>
+
+            <cfmail to="#email#" 
+                    from="info@teatar011.com" 
+                    subject="Satnica audicije - Teatar 011" type="text/html">
+                #emailcontent#
+            </cfmail>
+
+            <cfquery name="q_check" datasource="#application.datasource#">
+                update candidates set timeEmail = 1 where id = <cfqueryparam value="#id#" cfsqltype="cf_sql_varchar">
+            </cfquery>
+        </cfloop>
+    </cffunction>
  
 </cfcomponent>

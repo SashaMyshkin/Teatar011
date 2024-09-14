@@ -111,4 +111,29 @@
             update candidates set shortlisted = <cfif structKeyExists(form, 'shortlisted')>1<cfelse>0</cfif> where id = '#url.q#'
         </cfquery>
     </cffunction>
+
+    <cffunction name="getConfirmedCandidates" access="public" returntype="query">
+
+        <cfquery name="q_candidates" datasource="#application.datasource#">
+            select 
+            c.id, 
+            c.name, 
+            c.surname, 
+            c.email, 
+            SUBSTRING(auditionTime, 1, 5) auditionTime
+            
+            from candidates c
+            where 1=1
+            and shortlisted = 1
+            and confirmationEmail = 1
+            and confirmed = 1
+            and theWay is not null
+            and auditionTime is not null
+            and timeEmail = 0
+           
+            order by c.id desc
+        </cfquery>
+
+        <cfreturn q_candidates>
+    </cffunction>
 </cfcomponent>
