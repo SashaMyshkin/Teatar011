@@ -200,4 +200,22 @@
         </cfif>
         
     </cffunction>
+
+    <cffunction name="getComments" access="public" returntype="query">
+        
+        <cfquery name="q_comments" datasource="#application.datasource#">
+            select concat(u.name, ' ', u.surname) userFullname, 
+            concat(c.name, ' ', c.surname) candidateFullname,
+            cm.comment
+            from candidates c
+            inner join candidatesComments cm on cm.candidate_id = c.id
+            inner join users u on u.id = cm.user_id
+            where c.id = '#url.q#'
+        </cfquery>
+
+       
+        
+        <cfreturn q_comments>
+
+    </cffunction>
 </cfcomponent>

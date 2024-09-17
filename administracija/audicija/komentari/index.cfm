@@ -85,6 +85,7 @@
             </cfif>
             <cfset commentObject = DATA.getComment()>
 			<cfset candidate = DATA.getCandidateById(url.q)>
+            <cfset comments = DATA.getComments()>
             
 			<p class="mt-3 mb-2"> <button type="button" class="btn btn-sm btn-secondary" onclick="location.href='#application.root#audicija/komentari/'"> Nazad </button> &nbsp; <b>Informacije o kandidatu</b></p>
 			<hr>
@@ -104,6 +105,13 @@
 							</div>
 						</div>
 					</div>
+
+                    <div class="col-md-12">
+                        <cfloop query="#comments#">
+                            <p><b>#userFullname#</b>: #comment#</p>
+                        </cfloop>
+                        
+                    </div>
 					
 					<div class="col-md-4">
 						<div class="card">
