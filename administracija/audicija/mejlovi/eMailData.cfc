@@ -222,7 +222,7 @@
                                     </p>
 
                                     <p style="color: ##cccccc;">
-                                        U subotu 21. septembra u 18.30 časova biće organizovan upis u teatar. Tom prilikom je potrebno doneti julsku članarinu u iznosu od 3.500,00 dinara, a mi ćemo Vam dati pristupnicu kojom i formalno postajete naš član. Takođe, biće reči o planu za predstojeći period i programu rada.
+                                        U subotu 21. septembra u 18.30 časova biće organizovan upis u teatar. Tom prilikom je potrebno doneti članarinu u iznosu od 3.500,00 dinara, a mi ćemo Vam dati pristupnicu kojom i formalno postajete naš član. Takođe, biće reči o planu za predstojeći period i programu rada.
                                     </p>
 
                                     <p style="color: ##cccccc;">
