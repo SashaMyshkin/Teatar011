@@ -218,4 +218,51 @@
         <cfreturn q_comments>
 
     </cffunction>
+
+    <cffunction name="getRejected" access="public" returntype="query">
+        
+        <cfquery name="q_rejected_candidates" datasource="#application.datasource#">
+            select 
+            c.id, 
+            c.name, 
+            c.surname, 
+            c.email
+            
+            from candidates c
+            where 1=1
+            and present = 1
+            and accepted = 0
+            and resultsEmail = 0
+           
+            order by c.id desc
+        </cfquery>
+        
+        <cfreturn q_rejected_candidates>
+
+    </cffunction>
+
+    <cffunction name="getAccepted" access="public" returntype="query">
+        
+        <cfquery name="q_accepted_candidates" datasource="#application.datasource#">
+            select 
+            c.id, 
+            c.name, 
+            c.surname, 
+            c.email
+            
+            from candidates c
+            where 1=1
+            and present = 1
+            and accepted = 1
+            and resultsEmail = 0
+           
+            order by c.id desc
+        </cfquery>
+
+
+       
+        
+        <cfreturn q_accepted_candidates>
+
+    </cffunction>
 </cfcomponent>

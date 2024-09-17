@@ -28,6 +28,19 @@
         </p>
     </cfif>
 
+    <cfif url.action eq "rezultati">
+        <cfset rejected = DATA.getRejected()>
+        <cfset accepted = DATA.getAccepted()>
+        <cfset MNG_EMAIL.rejecionEmail(rejected)>
+        <cfset MNG_EMAIL.acceptanceEmail(accepted)>
+
+        <cfdump var="#rejected#">
+        <cfdump var="#accepted#">
+        <p class="mt-3 text-center">
+            Ukupno obaveštenih kandidata: #rejected.recordcount + accepted.recordcount#;
+        </p>
+    </cfif>
+
 </cfoutput>
 
 
