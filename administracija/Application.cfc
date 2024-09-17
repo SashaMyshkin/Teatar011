@@ -54,13 +54,11 @@
                         and `username` = <cfqueryparam value="#cflogin.name#" cfsqltype="CF_SQL_VARCHAR" maxlength="30">
                         and `password` = <cfqueryparam value="#hash(cflogin.password, 'SHA-256')#" cfsqltype="CF_SQL_VARCHAR" maxlength="64">
                     </cfquery>
+                    <cfset session.userId = loginQuery.id>
                     <cfif loginQuery.Roles NEQ "">
                         <cfloginuser name="#cflogin.name#" Password = "#cflogin.password#" roles="#loginQuery.Roles#">
                     <cfelse>
-                        <cfoutput>
-                            <H2>Your login information is not valid.<br>Please Try again</H2>
-                        </cfoutput>
-                        <cfinclude template="loginform.cfm">
+                        <cfmodule template="loginform.cfm" text="Neispravni kredencijali.">
                         <cfreturn false>
                     </cfif> 
                 </cfif>

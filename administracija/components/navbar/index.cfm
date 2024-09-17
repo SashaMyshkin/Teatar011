@@ -43,7 +43,8 @@
                         <ul class="dropdown-menu">
                           <li><a class="dropdown-item" href="#application.root#audicija/svi-kandidati/">Pregled svih kandidata</a></li>
                           <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#application.root#audicija/uzi-krug/" >Odabir kandidata za uži krug</a></li>
+                          <li><a class="dropdown-item" href="#application.root#audicija/komentari/">Komentari</a></li>
+                          <li><a class="dropdown-item disabled" href="#application.root#audicija/uzi-krug/" >Odabir kandidata za uži krug</a></li>
                           <li><a class="dropdown-item disabled" href="" >Odredi satnicu</a></li>
                           <li><a class="dropdown-item disabled" href="" >Odluka o prijemu u teatar</a></li>
                           <li><hr class="dropdown-divider"></li>
@@ -51,7 +52,7 @@
                           <li><a class="dropdown-item disabled" href="" >Kreiraj satnicu </a></li>
                           <li><a class="dropdown-item disabled" href="" >Biranje budućih članova </a></li>
                           <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#application.root#audicija/mejlovi/" >Slanje mejlova</a></li>
+                          <li><a class="dropdown-item disabled" href="#application.root#audicija/mejlovi/" >Slanje mejlova</a></li>
                         </ul>
                     </li>
                     

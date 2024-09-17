@@ -12,7 +12,9 @@
             c.email,
             confirmed,
             s.sex,
-            c.shortlisted
+            c.shortlisted,
+            c.auditionTime,
+            c.timeEmail
             from candidates c
             inner join howHeardAboutUs h on h.id = c.howHeardAboutUsId
             inner join sex s on s.id = c.sexId
@@ -97,7 +99,9 @@
             `accepted`, 
             `uniqueKey`, 
             `confirmed`, 
-            c.`theWay`
+            c.`theWay`,
+            c.auditionTime,
+            c.timeEmail
              FROM `candidates` c
              inner join howHeardAboutUs hhs on hhs.id = c.howHeardAboutUsId
              WHERE c.id = '#url.q#'
@@ -112,7 +116,7 @@
         </cfquery>
     </cffunction>
 
-    <cffunction name="getConfirmedCandidates" access="public" returntype="query">
+    <cffunction name="getConfirmedUnnotifiedCandidates" access="public" returntype="query">
 
         <cfquery name="q_candidates" datasource="#application.datasource#">
             select 
@@ -135,5 +139,65 @@
         </cfquery>
 
         <cfreturn q_candidates>
+    </cffunction>
+
+    <cffunction name="getConfirmedCandidates" access="public" returntype="query">
+
+        <cfquery name="q_confirmed_candidates" datasource="#application.datasource#">
+            select c.id, 
+            c.name, 
+            c.surname, 
+            DATE_FORMAT(c.dateOfBirth, '%d.%m.%Y') dateOfBirth, 
+            h.way heardAboutUs, 
+            c.whatYouWatched playsWatched,
+            c.email,
+            confirmed,
+            s.sex,
+            c.shortlisted
+            from candidates c
+            inner join howHeardAboutUs h on h.id = c.howHeardAboutUsId
+            inner join sex s on s.id = c.sexId
+            where 1=1
+            and confirmed = 1
+            <cfif structKeyExists(form, 'name') and form.name neq ''>
+                and c.name like '%#form.name#%'
+            </cfif>
+            <cfif structKeyExists(form, 'surname') and form.surname neq ''>
+                and c.surname like '%#form.surname#%'
+            </cfif>
+            <cfif session.time neq "">
+                and c.auditionTime like '%#session.time#%'
+            </cfif>
+            order by c.id desc
+        </cfquery>
+
+        <cfreturn q_confirmed_candidates>
+    </cffunction>
+
+    <cffunction name="getComment" access="public" returntype="query">
+        <cfquery name="q_comment" datasource="#application.datasource#">
+            select id, comment from candidatesComments 
+            where 1=1
+            and user_id = '#session.userId#'
+            and candidate_id = '#url.q#'
+        </cfquery>
+        <cfreturn q_comment>
+    </cffunction>
+
+    <cffunction name="leaveTheComment" access="public" returntype="void">
+        
+        <cfset commentQuery = getComment()>
+        
+        <cfif commentQuery.id eq "">
+            <cfquery name="q_comment_ins" datasource="#application.datasource#">
+                insert into candidatesComments (comment, user_id, candidate_id)
+                values ('#form.comment#', '#session.userId#', '#url.q#')
+            </cfquery>
+        <cfelse>
+            <cfquery name="q_comment_ins" datasource="#application.datasource#">
+                update candidatesComments set comment = '#form.comment#' where id = '#commentQuery.id#'
+            </cfquery>
+        </cfif>
+        
     </cffunction>
 </cfcomponent>

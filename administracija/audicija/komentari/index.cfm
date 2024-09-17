@@ -4,9 +4,17 @@
 <cfparam name="url.q" default="">
 <cfparam name="form.name" default="">
 <cfparam name="form.surname" default="">
-<cfparam name="form.sex" default="">
-<cfparam name="form.confirmed" default="">
 <cfparam name="form.action" default="false">
+
+<cfif not structKeyExists(session, 'time')>
+    <cfset session.time = "">
+</cfif>
+
+<cfif structKeyExists(form, "time")>
+    <cfset session.time = form.time>
+</cfif>
+
+    
 
 <cfset DATA = createObject('component','../auditionData')>
 
@@ -19,7 +27,7 @@
 	
 	<div class="container">
 		<cfif url.q eq "">
-			<cfset candidates = DATA.getAllCandidates()>
+			<cfset candidates = DATA.getConfirmedCandidates()>
 			<p class="mt-3 mb-2"><b>Lista kandidata</b></p>
 			<hr>
 			<form method="POST" name="searchForm" id="searchForm">
@@ -35,25 +43,13 @@
 					</div>
 		
 					<div class="col-md-2">
-						<label for="select1" class="form-label">Pol</label>
-						<select class="form-select form-select-sm form-select-dark" id="sex" name="sex">
-							<option value="" <cfif form.sex eq ""> selected</cfif>></option>
-							<option value="1" <cfif form.sex eq "1"> selected</cfif>>Muški</option>
-							<option value="2" <cfif form.sex eq "2"> selected</cfif>>Ženski</option>
-							<option value="3" <cfif form.sex eq "3"> selected</cfif>>Drugo</option>
-						</select>
+						<label for="input2" class="form-label">Vreme audicije</label>
+						<input value="#session.time#" type="text" class="form-control form-control-sm form-control-dark" id="time" name="time" placeholder="Unesite vreme audicije">
 					</div>
-					<div class="col-md-2">
-						<label for="select1" class="form-label">Potvrdio dolazak</label>
-						<select class="form-select form-select-sm form-select-dark" id="confirmed" name="confirmed">
-							<option value="" <cfif form.confirmed eq ""> selected</cfif>></option>
-							<option value="1" <cfif form.confirmed eq "1"> selected</cfif>>DA</option>
-							<option value="0" <cfif form.confirmed eq "0"> selected</cfif>>NE</option>
-						</select>
-					</div>
+
 					<div class="col-md-1">
 						<label for="select1" class="form-label">&nbsp;</label>
-						<button type="submit" class="btn btn-sm btn-primary d-block">Search</button>
+						<button type="submit" class="btn btn-sm btn-primary d-block">Pretraži</button>
 					</div>
 			  	</div>
 			</form>
@@ -67,7 +63,6 @@
 						<th scope="col">Ime</th>
 						<th scope="col">Prezime</th>
 						<th scope="col">Datum rođenja</th>
-						<th scope="col">Pol</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -78,22 +73,37 @@
 							<td>#name#</td>
 							<td>#surname#</td>
 							<td>#dateOfBirth#</td>
-							<td>#sex#</td>
 						</tr>
 						<cfset count = count + 1>
 					</cfloop>
 				</tbody>
 			</table>
 		<cfelse>
+            
 			<cfif form.action eq "true">
-				<cfset DATA.shortlistTheCandidate()>
-			</cfif>
+                <cfset DATA.leaveTheComment()>
+            </cfif>
+            <cfset commentObject = DATA.getComment()>
 			<cfset candidate = DATA.getCandidateById(url.q)>
-			<p class="mt-3 mb-2"> <button type="button" class="btn btn-sm btn-secondary" onclick="location.href='#application.root#audicija/svi-kandidati/'"> Nazad </button> &nbsp; <b>Informacije o kandidatu</b></p>
+            
+			<p class="mt-3 mb-2"> <button type="button" class="btn btn-sm btn-secondary" onclick="location.href='#application.root#audicija/komentari/'"> Nazad </button> &nbsp; <b>Informacije o kandidatu</b></p>
 			<hr>
 			<form method="POST" name="submitForm" id="submitForm">
 				<input type="hidden" name="action" value="true">
 				<div class="row">
+                    <div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<h4 class="card-title">Komentar</h4>
+							</div>
+							<div class="card-body">
+								<form id="commentForm" name="commentForm" method="POST">
+									<textarea rows="6" id="comment" name="comment" style="color:black;width:100%;font-size:0.9rem">#commentObject.comment#</textarea>
+									<button class="btn btn-secondary btn-sm" type="submit">Ostavi komentar</button>
+								</form>
+							</div>
+						</div>
+					</div>
 					
 					<div class="col-md-4">
 						<div class="card">

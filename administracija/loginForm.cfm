@@ -1,4 +1,5 @@
 <cfinclude template="txt.cfm">
+<cfparam name="attributes.text" default="">
 
 <cfoutput>
     <!DOCTYPE html>
@@ -104,7 +105,7 @@
                 <img src="#application.root#/logo.png" style="width:55px;"> 
                 <h2>#txtAdministration#</h2>
 
-                
+                <cfif attributes.text neq ""><h3 style="color:red">#attributes.text#</h3></cfif>
                 <form class="login-form" action="#application.root#" method="POST">
                     <div class="form-group">
                         <label for="username">#txtUsername#:</label>
