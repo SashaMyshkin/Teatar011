@@ -47,9 +47,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#application["root"]#ansambl/">#txtEnsemble#</a>
                     </li>
-                    <li class="nav-item">
+                    <!---li class="nav-item">
                         <a class="nav-link" href="#application["root"]#audicija/">#txtAudition#</a>
-                    </li>
+                    </!---li----->
                 </ul>
                 <!------ul class="navbar-nav text-center">
                     <cfif session.lang neq "sr-Cyrl">
