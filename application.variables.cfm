@@ -4,7 +4,7 @@
     <cfset application["root"] = "https://teatar011.com/">
 </cfif>
 
-<cfset application.langs = ["sr-Cyrl", "sr-Latn", "en"]>
+<cfset application.langs = ["sr-Latn"]>
 <cfset application.lang = "sr-Latn">
 <cfset application.modes = ["development", "production"]>
 <cfset application.datasource = "teatarc1_teatar011_production">

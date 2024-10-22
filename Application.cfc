@@ -20,9 +20,7 @@
         <cfinclude template="application.variables.cfm">
 
         <cfoutput>
-            <cfif structKeyExists(url, "lang") and ArrayFind(application.langs, url.lang) gt 0>
-                <cfset session.lang = url.lang>
-            </cfif>
+            <cfset session.lang = "sr-Latn">
 
             <cfif not structKeyExists(url, "dv")>
                 <cfset url.dv = "false">
@@ -66,7 +64,7 @@
     </cffunction>
 
     <cffunction name="onApplicationStart">
-        <cfset application.scripts = ["sr-Cyrl", "sr-Latn", "en"]>
+        <cfset application.scripts = ["sr-Latn"]>
         <cfset application.lang = "sr-Latn">
         <cfset application.modes = ["development", "production"]>
         <cfset application.defaultMode = "production">
