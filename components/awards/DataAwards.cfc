@@ -57,7 +57,7 @@
                 and p.pathname="#performance#"
             </cfif>
 
-            order by ifnull(f.importance, 50), f.name;
+            order by ifnull(f.importance, 0) desc, f.name;
 
         </cfquery>
 

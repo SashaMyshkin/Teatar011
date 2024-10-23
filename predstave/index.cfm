@@ -16,7 +16,7 @@
                     <div class="col" style="max-width:350px" onclick="">
                         <a href = '?q=#play.pathname#'>
                             <div class="card text-center bg-dark" style="color: var(--gold-main)">
-                                <img src="#application.root##play.img#/poster.png" class="card-img" alt="#play.alt#">
+                                <img src="#application.root##play.img#" class="card-img" alt="#play.alt#">
                                 <div class="card-body">
                                     <p class="card-text"><i style="color: var(--gold-main)">#play.slogan#</i></p>
                                 </div>
