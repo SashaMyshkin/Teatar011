@@ -89,7 +89,7 @@
                     'website',
                     @title,
                     @descriptions,
-                    '#cgi.request_url#',
+                    '#getCannonical()#',
                     concat('https://teatar011.com', @img),
                     @alt,
                     '#cgi.HTTPS#'
