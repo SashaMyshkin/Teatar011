@@ -1,30 +1,23 @@
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JRD3V68RE9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<cfif application["production"]>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRD3V68RE9"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-JRD3V68RE9');
-</script>
+    gtag('config', 'G-JRD3V68RE9');
+    </script>
+</cfif>
 
 <cfset DATA = createObject('component', 'utilis/MetaTags')>
-<cfset metaTags = DATA.getMetaTags("#cgi.SCRIPT_NAME#?#cgi.QUERY_STRING#")>
-
-<cfif metaTags.id eq "" and cgi.HTTPS eq "on">
-    <cfset DATA.insertURL("#cgi.SCRIPT_NAME#?#cgi.QUERY_STRING#", '#cgi.HTTPS#')>
-</cfif>
+<cfset DATA.generateMetaTags()>
+<cfset metaTags = DATA.getMetaTags()>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Aleksandar Jovanović">
 <meta name="google-site-verification" content="lrd-uRZol0NdMbnOlJ4djmoKIUh7qW8oKtRg79JdzkI" />
-
-
-
-
-
-
 
 <cfoutput>
     <!-- Title -->
@@ -77,6 +70,11 @@
     <cfif structKeyExists(metaTags, "og_image_alt")>
         <meta property="og:image:alt" content="#metaTags.og_image_alt#" />
     </cfif>
+
+    <!-- Open Graph Image Alt -->
+    <link rel="canonical" href="#replace(DATA.getCannonical(), ' ', '')#" />
+
+   
 </cfoutput>
 
 
