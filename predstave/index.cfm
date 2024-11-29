@@ -28,11 +28,21 @@
         </div>
     <cfelse>
         <cfset play = DATA.getPlay('#url.q#')>
+        <cfset scheduledPerformancesData = DATA.getScheduledPerformance()>
 
         <header class="jumbotron text-white text-center">
             <div class="container">
                 <h1 class="display-4">#play.performanceName#</h1>
+                <cfif scheduledPerformancesData.performanceId neq "">
+                    <p> <i> #dateFormat(scheduledPerformancesData.dateAndTime, "dd. mm. yyyy.")# u 
+                        #TimeFormat(scheduledPerformancesData.dateAndTime, "HH.mm")# č. -
+                        #scheduledPerformancesData.hall#, #scheduledPerformancesData.city#</i>
+                    </p>
+                </cfif>
+                
                 <p class="lead"><i>#play.slogan#</i></p>
+
+                
             </div>
         </header>
 

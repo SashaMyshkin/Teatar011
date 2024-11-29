@@ -32,7 +32,8 @@
         <cfset var data = structNew()>
         <cfset var data["performanceName"] = "">
         <cfset var data["slogan"] = "">
-        <cfset data["paragraphs"] = arrayNew()>
+        <cfset var data["paragraphs"] = arrayNew()>
+      
 
         <cfquery name="q_performance" datasource="#application.datasource#">
             select 
@@ -69,6 +70,25 @@
 
         <cfset data["paragraphs"] = QUERY.toArray(q_about)>
 
+
         <cfreturn data>
+    </cffunction>
+
+    <cffunction name="getScheduledPerformance" access="public" returntype="query">
+        <cfquery name="q_scheduledPerformance" datasource="#application.datasource#">
+            SELECT 
+                `performanceId`, 
+                `dateAndTime`, 
+                `city`, 
+                `hall` 
+            FROM `scheduledPerformances` sp
+            INNER JOIN performances p on p.id = sp.performanceId
+            WHERE 1=1
+                AND dateAndTime >= now()
+                AND pathname = '#url.q#'
+            LIMIT 1
+        </cfquery>
+
+        <cfreturn q_scheduledPerformance>
     </cffunction>
 </cfcomponent>
