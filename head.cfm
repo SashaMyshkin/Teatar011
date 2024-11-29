@@ -9,6 +9,8 @@
     </script>
 </cfif>
 
+<cfinclude template="structuredData.cfm">
+
 <cfset DATA = createObject('component', 'utilis/MetaTags')>
 <cfset DATA.generateMetaTags()>
 <cfset metaTags = DATA.getMetaTags()>
