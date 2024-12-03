@@ -34,7 +34,7 @@
             <div class="container">
                 <h1 class="display-4">#play.performanceName#</h1>
                 <cfif scheduledPerformancesData.performanceId neq "">
-                    <p> <i> #dateFormat(scheduledPerformancesData.dateAndTime, "dd. mm. yyyy.")# u 
+                    <p style="font-size:14px"> <i> #dateFormat(scheduledPerformancesData.dateAndTime, "dd. mm. yyyy.")# u 
                         #TimeFormat(scheduledPerformancesData.dateAndTime, "HH.mm")# č. -
                         #scheduledPerformancesData.hall#, #scheduledPerformancesData.city#</i>
                     </p>
