@@ -34,10 +34,12 @@
             <div class="container">
                 <h1 class="display-4">#play.performanceName#</h1>
                 <cfif scheduledPerformancesData.performanceId neq "">
-                    <p style="font-size:14px"> <i> #dateFormat(scheduledPerformancesData.dateAndTime, "dd. mm. yyyy.")# u 
+                    <p style="font-size:14px; <cfif scheduledPerformancesData.cancelled eq 1>text-decoration: line-through red;</cfif>" > <i> #dateFormat(scheduledPerformancesData.dateAndTime, "dd. mm. yyyy.")# u 
                         #TimeFormat(scheduledPerformancesData.dateAndTime, "HH.mm")# č. -
                         #scheduledPerformancesData.hall#, #scheduledPerformancesData.city#</i>
+                        
                     </p>
+                    <cfif scheduledPerformancesData.cancelled eq 1><span>OTKAZANO!<span></cfif>
                 </cfif>
                 
                 <p class="lead"><i>#play.slogan#</i></p>

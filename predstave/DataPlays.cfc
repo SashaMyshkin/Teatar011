@@ -80,7 +80,8 @@
                 `performanceId`, 
                 `dateAndTime`, 
                 `city`, 
-                `hall` 
+                `hall`,
+                cancelled
             FROM `scheduledPerformances` sp
             INNER JOIN performances p on p.id = sp.performanceId
             WHERE 1=1
