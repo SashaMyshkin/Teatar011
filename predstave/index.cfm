@@ -27,17 +27,22 @@
             </div>
         </div>
     <cfelse>
+        <cfset DATA.generateICSFile()>
         <cfset play = DATA.getPlay('#url.q#')>
         <cfset scheduledPerformancesData = DATA.getScheduledPerformance()>
 
         <header class="jumbotron text-white text-center">
             <div class="container">
                 <h1 class="display-4">#play.performanceName#</h1>
+
                 <cfif scheduledPerformancesData.performanceId neq "">
                     <p style="font-size:14px; <cfif scheduledPerformancesData.cancelled eq 1>text-decoration: line-through red;</cfif>" > <i> #dateFormat(scheduledPerformancesData.dateAndTime, "dd. mm. yyyy.")# u 
                         #TimeFormat(scheduledPerformancesData.dateAndTime, "HH.mm")# č. -
-                        #scheduledPerformancesData.hall#, #scheduledPerformancesData.city#</i>
-                        
+                        #scheduledPerformancesData.hall#, #scheduledPerformancesData.city#</i> &nbsp;
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-sm btn-secondary" style="font-size:10px;" data-bs-toggle="modal" data-bs-target="##calendar">
+                            Podsetnik
+                        </button>
                     </p>
                     <cfif scheduledPerformancesData.cancelled eq 1><span>OTKAZANO!<span></cfif>
                 </cfif>
@@ -64,5 +69,31 @@
         <cfmodule template="../components/roles/index.cfm" identifier="" pathname="#q#">
 
         <cfmodule template="../components/awards/index.cfm" member="" performance="#q#">
+
+         <!-- Modal -->
+        <div class="modal fade " id="calendar" tabindex="-1" aria-labelledby="calendarLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-dark">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="calendarLabel">Podsetnik</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Ukoliko želite da dodate izvođenje predstave u svoj kalendar, pratite sledeće korake:</p>
+
+                        <ol>
+                            <li>Preuzmite fajl: <a href="#application.root#/predstave/ics/#url.q#.ics" download="#url.q#.ics">#url.q#.ics</a></li>
+                            <li>Otvorite preuzeti fajl. </li>
+                            <li>Sačuvajte događaj u svom kalendaru.</li>
+                            
+                        </ol>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </cfif>
 </cfoutput>
