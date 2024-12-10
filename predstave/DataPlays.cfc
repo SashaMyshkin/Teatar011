@@ -117,8 +117,7 @@
 
         <cfif q_scheduledPerformance.id neq "">
 <cfoutput>
-<cfsavecontent variable="icsFile">
-BEGIN:VCALENDAR
+<cfsavecontent variable="icsFile">BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:teatar011.com
 CALSCALE:GREGORIAN
@@ -163,10 +162,8 @@ END:VCALENDAR
 <cffile 
             action = "write" 
             file = "#ExpandPath('./ics/#url.q#.ics')#" 
-            output = "#icsFile#" 
-            addNewLine = "no"
+            output = "#icsFile#"
             charset = "UTF-8" 
-            fixnewline = "no"
             mode="644">
         </cfif>
 
