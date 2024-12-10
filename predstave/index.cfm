@@ -40,9 +40,11 @@
                         #TimeFormat(scheduledPerformancesData.dateAndTime, "HH.mm")# č. -
                         #scheduledPerformancesData.hall#, #scheduledPerformancesData.city#</i> &nbsp;
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-sm btn-secondary" style="font-size:10px;" data-bs-toggle="modal" data-bs-target="##calendar">
-                            Podsetnik
-                        </button>
+                        <cfif scheduledPerformancesData.cancelled eq 0>
+                            <button type="button" class="btn btn-sm btn-secondary" style="font-size:10px;" data-bs-toggle="modal" data-bs-target="##calendar">
+                                Podsetnik
+                            </button>
+                        </cfif>
                     </p>
                     <cfif scheduledPerformancesData.cancelled eq 1><span>OTKAZANO!<span></cfif>
                 </cfif>

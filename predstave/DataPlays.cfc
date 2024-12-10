@@ -120,13 +120,13 @@
 <cfsavecontent variable="icsFile">
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//teatar011.com//iCalendar Generator
+PRODID:teatar011.com
 CALSCALE:GREGORIAN
 BEGIN:VTIMEZONE
-TZID:Europe/Belgrade
+TZID:Europe/Berlin
 LAST-MODIFIED:#dateFormat(now(), "yyyyMMdd")#T#timeFormat(now(), "HHmmss")#
-TZURL:https://www.tzurl.org/zoneinfo-outlook/Europe/Belgrade
-X-LIC-LOCATION:Europe/Belgrade
+TZURL:https://www.tzurl.org/zoneinfo-outlook/Europe/Berlin
+X-LIC-LOCATION:Europe/Berlin
 BEGIN:DAYLIGHT
 TZNAME:CEST
 TZOFFSETFROM:+0100
@@ -145,14 +145,14 @@ END:VTIMEZONE
 BEGIN:VEVENT
 DTSTAMP:#dateFormat(now(), "yyyyMMdd")#T#timeFormat(now(), "HHmmss")#
 UID:#q_scheduledPerformance.id#-#url.q#-@teatar011.com
-DTSTART;TZID=Europe/Belgrade:#dateFormat(q_scheduledPerformance.dateAndTime, "yyyyMMdd")#T#timeFormat(q_scheduledPerformance.dateAndTime, "HHmmss")#
-DTEND;TZID=Europe/Belgrade:#dateFormat(q_scheduledPerformance.endDateTime, "yyyyMMdd")#T#timeFormat(q_scheduledPerformance.endDateTime, "HHmmss")#
+DTSTART;TZID=Europe/Berlin:#dateFormat(q_scheduledPerformance.dateAndTime, "yyyyMMdd")#T#timeFormat(q_scheduledPerformance.dateAndTime, "HHmmss")#
+DTEND;TZID=Europe/Berlin:#dateFormat(q_scheduledPerformance.endDateTime, "yyyyMMdd")#T#timeFormat(q_scheduledPerformance.endDateTime, "HHmmss")#
 SUMMARY:#q_scheduledPerformance.name# - Teatar 011
 DESCRIPTION:Kartu možete kupiti preko instargam stranice https://www.instagram.com/_teatar_011/ a za više informacija o predstavi posetite https://teatar011.com/predstave/?q=#url.q#
 LOCATION:#q_scheduledPerformance.hall# - #q_scheduledPerformance.city#
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Jednostavno idioti - Teatar 011
+DESCRIPTION:#q_scheduledPerformance.name# - Teatar 011
 TRIGGER:-P2D
 END:VALARM
 END:VEVENT
@@ -160,14 +160,16 @@ END:VCALENDAR
 </cfsavecontent>    
 
 </cfoutput>
-        </cfif>
-
-        <cffile 
+<cffile 
             action = "write" 
             file = "#ExpandPath('./ics/#url.q#.ics')#" 
             output = "#icsFile#" 
             addNewLine = "no"
             charset = "UTF-8" 
-            fixnewline = "no">
+            fixnewline = "no"
+            mode="644">
+        </cfif>
+
+        
     </cffunction>
 </cfcomponent>
