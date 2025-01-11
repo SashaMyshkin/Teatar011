@@ -84,7 +84,7 @@
                         <p>Ukoliko želite da dodate izvođenje predstave u svoj kalendar, pratite sledeće korake:</p>
 
                         <ol>
-                            <li>Preuzmite fajl: <a href="#application.root#/predstave/ics/#url.q#.ics" download="#url.q#.ics">#url.q#.ics</a></li>
+                            <li>Preuzmite fajl: <a href="#application.root#/predstave/ics/#url.q#.#scheduledPerformancesData.id#.ics" download="#url.q#.#scheduledPerformancesData.id#.ics">#url.q#.ics</a></li>
                             <li>Otvorite preuzeti fajl. </li>
                             <li>Sačuvajte događaj u svom kalendaru.</li>
                             

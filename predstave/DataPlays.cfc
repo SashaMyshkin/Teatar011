@@ -77,6 +77,7 @@
     <cffunction name="getScheduledPerformance" access="public" returntype="query">
         <cfquery name="q_scheduledPerformance" datasource="#application.datasource#">
             SELECT 
+                sp.id,
                 `performanceId`, 
                 `dateAndTime`, 
                 `city`, 
@@ -99,6 +100,7 @@
         <cfquery name="q_scheduledPerformance" datasource="#application.datasource#">
             SELECT 
                 sp.id,
+                p.id as performanceId,
                 `performanceId`, 
                 `dateAndTime`,
                 DATE_ADD(DATE_ADD(dateAndTime, INTERVAL 1 HOUR), INTERVAL 35 MINUTE) as endDateTime, 
@@ -143,7 +145,7 @@ END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
 DTSTAMP:#dateFormat(now(), "yyyyMMdd")#T#timeFormat(now(), "HHmmss")#
-UID:#q_scheduledPerformance.id#-#url.q#-@teatar011.com
+UID:#q_scheduledPerformance.id#-#url.q#-#q_scheduledPerformance.performanceId#-@teatar011.com
 DTSTART;TZID=Europe/Berlin:#dateFormat(q_scheduledPerformance.dateAndTime, "yyyyMMdd")#T#timeFormat(q_scheduledPerformance.dateAndTime, "HHmmss")#
 DTEND;TZID=Europe/Berlin:#dateFormat(q_scheduledPerformance.endDateTime, "yyyyMMdd")#T#timeFormat(q_scheduledPerformance.endDateTime, "HHmmss")#
 SUMMARY:#q_scheduledPerformance.name# - Teatar 011
@@ -161,7 +163,7 @@ END:VCALENDAR
 </cfoutput>
 <cffile 
             action = "write" 
-            file = "#ExpandPath('./ics/#url.q#.ics')#" 
+            file = "#ExpandPath('./ics/#url.q#.#q_scheduledPerformance.id#.ics')#" 
             output = "#icsFile#"
             charset = "UTF-8" 
             mode="644">
