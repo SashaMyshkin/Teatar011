@@ -4,16 +4,23 @@
     <cfset VALIDATION = createObject('component', 'DataValidationAudition')>
     <cfset RESPONSE = createObject('component', '../utilis/Response')>
 
-    <cffunction name="getAuditionId" access="public" returntype="number">
+    <cffunction name="getAuditionData" access="public" returntype="query">
         <cfquery name="q_audition" datasource="#application.datasource#">
-            SELECT `id`
+            SELECT `id`, 
+                `auditionTypeId`,
+                `startDate`,
+                `endDate`,
+                `deadLine`, 
+                `auditionTime`, 
+                `uniqueKey`, 
+                `isOpen`
             FROM `audition` 
             WHERE 1=1
             AND isOpen = 1
             LIMIT 1
         </cfquery>
 
-        <cfreturn q_audition.id>
+        <cfreturn q_audition>
     </cffunction>
 
     <cffunction name="howHeardAboutUs" access="public" returntype="array">
@@ -189,11 +196,13 @@
 
     <cffunction name="sendAnEmail" access="public" returntype="numeric">
         <cfargument name="email" type="string" required="true">
+
+        <cfset auditionData = getAuditionData()>
         
 
         <cfmail to="#trim(email)#"
         from="info@teatar011.com"
-        subject="Аудиција - Театар 011"
+        subject="Пријава за аудицију - Театар 011"
         type="text/html">
 
         <!DOCTYPE html>
@@ -202,7 +211,7 @@
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Пријава за аудицију</title>
+                <title>Пријава за аудицију - Театар 011</title>
             </head>
 
             <body style="font-family: Arial, sans-serif; background-color: ##000000; color: ##ffffff; margin: 0; padding: 0;">
@@ -210,14 +219,20 @@
                     <div style="text-align: center; padding: 10px; border-bottom: 1px solid ##333333;">
                         <h1 style="color: ##ffffff;text-align: center;"><img src="https://teatar011.com/assets/img/logo.png"
                                 style="width: 70px; border-radius:50%">
-                            <br>Аудиција за септембар 2024.
+                            <br>Пријава за аудицију - Театар 011
                         </h1>
                     </div>
                     <div style="margin: 20px 0; text-align: center;">
                         <p style="color: ##cccccc;">Поштовани,</p>
                         <p style="color: ##cccccc;">Ваша пријава је успешно забележена.</p>
-                        <p style="color: ##cccccc;"> Аудиција ће се одржати 17. септембра 2024. у просторијама театра на адреси 
-                            <i>Војводе Мицка Крстића 1Ј/3</i>. Када се затвори пријава кандидата,благовремено ћемо Вас обавестити мејлом о тачној сатници доласка. 
+                        <p style="color: ##cccccc;"> 
+                            Када се затвори пријава кандидата, 
+                            благовремено ћемо Вас обавестити мејлом о 
+                          <cfif auditionData.endDate neq "">
+                            тачном датуму и сатници доласка.
+                          <cfelse>
+                            тачној сатници доласка.
+                          </cfif>  
                         </p>
                         <p style="color: ##cccccc;"> Уколико имате било каквих додатних питања можете нам писати на Инстаграм страници 
                             <a href="https://www.instagram.com/_teatar_011/">@_teatar_011</a>, Фејсбук страници <a href="https://www.facebook.com/Teatar011/"> Teatar011 </a>, 
@@ -226,7 +241,8 @@
                         <p style="color: ##cccccc;">Радујући се скорашњем сусрету, срдачно Вас поздравља, <br><i>Театар 011</i></p>
                     </div>
                     <div style="text-align: center; padding: 10px; border-top: 1px solid ##333333; font-size: 12px;">
-                        <p style="color: ##cccccc;">&copy; 2024 Театар 011. All rights reserved.</p>
+                        <p style="color: ##cccccc;">&copy; Идентификатор аудиције:#auditionData.uniqueKey#.</p>
+                        <p style="color: ##cccccc;">&copy; #year(now())# Театар 011. All rights reserved.</p>
                     </div>
                 </div>
             </body>

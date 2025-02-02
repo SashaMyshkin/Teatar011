@@ -1,5 +1,7 @@
 <cfinclude template="txt.cfm">
 
+<cfset NAVBAR_DATA = createObject('component','data')>
+
 <style>
     .nav-link{
         color: var(--gold-main)!important;
@@ -47,9 +49,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#application["root"]#ansambl/">#txtEnsemble#</a>
                     </li>
-                    <!---li class="nav-item">
-                        <a class="nav-link" href="#application["root"]#audicija/">#txtAudition#</a>
-                    </!---li----->
+                    <cfif NAVBAR_DATA.isThereOpenAudition().id neq "">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#application["root"]#audicija/">#txtAudition#</a>
+                        </li>
+                    </cfif>
+                    
                 </ul>
                 <!------ul class="navbar-nav text-center">
                     <cfif session.lang neq "sr-Cyrl">

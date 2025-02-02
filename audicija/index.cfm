@@ -23,6 +23,17 @@
     <cfset DATA = createObject('component', 'DataAudition')>
     <cfset ways = DATA.howHeardAboutUs()>
     <cfset sex = DATA.getSex()>
+    <cfset auditionData = DATA.getAuditionData()>
+    <cfset startDate = dateformat(auditionData.startDate, 'dd. m. yyyy')>
+
+    <cfif auditionData.endDate neq "">
+        <cfset endDate = dateformat(auditionData.endDate, 'dd. m. yyyy.')>
+    <cfelse>
+        <cfset endDate = "">
+    </cfif>
+
+    <cfset auditionTime = timeformat(auditionData.auditionTime, 'HH.mm')>
+   
 
     <br><br>
     <img src="/assets/img/logo.png" width="100" style="border-radius:50%; display:block; margin:0 auto;">
@@ -32,12 +43,21 @@
             
             <form id="audition-form" name="audition-form" action="index.cfm" method="POST">
                 <input type="hidden" value="" id="action" name="action">
-                <input type="hidden" value="#DATA.getAuditionId()#" id="auditionId" name="auditionId">
+                <input type="hidden" value="#auditionData.id#" id="auditionId" name="auditionId">
                 <h1>#txtAuditionApplication#</h1>
                 <p style="text-align:center">Došao je trenutak nove audicije u Teatru 011! </p>
-                <p style="text-align:center"> 17. septembra u 19.00 časova.</p> 
+                <p style="text-align:center"> 
+                    <cfif endDate neq "">
+                        #startDate# - #endDate# u #auditionTime# časova
+                    <cfelse>
+                        #startDate#. u #auditionTime# časova
+                    </cfif>
+                </p> 
                 <p style="text-align:justify">Imate mogućnost da nam se predstavite svojim programom (pesma, monolog, imitacija) ili da izaberete mogućnost da vas mi provedemo kroz naše improvizacije, u tom slučaju dovoljno je da se samo pojavite u zakazanom terminu.</p>
-                <p style="text-align:justify">Mi jedva čekamo da naš teatar obogatimo novim ljudima koji će sa nama zaigrati na pozorišnim daskama. Sve što je potrebno da uradite je da popunite prijavu i mi ćemo Vam se javiti mejlom sa svim potrebnim detaljima.</p>
+                <p style="text-align:justify">
+                    Mi jedva čekamo da naš teatar obogatimo novim ljudima koji će sa nama zaigrati na pozorišnim daskama. 
+                    Sve što je potrebno da uradite je da popunite prijavu, 
+                    a mi ćemo Vam se javiti mejlom sa svim potrebnim detaljima.</p>
                 <div class="form-group-app">
                     <label for="full-name">#txtName#</label>
                     <input type="text" id="name" name="name"  max="30" value="#form.name#">
