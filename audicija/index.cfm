@@ -24,6 +24,7 @@
     <cfset ways = DATA.howHeardAboutUs()>
     <cfset sex = DATA.getSex()>
     <cfset auditionData = DATA.getAuditionData()>
+    <cfset auditionDescription = DATA.getAuditionDescription(auditionData.auditionTypeID, auditionData.presentationTypeId)>
     <cfset startDate = dateformat(auditionData.startDate, 'dd. m. yyyy')>
 
     <cfif auditionData.endDate neq "">
@@ -53,7 +54,11 @@
                         #startDate#. u #auditionTime# časova
                     </cfif>
                 </p> 
-                <p style="text-align:justify">Imate mogućnost da nam se predstavite svojim programom (pesma, monolog, imitacija) ili da izaberete mogućnost da vas mi provedemo kroz naše improvizacije, u tom slučaju dovoljno je da se samo pojavite u zakazanom terminu.</p>
+
+              <cfloop query="auditionDescription">
+                <p style="text-align:justify">#description#</p>
+              </cfloop>  
+                
                 <p style="text-align:justify">
                     Mi jedva čekamo da naš teatar obogatimo novim ljudima koji će sa nama zaigrati na pozorišnim daskama. 
                     Sve što je potrebno da uradite je da popunite prijavu, 

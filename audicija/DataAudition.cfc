@@ -13,7 +13,9 @@
                 `deadLine`, 
                 `auditionTime`, 
                 `uniqueKey`, 
-                `isOpen`
+                `isOpen`,
+                presentationTypeId,
+                auditionTypeID
             FROM `audition` 
             WHERE 1=1
             AND isOpen = 1
@@ -21,6 +23,21 @@
         </cfquery>
 
         <cfreturn q_audition>
+    </cffunction>
+
+    <cffunction name="getAuditionDescription" access="public" returntype="query">
+        <cfargument name="auditionTypeID" required="true">
+        <cfargument name="presentationTypeId" required="true">
+
+        <cfquery name="q_audition_description" datasource="#application.datasource#">
+           SELECT `description` 
+           FROM `auditionDescription` 
+           WHERE 1=1
+           and presentationTypeId = '#presentationTypeId#'
+           and auditionTypeID = '#auditionTypeID#'
+        </cfquery>
+
+        <cfreturn q_audition_description>
     </cffunction>
 
     <cffunction name="howHeardAboutUs" access="public" returntype="array">
@@ -241,7 +258,7 @@
                         <p style="color: ##cccccc;">Радујући се скорашњем сусрету, срдачно Вас поздравља, <br><i>Театар 011</i></p>
                     </div>
                     <div style="text-align: center; padding: 10px; border-top: 1px solid ##333333; font-size: 12px;">
-                        <p style="color: ##cccccc;">&copy; Идентификатор аудиције:#auditionData.uniqueKey#.</p>
+                        <p style="color: ##cccccc;"> Идентификатор аудиције:#auditionData.uniqueKey#.</p>
                         <p style="color: ##cccccc;">&copy; #year(now())# Театар 011. All rights reserved.</p>
                     </div>
                 </div>
