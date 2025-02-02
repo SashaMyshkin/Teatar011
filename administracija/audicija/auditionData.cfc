@@ -133,7 +133,7 @@
             and confirmed = 1
             and theWay is not null
             and auditionTime is not null
-            and timeEmail = 0
+            and timeEmail is null
            
             order by c.id desc
         </cfquery>
