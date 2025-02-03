@@ -20,7 +20,7 @@
             <cfreturn response>
         </cfif>
 
-        <cfif auditionModel.getAuditionByDate(form.startDate) neq "">
+        <cfif auditionModel.getAuditionByDate(form.startDate) neq "" and url.auditionId eq "">
             <cfset var response["error"] = true>
             <cfset var response["message"] = "Već postoji audicija sa ovim datumom početka ili datum početka upada u opseg postojeće audicije.">
             <cfreturn response>
@@ -29,7 +29,7 @@
         <cftransaction action="begin">
             <cftry>
                 <cfset auditionInstance = auditionModel.initFromForm()>
-                <cfset auditionInstance.setUniqueKey(form.auditionType & month(form.startDate) & year(form.startDate))>
+                <cfset auditionInstance.setUniqueKey(form.auditionType & '-' & month(form.startDate) & year(form.startDate))>
     
                 <cfif url.auditionId eq "">
                     <cfset auditionInstance.insertAudition()>
@@ -74,6 +74,24 @@
 
         <cfset auditionModel.setFinished(url.auditionId, 1)>
         <cfset auditionModel.setIsOpen(url.auditionId, 0)>
+
+        <cfset var response.error = false>
+
+        <cfreturn response>
+
+    </cffunction>
+
+    <cffunction name="deleteAudition">
+
+        <cfset var response = structNew()>
+
+        <cfif auditionModel.hasCandidates(url.auditionId)>
+            <cfset var response.error = true>
+            <cfset var response.message = "Nije moguće obrisati audiciju. Postoje prijavljeni kandidati.">
+            <cfreturn response>
+        </cfif>
+
+        <cfset auditionModel.deleteAudition(url.auditionId)>
 
         <cfset var response.error = false>
 

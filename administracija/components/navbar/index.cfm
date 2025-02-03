@@ -1,3 +1,7 @@
+<cfset auditionModel = createObject('component', '../../model/audition')>
+<cfset openAuditionId = auditionModel.getOpenAuditionId()>
+
+
 <cfinclude template="txt.cfm">
 
 <style>
@@ -41,7 +45,9 @@
                             Audicija
                         </a>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#application.root#audicija/osnovni-podaci/">Osnovni podaci</a></li>
+                          <li><a class="dropdown-item" href="#application.root#audicija/?part=lst">Spisak Audicija</a></li>
+                          <li><a class="dropdown-item <cfif openAuditionId neq "">disabled</cfif>" href="#application.root#audicija/?part=edt&auditionId=">Nova audicija</a></li>
+                          <li><a class="dropdown-item <cfif openAuditionId eq "">disabled</cfif>" href="#application.root#audicija/?part=edt&auditionId=#openAuditionId#">Aktivna audicija</a></li>
                           <li><hr class="dropdown-divider"></li>
                           <li><a class="dropdown-item" href="#application.root#audicija/svi-kandidati/">Pregled svih kandidata</a></li>
                           <li><hr class="dropdown-divider"></li>

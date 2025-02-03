@@ -2,8 +2,27 @@
 <cfparam name="url.auditionId" default="">
 <cfparam name="form.isOpen" default="0">
 
-<cfset auditionModel = createObject('component', '../../model/audition')>
-<cfset auditionController = createObject('component', '../../controller/audition')>
+<cfset auditionModel = createObject('component', '../model/audition')>
+<cfset auditionController = createObject('component', '../controller/audition')>
+
+<cfif url.part eq "del">
+    <cfoutput>
+        <cfset response = auditionController.deleteAudition()>
+
+        <cfif response.error>
+            <script>
+                alert(`#response.message#`)
+            </script>
+            <cfabort>
+        </cfif>
+
+        <script>
+            const parentURL = new URL(parent.location.href);
+            parentURL.searchParams.set('part', 'lst');
+            parent.location.href = parentURL.href;
+        </script>
+    </cfoutput>  
+</cfif>
 
 <cfif url.part eq "end">
     <cfoutput>
@@ -48,13 +67,28 @@
 
 <cfif url.part eq "edt">
 
-    <cfset auditionTypes = createObject('component', '../../model/auditionType').selectAuditionTypes()>
-    <cfset presentationTypes = createObject('component', '../../model/presentationType').selectPresentationTypes()>
+    <cfset auditionTypes = createObject('component', '../model/auditionType').selectAuditionTypes()>
+    <cfset presentationTypes = createObject('component', '../model/presentationType').selectPresentationTypes()>
     <cfset auditionDetails = auditionModel.selectAudition(url.auditionId)>
 
     <cfoutput>
         <div class="container">
-            <p class="mt-3 mb-2"><b>Unos/Izmena podataka</b></p>
+            <p class="mt-3 mb-2">
+                <cfif url.auditionId eq "">
+                    <b>Nova audicija</b>
+                <cfelse>
+                    <b>Audicija br. #auditionDetails.uniqueKey#: </b>
+                    <cfif auditionDetails.isOpen eq 0 and auditionDetails.finished eq "">
+                        <span style="color:yellow">U pripremi</span>
+                    </cfif>
+                    <cfif auditionDetails.finished eq 1 and  auditionDetails.isOpen eq 0>
+                        <span style="color:green">Završena</span>
+                    </cfif>
+                    <cfif auditionDetails.isOpen eq 1>
+                        <span style="color:blue">Aktivna</span>
+                    </cfif>
+                </cfif>
+            </p>
             <hr>
     
             <form method="POST" name="edtForm" id="edtForm">
@@ -131,6 +165,9 @@
                         <div class="col-md-1">
                             <button type="button" onclick="takeAnAction(this.form, 'end')" class="btn btn-sm btn-danger d-block" <cfif auditionDetails.isOpen eq "0">disabled</cfif>>Završi</button>
                         </div>
+                        <div class="col-md-1">
+                            <button type="button" onclick="takeAnAction(this.form, 'del')" class="btn btn-sm btn-danger d-block" <cfif auditionDetails.isOpen eq 1> disabled </cfif> >Obriši</button>
+                        </div>
                     </cfif> 
                 </div>
             </form>
@@ -158,5 +195,63 @@
         
     </cfoutput>
 </cfif>
+
+<cfif url.part eq "lst">
+    <cfoutput>
         
-<iframe name="G2" id="G2" src="" height="600" width="1200"></iframe>   
+
+        <cfset auditions = auditionModel.getAll()>
+
+        
+
+        <div class="container">
+            <p class="mt-3 mb-2"><b>Spisak audicija</b></p>
+            <hr>
+            <table class="table table-sm table-dark table-striped table-hover caption-top">
+                <caption class="text-light">Ukupno: #auditions.recordcount#<caption>
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">##</th>
+                        <th scope="col">Šifra</th>
+                        <th scope="col">Datum</th>
+                        <th scope="col">Tip audicije</th>
+                        <th scope="col">Tip prezentacije</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <cfset count = 1>
+                    <cfloop query="#auditions#">
+                        <cfset styles = "">
+                        <cfif isOpen eq 1>
+                            <cfset styles = "color: green;">
+                        <cfelseif isOpen eq 0 and finished eq "">
+                            <cfset styles = "color: red;">
+                        </cfif>
+                        <tr class="text-center" style="cursor:pointer;" onclick="location.href='#request.scriptName#?part=edt&auditionId=#id#'">
+                            <td>#count#.</td>
+                            <td>#uniqueKey#</td>
+                            <td>#dateFormat(startDate, 'dd. mm. yyyy')#<cfif endDate neq ""> - #dateFormat(endDate, 'dd. mm. yyyy')#</cfif></td>
+                            <td>#auditionType#</td>
+                            <td>#presentationType#</td>
+                            <td>
+                                <cfif isOpen eq 0 and finished eq "">
+                                    <span style="color:yellow">U pripremi</span>
+                                </cfif>
+                                <cfif finished eq 1 and  isOpen eq 0>
+                                    <span style="color:green">Završena</span>
+                                </cfif>
+                                <cfif isOpen eq 1>
+                                    <span style="color:blue">Aktivna</span>
+                                </cfif>
+                            </td>
+                        </tr>
+                        <cfset count = count + 1>
+                    </cfloop>
+                </tbody>
+            </table>
+        </div>
+    </cfoutput> 
+</cfif>
+        
+<iframe name="G2" id="G2" src="" height="0" width="0"></iframe>   

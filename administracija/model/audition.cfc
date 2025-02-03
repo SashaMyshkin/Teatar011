@@ -211,4 +211,45 @@
 
     </cffunction>
 
+    <cffunction name="getAll">
+
+        <cfquery name="q_all_auditions_data" datasource="#application.datasource#">
+            SELECT a.`id`,
+            pt.type as presentationType,
+            t.type as auditionType,
+            `auditionTypeId`, 
+            `presentationTypeId`, 
+            `startDate`, 
+            `endDate`, 
+            `deadLine`, 
+            `auditionTime`, 
+            `enrollmentDateTime`, 
+            `membershipFee`, 
+            `uniqueKey`, 
+            `isOpen`,
+            `finished` 
+            FROM `audition` a
+            INNER JOIN auditionPresentationType pt on pt.id = a.presentationTypeId
+            INNER JOIN auditionType t on t.id = a.auditionTypeId
+            WHERE 1=1
+            ORDER BY startDate DESC
+        </cfquery>
+
+        <cfreturn q_all_auditions_data>
+
+    </cffunction>
+
+    <cffunction name="hasCandidates">
+        <cfargument name="id">
+
+        <cfquery name="q_candidate_check" datasource="#application.datasource#">
+            SELECT id from candidates
+            where auditionId = '#arguments.id#'
+            limit 1
+        </cfquery>
+
+        <cfreturn q_candidate_check.recordcount > 0>
+
+    </cffunction>
+
 </cfcomponent>
