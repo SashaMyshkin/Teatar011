@@ -41,6 +41,8 @@
                             Audicija
                         </a>
                         <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#application.root#audicija/osnovni-podaci/">Osnovni podaci</a></li>
+                          <li><hr class="dropdown-divider"></li>
                           <li><a class="dropdown-item" href="#application.root#audicija/svi-kandidati/">Pregled svih kandidata</a></li>
                           <li><hr class="dropdown-divider"></li>
                           <li><a class="dropdown-item" href="#application.root#audicija/komentari/">Komentari</a></li>
