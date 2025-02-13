@@ -19,7 +19,7 @@
             inner join howHeardAboutUs h on h.id = c.howHeardAboutUsId
             inner join sex s on s.id = c.sexId
             where 1=1
-            <cfif structKeyExists(form, 'name') and form.name neq ''>
+            <cfif structKeyExists(session, 'candidateName') and session.name neq ''>
                 and c.name like '%#form.name#%'
             </cfif>
             <cfif structKeyExists(form, 'surname') and form.surname neq ''>
@@ -79,36 +79,7 @@
         <cfreturn q_shortlisted_unnotified>
     </cffunction>
 
-    <cffunction name="getCandidateById" access="public" returntype="query">
-
-        <cfquery name="q_CandidateById" datasource="#application.datasource#">
-            SELECT c.`id`, 
-            `auditionId`, 
-            `name`, 
-            `surname`, 
-            DATE_FORMAT(c.dateOfBirth, '%d. %m. %Y.') dateOfBirth,
-            `email`, 
-            hhs.way howHeardAboutUs, 
-            `haveYouWatched`, 
-            `whatYouWatched`, 
-            `sexId`, 
-            `biography`, 
-            `phone`, 
-            `shortlisted`, 
-            `confirmationEmail`, 
-            `accepted`, 
-            `uniqueKey`, 
-            `confirmed`, 
-            c.`theWay`,
-            c.auditionTime,
-            c.timeEmail
-             FROM `candidates` c
-             inner join howHeardAboutUs hhs on hhs.id = c.howHeardAboutUsId
-             WHERE c.id = '#url.q#'
-        </cfquery>
-
-        <cfreturn q_CandidateById>
-    </cffunction>
+    
 
     <cffunction name="shortlistTheCandidate" access="public" returntype="void">
         <cfquery name="q_shortlist_update" datasource="#application.datasource#">

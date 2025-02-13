@@ -21,6 +21,9 @@
             <cfif structKeyExists(form, 'name') and form.name neq ''>
                 and c.name like '%#form.name#%'
             </cfif>
+            <cfif structKeyExists(form, 'auditionId') and form.auditionId neq ''>
+                and auditionId = '#auditionId#'
+            </cfif>
             <cfif structKeyExists(form, 'surname') and form.surname neq ''>
                 and c.surname like '%#form.surname#%'
             </cfif>

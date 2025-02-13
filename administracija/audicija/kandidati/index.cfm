@@ -7,19 +7,20 @@
 <cfparam name="form.sex" default="">
 <cfparam name="form.confirmed" default="">
 <cfparam name="form.action" default="false">
+<cfparam name="form.auditionId" default="0">
 
 <cfset candidateModel = createObject('component','../../model/candidate')>
+<cfset auditionModel = createObject('component','../../model/audition')>
 
 <cfoutput>
 	
 	<style>
 		<cfinclude template="styles.css">
 	</style>
-
 	
 	<div class="container">
 		<cfif url.q eq "">
-			<cfset candidates = DATA.getAllCandidates()>
+			<cfset candidates = candidateModel.getAllCandidates()>
 			<p class="mt-3 mb-2"><b>Lista kandidata</b></p>
 			<hr>
 			<form method="POST" name="searchForm" id="searchForm">
@@ -44,16 +45,25 @@
 						</select>
 					</div>
 					<div class="col-md-2">
+						<label for="auditionId" class="form-label">Audicija</label>
+						<select class="form-select form-select-sm form-select-dark" id="auditionId" name="auditionId">
+							<option value="">Sve</option>
+							<cfloop query="#auditionModel.getAll()#">
+								<option value="#id#" <cfif form.auditionId eq id>selected</cfif>>#dateFormat(startDate, 'dd. MM. yyyy.')#</option>
+							</cfloop>
+						</select>
+					</div>
+					<!---------div class="col-md-2">
 						<label for="select1" class="form-label">Potvrdio dolazak</label>
 						<select class="form-select form-select-sm form-select-dark" id="confirmed" name="confirmed">
 							<option value="" <cfif form.confirmed eq ""> selected</cfif>></option>
 							<option value="1" <cfif form.confirmed eq "1"> selected</cfif>>DA</option>
 							<option value="0" <cfif form.confirmed eq "0"> selected</cfif>>NE</option>
 						</select>
-					</div>
+					</!---------div--------->
 					<div class="col-md-1">
 						<label for="select1" class="form-label">&nbsp;</label>
-						<button type="submit" class="btn btn-sm btn-primary d-block">Search</button>
+						<button type="submit" class="btn btn-sm btn-primary d-block">Pretraga</button>
 					</div>
 			  	</div>
 			</form>
@@ -85,11 +95,9 @@
 				</tbody>
 			</table>
 		<cfelse>
-			<cfif form.action eq "true">
-				<cfset DATA.shortlistTheCandidate()>
-			</cfif>
-			<cfset candidate = DATA.getCandidateById(url.q)>
-			<p class="mt-3 mb-2"> <button type="button" class="btn btn-sm btn-secondary" onclick="location.href='#application.root#audicija/svi-kandidati/'"> Nazad </button> &nbsp; <b>Informacije o kandidatu</b></p>
+			
+			<cfset candidate = candidateModel.getCandidateById(url.q)>
+			<p class="mt-3 mb-2"> <button type="button" class="btn btn-sm btn-secondary" onclick="location.href='#application.root#audicija/kandidati/'"> Nazad </button> &nbsp; <b>Informacije o kandidatu</b></p>
 			<hr>
 			<form method="POST" name="submitForm" id="submitForm">
 				<input type="hidden" name="action" value="true">
