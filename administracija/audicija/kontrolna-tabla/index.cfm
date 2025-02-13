@@ -1,7 +1,7 @@
 <cfset auditionModel = createObject('component','../../model/audition')>
 
 <cfif not structKeyExists(session, 'auditionId')>
-    <cfset session.auditionId = 0>
+    <cfset session.auditionId = "">
 </cfif>
 
 <cfif structKeyExists(form, 'auditionId')>

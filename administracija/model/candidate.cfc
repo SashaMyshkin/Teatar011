@@ -39,6 +39,37 @@
         <cfreturn q_candidates>
     </cffunction>
 
+    <cffunction name="getCandidateById" access="public" returntype="query">
+
+        <cfquery name="q_CandidateById" datasource="#application.datasource#">
+            SELECT c.`id`, 
+            `auditionId`, 
+            `name`, 
+            `surname`, 
+            DATE_FORMAT(c.dateOfBirth, '%d. %m. %Y.') dateOfBirth,
+            `email`, 
+            hhs.way howHeardAboutUs, 
+            `haveYouWatched`, 
+            `whatYouWatched`, 
+            `sexId`, 
+            `biography`, 
+            `phone`, 
+            `shortlisted`, 
+            `confirmationEmail`, 
+            `accepted`, 
+            `uniqueKey`, 
+            `confirmed`, 
+            c.`theWay`,
+            c.auditionTime,
+            c.timeEmail
+             FROM `candidates` c
+             inner join howHeardAboutUs hhs on hhs.id = c.howHeardAboutUsId
+             WHERE c.id = '#url.q#'
+        </cfquery>
+
+        <cfreturn q_CandidateById>
+    </cffunction>
+
     <cffunction name="getCandidatesByAuditionId" access="public" returntype="query">
 
         <cfquery name="q_candidates_by_audition" datasource="#application.datasource#">

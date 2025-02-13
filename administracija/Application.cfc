@@ -91,6 +91,17 @@
         <cfset session.lang = application.lang>
     </cffunction>
 
+    <cffunction name="onSessionEnd">
+        <cfargument name = "SessionScope" required=true/>
+        <cfargument name = "ApplicationScope" required=true/>
+
+        <cfif structKeyExists(arguments.SessionScope, "auditionId")>
+            <cfset arguments.SessionScope.auditionId = "">
+        </cfif>
+        
+
+    </cffunction>
+
     <cffunction name="onApplicationStart">
         <cfset application.scripts = ["sr-Cyrl", "sr-Latn", "en"]>
         <cfset application.lang = "sr-Latn">
