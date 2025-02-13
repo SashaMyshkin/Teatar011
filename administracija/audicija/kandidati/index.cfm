@@ -8,7 +8,7 @@
 <cfparam name="form.confirmed" default="">
 <cfparam name="form.action" default="false">
 
-<cfset DATA = createObject('component','../auditionData')>
+<cfset candidateModel = createObject('component','../../model/candidate')>
 
 <cfoutput>
 	
