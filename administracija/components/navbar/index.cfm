@@ -49,7 +49,7 @@
                           <li><a class="dropdown-item <cfif openAuditionId neq "">disabled</cfif>" href="#application.root#audicija/?part=edt&auditionId=">Nova audicija</a></li>
                           <li><a class="dropdown-item <cfif openAuditionId eq "">disabled</cfif>" href="#application.root#audicija/?part=edt&auditionId=#openAuditionId#">Aktivna audicija</a></li>
                           <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item <cfif openAuditionId eq "">disabled</cfif>" href="#application.root#audicija/kandidati/">Kontrolna tabla</a></li>
+                          <li><a class="dropdown-item <cfif openAuditionId eq "">disabled</cfif>" href="#application.root#audicija/kontrolna-tabla/">Kontrolna tabla</a></li>
                           <li><a class="dropdown-item" href="#application.root#audicija/kandidati/">Kandidati</a></li>
                         </ul>
                     </li>

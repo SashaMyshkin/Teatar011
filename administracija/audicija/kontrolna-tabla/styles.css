@@ -1,0 +1,29 @@
+.form-control-dark {
+
+    border: 1px solid #495057;
+
+}
+
+.form-control-dark:focus {
+
+    border-color: #6c757d;
+
+}
+
+.form-select-dark {
+
+    border: 1px solid #495057;
+
+}
+
+.form-select-dark:focus {
+
+    border-color: #6c757d;
+
+}
+
+.form-select-dark option {
+
+    color: black;
+
+}
