@@ -8,7 +8,7 @@
 </style>
 
 <cfparam name="url.uq" default="">
-<cfparam name="form.theWay" default="">
+<cfparam name="form.theWay" default="ja">
 
 <cfset DATA = createObject('component', 'ConfirmationData')>
 
