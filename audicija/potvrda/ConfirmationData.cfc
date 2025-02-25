@@ -6,7 +6,7 @@
             select c.id, confirmed, name, surname
             from candidates c
             inner join audition a on a.id = c.auditionId and isOpen = 1
-            where uniqueKey = <cfqueryparam value="#arguments.uq#" cfsqltype="cf_sql_varchar">
+            where c.uniqueKey = <cfqueryparam value="#arguments.uq#" cfsqltype="cf_sql_varchar">
         </cfquery>
 
         <cfreturn q_check>
@@ -19,7 +19,7 @@
         <cfquery name="q_confirm" datasource="#application.datasource#">
             update candidates c 
             inner join audition a on a.id = c.auditionId and isOpen = 1
-            set confirmed = 1,
+            set c.confirmed = 1,
             theWay = <cfqueryparam value="#arguments.theWay#" cfsqltype="cf_sql_varchar">
             where uniqueKey = <cfqueryparam value="#arguments.uq#" cfsqltype="cf_sql_varchar">
             and id >= 0
