@@ -53,35 +53,35 @@
 
     <div class="container">
         
-        <p class="mt-2 mb-4  text-center" style="font-size:1.3rem"> 
+        <!-----p class="mt-2 mb-4  text-center" style="font-size:1.3rem"> 
             Na audiciji Teatra 011 želim da se predstavim:
-        </p>
+        </!-----p----------->
         <form id="confirmation-form" name="confirmation-form" method="POST" action="?uq=#url.uq#">
-            <p class="text-center"> 
+            <!------p class="text-center"> 
                 <input class="form-check-input" type="radio" name="theWay" id="theWay1" value="ja">
                 <label class="form-check-label" for="theWay1" style="font-size:0.9rem">
                     Svojim programom (monolog, pesma, imitacija)
                 </label>
-            </p>
-            <p class="text-center"> 
+            </!------p>
+            <p------- class="text-center"> 
                 <input class="form-check-input" type="radio" name="theWay" id="theWay2" value="vi" checked>
                 <label class="form-check-label" for="theWay2" style="font-size:0.9rem">
                     Improvizacijama koje će mi komisija zadati
                 </label>
-            </p>
+            </p------->
             <p class="mt-5 mb-5 text-center mb-2"> 
                 <button class="btn btn-primary btn-lg" type="submit"> Potvrdi dolazak</button>
             </p>
         </form>
         
-        <p class="text-center link-warning" style="font-size:0.8rem"> 
+        <!-------p class="text-center link-warning" style="font-size:0.8rem"> 
             Ni jedan od ovih načina nema prednost nad drugim.
-        </p>
-        <p class="  text-center " style="font-size:0.8rem"> 
+        </!-------p>
+        <p------- class="  text-center " style="font-size:0.8rem"> 
             <i>*Budite bez brige! Ovo nije audicija za FDU niti bismo hteli da ona izgleda tako.
             Pred Vama će sedeti ljudi koji će voleti da zablistate, a ako Vas trema bude sputavala, 
             daće sve od sebe da je zajedno prevaziđete.</i>
-        </p>
+        </p------->
     </div>
 </cfoutput>
 

@@ -3,8 +3,9 @@
         <cfargument name="uq" type="string" required="true">
 
         <cfquery name="q_check" datasource="#application.datasource#">
-            select id, confirmed, name, surname
-            from candidates 
+            select c.id, confirmed, name, surname
+            from candidates c
+            inner join audition a on a.id = c.auditionId and isOpen = 1
             where uniqueKey = <cfqueryparam value="#arguments.uq#" cfsqltype="cf_sql_varchar">
         </cfquery>
 
@@ -16,7 +17,8 @@
         <cfargument name="theWay" type="string" required="true">
 
         <cfquery name="q_confirm" datasource="#application.datasource#">
-            update candidates 
+            update candidates c 
+            inner join audition a on a.id = c.auditionId and isOpen = 1
             set confirmed = 1,
             theWay = <cfqueryparam value="#arguments.theWay#" cfsqltype="cf_sql_varchar">
             where uniqueKey = <cfqueryparam value="#arguments.uq#" cfsqltype="cf_sql_varchar">
@@ -37,7 +39,8 @@
                     else 'preostali'
                 end _status_,
                 count(confirmed) broj
-            from candidates
+            from candidates c 
+            inner join audition a on a.id = c.auditionId and isOpen = 1
             where shortlisted = 1
             group by confirmed;
         </cfquery>
@@ -49,7 +52,8 @@
                     else 'naše improvizacije'
                 end _status_,
                 count(theWay) broj
-            from candidates
+            from candidates c 
+            inner join audition a on a.id = c.auditionId and isOpen = 1
             where confirmed = 1
             group by theWay
         </cfquery>
