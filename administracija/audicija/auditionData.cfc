@@ -50,6 +50,7 @@
             confirmed,
             s.sex
             from candidates c
+            inner join audition a on a.id = c.auditionId and isOpen = 1
             inner join howHeardAboutUs h on h.id = c.howHeardAboutUsId
             inner join sex s on s.id = c.sexId
             where shortlisted = 1
@@ -70,6 +71,7 @@
             c.email, 
             c.uniqueKey
             from candidates c
+            inner join audition a on a.id = c.auditionId and isOpen = 1
             where 
             shortlisted = 1
             and confirmationEmail = 0
@@ -98,6 +100,7 @@
             SUBSTRING(auditionTime, 1, 5) auditionTime
             
             from candidates c
+            inner join audition a on a.id = c.auditionId and active = 1
             where 1=1
             and shortlisted = 1
             and confirmationEmail = 1
@@ -126,6 +129,7 @@
             s.sex,
             c.shortlisted
             from candidates c
+            inner join audition a on a.id = c.auditionId and active = 1
             inner join howHeardAboutUs h on h.id = c.howHeardAboutUsId
             inner join sex s on s.id = c.sexId
             where 1=1
@@ -200,6 +204,7 @@
             c.email
             
             from candidates c
+            inner join audition a on a.id = c.auditionId and active = 1
             where 1=1
             and present = 1
             and accepted = 0
@@ -222,6 +227,7 @@
             c.email
             
             from candidates c
+            inner join audition a on a.id = c.auditionId and active = 1
             where 1=1
             and present = 1
             and accepted = 1
