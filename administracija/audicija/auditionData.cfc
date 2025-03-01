@@ -81,6 +81,28 @@
         <cfreturn q_shortlisted_unnotified>
     </cffunction>
 
+    <cffunction name="getCandidatesForPerformanceEmail" access="public" returntype="query">
+
+        <cfquery name="q_shortlisted" datasource="#application.datasource#">
+            select 
+            c.id, 
+            c.name, 
+            c.surname, 
+            DATE_FORMAT(c.dateOfBirth, '%d.%m.%Y') dateOfBirth, 
+            c.email, 
+            c.uniqueKey
+            from candidates c
+            inner join audition a on a.id = c.auditionId and isOpen = 1
+            where 
+            c.shortlisted = 1
+            and c.confirmed = 1
+            and c.performanceEmail = 0
+            order by c.id desc
+        </cfquery>
+
+        <cfreturn q_shortlisted>
+    </cffunction>
+
     
 
     <cffunction name="shortlistTheCandidate" access="public" returntype="void">
@@ -97,17 +119,17 @@
             c.name, 
             c.surname, 
             c.email, 
-            SUBSTRING(auditionTime, 1, 5) auditionTime
+            SUBSTRING(c.auditionTime, 1, 5) auditionTime
             
             from candidates c
-            inner join audition a on a.id = c.auditionId and active = 1
+            inner join audition a on a.id = c.auditionId and isOpen = 1
             where 1=1
-            and shortlisted = 1
-            and confirmationEmail = 1
-            and confirmed = 1
-            and theWay is not null
-            and auditionTime is not null
-            and timeEmail is null
+            and c.shortlisted = 1
+            and c.confirmationEmail = 1
+            and c.confirmed = 1
+            and c.theWay is not null
+            and c.auditionTime is not null
+            and c.timeEmail is null
            
             order by c.id desc
         </cfquery>
@@ -129,7 +151,7 @@
             s.sex,
             c.shortlisted
             from candidates c
-            inner join audition a on a.id = c.auditionId and active = 1
+            inner join audition a on a.id = c.auditionId and isOpen = 1
             inner join howHeardAboutUs h on h.id = c.howHeardAboutUsId
             inner join sex s on s.id = c.sexId
             where 1=1
@@ -204,11 +226,11 @@
             c.email
             
             from candidates c
-            inner join audition a on a.id = c.auditionId and active = 1
+            inner join audition a on a.id = c.auditionId and isOpen = 1
             where 1=1
             and present = 1
             and accepted = 0
-            and resultsEmail = 0
+            and resultsEmail is null
            
             order by c.id desc
         </cfquery>
@@ -227,11 +249,11 @@
             c.email
             
             from candidates c
-            inner join audition a on a.id = c.auditionId and active = 1
+            inner join audition a on a.id = c.auditionId and isOpen = 1
             where 1=1
             and present = 1
             and accepted = 1
-            and resultsEmail = 0
+            and resultsEmail is null
            
             order by c.id desc
         </cfquery>

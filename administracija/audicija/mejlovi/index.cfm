@@ -9,8 +9,17 @@
         <button class="btn btn-primary btn-lg" onclick="location.href='#request.scriptName#?action=satnica'"> Obavesti kandidate o satnici dolaska. </button>
     
         <button class="btn btn-success btn-lg" onclick="location.href='#request.scriptName#?action=rezultati'"> Obavesti kandidate o rezultatima audicije. </button>
+
+        <button class="btn btn-success btn-lg" onclick="location.href='#request.scriptName#?action=predstava'"> Obavesti kandidate o predstavi. </button>
     </p>
 
+    <cfif url.action eq "predstava">
+        <cfset performanceEmailCandidates = DATA.getCandidatesForPerformanceEmail()>
+        <cfset MNG_EMAIL.notifyAboutPerformance(performanceEmailCandidates)>
+        <p class="mt-3 text-center">
+            Ukupno obaveštenih kandidata: #performanceEmailCandidates.recordcount#;
+        </p>
+    </cfif>
 
     <cfif url.action eq "uzi-krug">
         <cfset shortlisted_unnotified = DATA.getShortlistedUnnotified()>
