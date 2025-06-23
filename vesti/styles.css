@@ -1,0 +1,63 @@
+.card {
+    transition: transform 0.3s ease;
+    /* Smooth transition for scaling */
+    cursor: pointer;
+    margin-top: 0.5rem; /* smaller gap, adjust as needed */
+}
+
+.card:hover {
+    transform: scale(1.1);
+    /* Scale the image by 10% on hover */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+    /* White shadow for shining effect */
+}
+
+.card:active {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+}
+
+.jumbotron .display-4 {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+p.lead i {
+    color: var(--gold-main);
+}
+.holder {
+    /* Ensure the container expands to contain its floated contents */
+    overflow: auto;
+    max-width: 1000px; /* Adjust the max-width as needed */
+    margin: 10px auto; /* Center the container horizontally */
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.holder .img-left {
+    /* Float the image to the left by default */
+    float: left;
+    /* Add some margin to create space between the image and the text */
+    margin-right: 15px; /* Adjust as needed */
+}
+
+.holder .img-right {
+    /* Float the image to the left by default */
+    float: right;
+    /* Add some margin to create space between the image and the text */
+    margin-left: 15px; /* Adjust as needed */
+}
+
+
+.holder p {
+    text-align: justify; /* Justify the text within paragraphs */
+}
+
+@media screen and (max-width: 600px) {
+    /* Change layout for small screens */
+    .holder img {
+        float: none; /* Remove float */
+        display: block; /* Display image above text */
+        margin: 0 auto 15px; /* Center image horizontally and add margin below */
+    }
+}
