@@ -44,6 +44,9 @@
                         <a class="nav-link" href="#application["root"]#">#txtHome#</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#application["root"]#vesti/">#txtVesti#</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#application["root"]#predstave/">#txtPlays#</a>
                     </li>
                     <li class="nav-item">

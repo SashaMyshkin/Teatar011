@@ -9,6 +9,7 @@
         <cfset txtLatin = "Latinica">
         <cfset txtEnglish = "Engleski">
         <cfset txtHome = "Početna">
+        <cfset txtVesti = "Vesti">
         <cfset txtAudition = "Audicija">  
     </cfcase>
     <cfcase value="sr-Cyrl">
@@ -21,6 +22,7 @@
         <cfset txtLatin = "Латиница">
         <cfset txtEnglish = "Енглески">
         <cfset txtHome = "Почетна">
+        <cfset txtVesti = "Vesti">
         <cfset txtAudition = "Аудиција"> 
     </cfcase>
     <cfcase value="en">
@@ -34,5 +36,6 @@
         <cfset txtEnglish = "English">
         <cfset txtHome = "Home">
         <cfset txtAudition = "Audition"> 
+        <cfset txtVesti = "Vesti">
     </cfcase>
 </cfswitch>
