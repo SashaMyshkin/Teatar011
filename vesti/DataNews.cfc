@@ -16,6 +16,7 @@
             FROM `news_uid` nuid
             inner join news n on n.news_uid = nuid.id
             where n.script_id = 2 and nuid.is_public = 1
+            order by published_at desc
         </cfquery>
 
         <cfreturn QUERY.toArray(q_allnews)>
