@@ -67,6 +67,23 @@
                         select @descriptions := replace(replace(SUBSTRING(`paragraph`, 1, 150), '<i>', ''), '</i>', '') from biographies where memberId = @id and scriptId = 2 limit 1;
                     </cfif>
                 </cfif>
+
+                <cfif scriptArray.contains('vesti') neq 0>
+                    <cfif not structKeyExists(qss, 'q') >
+                        SET @title = 'Vesti - Teatar 011';
+                        SET @alt = '';
+                        SET @descriptions = 'Vesti na sajtu Teatar 011';
+                        SET @id = NULL;
+                    <cfelse>
+                        select @title := concat(`title`), 
+                        @img := img, 
+                        @alt := alt,
+                        @descriptions :=  replace(replace(SUBSTRING(`summary`, 1, 150), '<i>', ''), '</i>', '')
+                        from news_uid nuid 
+                        inner join news n on nuid.id = n.news_uid and n.script_id = 2
+                        where identifier = '#qss.q#';
+                    </cfif>
+                </cfif>
                     
     
                 INSERT INTO `metaTags`( 
