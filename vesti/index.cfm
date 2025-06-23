@@ -23,7 +23,7 @@
                         </div>
                         <div class="col-md-10">
                           <div class="card-body">
-                            <h5 class="card-title">#news_item.title#</h5>
+                            <h5 class="card-title" style="color: var(--gold-main)">#news_item.title#</h5>
                             <p class="card-text">#news_item.summary#</p>
                             <p class="card-text"><small class="">#news_item.published_at#</small></p>
                           </div>
@@ -40,7 +40,7 @@
 
        <header class="jumbotron text-white text-center">
             <div class="container">
-                <h1 class="display-4">#single_news.title#</h1>
+                <h1 class="display-4" style="color: var(--gold-main)">#single_news.title#</h1>
                 <cfif single_news.subtitle neq "">
                   <p class=""><i>#single_news.subtitle#</i></p>
                 </cfif>
